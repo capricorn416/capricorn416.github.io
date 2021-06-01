@@ -1,7 +1,7 @@
 # Vue
-`<div id='app'>
+```<div id='app'>
   {{ message }} 
-</div>`
+</div>```
 
 `<script>
   const app = new Vue({
