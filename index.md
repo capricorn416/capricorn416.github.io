@@ -1,4 +1,5 @@
 # Vue
+```markdown
 `<div id='app'>
   {{ message }} 
 </div>`
