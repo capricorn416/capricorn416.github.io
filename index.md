@@ -65,20 +65,56 @@
 #### 2.局部组件
 如果我们注册的组件是挂载在某个实例中，那么就是一个局部组件
 ```javascript
-const cpnC = Vue.extend({
+<script>
+  const cpnC = Vue.extend({
+      template: `
+        <div>
+          <h2>我是标题</h2>
+          <p>我是正文</p>
+        </div>`
+    })
+  const app = new Vue({
+    el: '#app',
+    data :{
+      message: ''
+    },
+    components: {
+      mycpn: cpnC
+    }
+  })
+</script>
+```
+### 三、父组件和子组件
+```javascript
+<script>
+  const cpnC1 = Vue.extend({
     template: `
       <div>
-        <h2>我是标题</h2>
-        <p>我是正文</p>
-      </div>`
+        <h2>我是子标题</h2>
+        <p>我是子内容</p>
+      </div>
+    `
   })
-const app = new Vue({
-  el: '#app',
-  data :{
-    message: ''
-  },
-  components: {
-    mycpn: cpnC
-  }
-})
+  const cpnC2 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是父标题</h2>
+        <p>我是父内容</p>
+        <cpn1></cpn1>
+      </div>
+    `,
+    components: {
+      cpn1: cpnC1
+    }
+  })
+  const app = new Vue({
+    el: '#app',
+    data : {
+      message: ''
+    }，
+    components: {
+      cpn2: cpnC2
+    }
+  })
+</script>
 ```
