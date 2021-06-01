@@ -25,9 +25,11 @@
 ```html
 <div id='app'>
   <!--3.使用组件-->
-  <mycpn></mycpn#>
   <mycpn></mycpn>
   <mycpn></mycpn>
+  <div>
+    <mycpn></mycpn>
+  </div>
 </div>
 ```
 ```javascript
@@ -40,7 +42,7 @@
         <p>我是正文</p>
       </div>`
   })
-  //2.注册组件
+  //2.注册组件(全局组件)
   Vue.component('mycpn',cpnC)
   
   const app = new Vue({
@@ -51,3 +53,7 @@
   })
 </script>
 ```
+### 二、全局组件和局部组件
+#### 1.全局组件
+·上面方法注册的是全局组件
+·全局组件意味着可以在多个Vue的实例下面使用
