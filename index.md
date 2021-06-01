@@ -41,7 +41,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <div id='app'>
   
 </div>
-
+```
 ```js
 <script>
   const app = new Vue({
@@ -49,3 +49,4 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
     
   })
 </script>
+```
