@@ -124,3 +124,60 @@
 </script>
 ```
 上述代码中cpn1是无法直接在html中使用的，因为没有在root组件中被注册
+
+#### 组件模板分离
+```
+<template id='mycpn'>
+  <div>
+    <h2>我是标题</h2>
+    <p>我是正文</p>
+  </div>`
+</template>
+```
+```javascript
+<script>
+  //注册全局组件
+  Vue.component('mycpn',{
+    template: '#mycpn'
+  })
+</script>
+```
+```javascript
+<script>
+  //注册局部组件
+  var app = new Vue({
+    el: '#app',
+    components: {
+      'mycpn': {
+        template: '#mycpn'
+      }
+    }
+  })
+</script>
+```
+#### 组件中的数据存放问题
+组件是一个单独功能模块的封装，组件中不能直接访问Vue实例中的data，组件有自己保存数据的地方
+
+组件对象也有一个data属性，**这个data属性必须是个函数**，而且这个函数返回一个对象，对象内部保存着数据
+```
+<template id='mycpn'>
+  <div>
+    <h2>{{ title }}</h2>
+    <p>我是正文</p>
+  </div>`
+</template>
+```
+```javascript
+<script>
+  //注册全局组件
+  Vue.component('mycpn',{
+    template: '#mycpn',
+    data() {
+      return {
+        title: 'abc'
+      }
+    }
+  })
+</script>
+```
+
