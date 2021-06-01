@@ -55,5 +55,26 @@
 ```
 ### 二、全局组件和局部组件
 #### 1.全局组件
-##### 上面方法注册的是全局组件
-##### 全局组件意味着可以在多个Vue的实例下面使用
+
+#####   上面方法注册的是全局组件
+#####   全局组件意味着可以在多个Vue的实例下面使用
+
+#### 2.局部组件
+```javascript
+const cpnC = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我是正文</p>
+      </div>`
+  })
+const app = new Vue({
+  el: '#app',
+  data :{
+    message: ''
+  },
+  components: {
+    mycpn: cpnC
+  }
+})
+```
