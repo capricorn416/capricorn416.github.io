@@ -123,7 +123,42 @@
   })
 </script>
 ```
-上述代码中cpn1是无法直接在html中使用的，因为没有在root组件中被注册
+父子组件错误用法：以子标签的形式在Vue实例中使用
+
+上述代码中cpn1是无法直接在html中使用的
+
+#### 注册组件语法糖
+```javascript
+<script>
+  //注册全局组件
+  Vue.component('mycpn',{
+    template: `
+      <div>
+        <h2></h2>
+        <p><p>
+      </div>
+    `
+  })
+</script>
+```
+```javascript
+<script>
+  //注册局部组件
+  var app = new Vue({
+    el: '#app',
+    components: {
+      'mycpn': {
+        template: `
+          <div>
+            <h2></h2>
+            <p><p>
+          </div>
+        `
+      }
+    }
+  })
+</script>
+```
 
 #### 组件模板分离
 ```
@@ -180,4 +215,5 @@
   })
 </script>
 ```
+#### 父子组件通信
 
