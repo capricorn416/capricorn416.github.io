@@ -87,6 +87,7 @@
 ### 三、父组件和子组件
 ```javascript
 <script>
+  //子组件
   const cpnC1 = Vue.extend({
     template: `
       <div>
@@ -95,6 +96,8 @@
       </div>
     `
   })
+  
+  //父组件
   const cpnC2 = Vue.extend({
     template: `
       <div>
@@ -107,6 +110,8 @@
       cpn1: cpnC1
     }
   })
+  
+  // root组件
   const app = new Vue({
     el: '#app',
     data : {
@@ -118,3 +123,4 @@
   })
 </script>
 ```
+上述代码中cpn1是无法直接在html中使用的，因为没有在root组件中被注册
