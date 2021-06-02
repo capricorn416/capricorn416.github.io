@@ -730,6 +730,6 @@ import addr from './aaa.js'
 ```
 统一全部导入
 ```
-import * as aaa from './aaa.js'
-console.log(aaa.flag)
+import * as info from './aaa.js'
+console.log(info.flag)
 ```
