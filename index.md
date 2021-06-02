@@ -300,20 +300,48 @@ props的值有两种方式：
 
 
 ##### 2.子组件通过事件向父组件发送消息
-```
+```html
+<!--父组件模板-->
 <div id='app'>
+  <cpn @itemclick='cpnClick'></cpn>
 </div>
+<!--子组件模板>
+<template id='cpn'>
+  <div>
+    <button v-for='item in categories' @click='btnclick(item)'>{{ item.name }}</button>
+  </div>
+</template>
 ```
 ```javascript
 <script>
+  //子组件
   const cpn = {
     template: '#cpn'，
+    data() {
+      return {
+        categories: [
+         {id: '01', name: '热门推荐'},
+         {id: '02', name: '手机数码'},
+         {id: '03', name: '家用家电'}
+        ]
+      }
+    },
+    methods: {
+      btnclick(item) {
+        this.$emit('itemclick',item)
+      }
+    }
   }
-  
+  //父组件
   const app = new Vue({
     el: '#app',
     components: {
       cpn //属性增强写法
+    },
+    methods: {
+      cpnClick(item) {
+        console.log(item)
+      }
     }
   })
 </script>
