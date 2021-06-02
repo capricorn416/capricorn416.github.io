@@ -424,3 +424,54 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
       }
     }
   }
+```
+#### 父子组件的访问方式
+##### 1.父组件访问子组件：使用`$children`或`$refs`
+①`$children`:用得少，除非要拿到所有子组件
+
+②`$refs` => 对象类型，默认是一个空的对象，必须在组件上加ref=''
+```
+<div id='app'>
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn ref='a'></cpn>
+  <button @click='btnClick'>按钮</button>
+</div>
+```
+```
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {},
+    methods: {
+      btnClick() {
+        //1.$children
+        console.log(this.$children);
+        for (let c of this.$children) {
+          console.log(c.name);
+          c.showMessage()
+        }
+        
+        //2.$refs
+        console.log(this.$refs.a.name)
+      }
+    }/
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            name:''
+          }
+        }
+        methods: {
+          showMessage() {
+            console.log('showMessage');
+          }
+        }
+      }
+    }
+  })
+</script>
+```
+##### 2.子组件访问父组件：使用`$parent`
