@@ -427,7 +427,7 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 ```
 #### 父子组件的访问方式
 ##### 1.父组件访问子组件：使用`$children`或`$refs`
-①`$children`:用得少，除非要拿到所有子组件
+①`$children`：用得少，除非要拿到所有子组件
 
 ②`$refs` => 对象类型，默认是一个空的对象，必须在组件上加ref=''
 ```
@@ -475,3 +475,43 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 </script>
 ```
 ##### 2.子组件访问父组件：使用`$parent`
+```
+<template id='cpn'>
+  <div>
+    <ccpn></ccpn>
+  </div>
+</template>
+
+<template id='ccpn'>
+  <div>
+    <button @click='btnClick'>按钮</button>
+  </div>
+</template>
+```
+```
+<script>
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            name: ''
+          }
+        },
+        components: {
+          ccpn: {
+            template: '#ccpn',
+            methods: {
+              btnClick() {
+                console.log(this.$parent.name);
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+</script>
+```
