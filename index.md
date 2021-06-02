@@ -669,7 +669,8 @@ CommonJS的导入
 let {} = require('moduleA')
 ```
 ### 一、ES6的模块化实现
-#### `export`用来**导出**变量
+#### 1.ES6模块化的导入和导出
+##### `export`用来**导出**变量
 ```
 <script src='aaa.js' type='module'></script>
 ```
@@ -711,14 +712,14 @@ export default address
 ```
 export default在同一个模块中，不允许同时存在多个
 
-#### `import`用来**导入**模块
+##### `import`用来**导入**模块
 ```
 import {flag, sum, Person} from './aaa.js';
 
 const p = new Person()
 p.run()
 ```
-使用export default导出的导入时不需要加{}
+使用export default导出的导入时不需要加`{}`
 ```
 import addr from './aaa.js'
 ```
