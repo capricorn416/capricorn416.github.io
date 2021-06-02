@@ -543,7 +543,8 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   </div>
 </template>
 ```
-插槽的默认值：<slot>中的内容表示，如果没有在该组件中插入任何其他内容，就默认显示该内容
+插槽的默认值：`<slot>`中的内容表示，如果没有在该组件中插入任何其他内容，就默认显示该内容
+
 `<slot><button>按钮</button></slot>`
 
 如果有多个值同时放入到组件进行替换时，一起作为替换元素
@@ -556,4 +557,19 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 </div>
 ```
 
-#### 
+#### 具名插槽
+```
+<div id='app'>
+  <cpn><span slot='center'>标题</span></cpn>
+  <cpn><button slot='left>标题</button></cpn>
+</div>
+```
+```
+<template id='cpn'>
+  <div>
+    <slot name='left'><span>左边</span></slot>
+    <slot name='center'><span>中间</span></slot>
+    <slot name='right'><span>右边</span></slot>
+  </div>
+</template>
+```
