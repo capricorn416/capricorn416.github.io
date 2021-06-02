@@ -633,7 +633,27 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 </script>
 ```
 ## 模块化开发
-模块化有两个核心：导出和导入
+```
+var ModuleA = (function() {
+  //1.定义一个对象
+  var obj = {}
+  //2.在对象内部添加变量和方法
+  obj.flag = true
+  obj.myFunc = function (info) {
+    console.log(info);
+  }
+  //3.将对象返回
+  return obj
+})
+```
+```
+if(ModuleA.flag){
+  console.log;
+}
+ModuleA.myFunc('')
+console.log(ModuleA)
+```
+模块化有两个核心：**导出**和**导入**
 
 CommonJS的导出
 ```
