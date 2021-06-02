@@ -1,9 +1,7 @@
 # Vue
 ## 基础语法
 ```html
-<div id='app'>
-  {{ message }} 
-</div>
+<div id='app'> {{ message }} </div>
 ```
 ```javascript
 <script>
