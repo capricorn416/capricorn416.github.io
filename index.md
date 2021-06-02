@@ -354,3 +354,52 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 </script>
 ```
 ##### 结合双向绑定
+```
+<div id='app'>
+  <cpn :number='num' @numchange='numchange'/>
+</div>
+
+<template id='cpn'>
+  <div>
+    <h2>props:{{ number }}</h2>
+    <h2>data: {{ dnumber }}</h2>
+    <!--<input type='text' v-model='dnumber'>-->
+    <input type='text' :value='dnumber' @input='numInput'>
+  </div>
+</template>
+```
+
+```
+<script>
+  const app = new Vue({
+    el:'#app',
+    data: {
+      num: 1
+    },
+    methods: {
+      numchange(value) {
+        this.num = parseInt(value)
+      }
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        props: {
+          number: Number
+        },
+        data() {
+          return {
+            dnumber: this.number
+          }
+        },
+        methods: {
+          numInput(event){
+            this.dnumber = event.target.value;
+            this.$emit('numchange',this.dnumber)
+          }
+        }
+      }
+    }
+  })
+</script>
+```
