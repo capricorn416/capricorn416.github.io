@@ -668,3 +668,16 @@ CommonJS的导入
 ```
 let {} = require('moduleA')
 ```
+### 一、ES6的模块化实现
+`export`用来**导出**变量
+```
+<script src='aaa.js' type='module'></script>
+```
+```
+export {
+  flag,sum
+}
+```
+```
+import {flag, sum} from './aaa.js'
+```
