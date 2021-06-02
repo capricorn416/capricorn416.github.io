@@ -475,6 +475,8 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 </script>
 ```
 ##### 2.子组件访问父组件：使用`$parent`
+
+##### 访问根组件：`$root`
 ```
 <template id='cpn'>
   <div>
@@ -505,7 +507,11 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
             template: '#ccpn',
             methods: {
               btnClick() {
+                //1.访问父组件
+                console.log(this.$parent);
                 console.log(this.$parent.name);
+                //2.访问根组件
+                console.log(this.$root)
               }
             }
           }
