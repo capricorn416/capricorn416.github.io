@@ -258,22 +258,45 @@ props的值有两种方式：
 </script>
 ```
 类型是对象或者数组时，默认值必须是一个函数
+
+当有自定义构造函数时，验证也支持自定义的类型
 ```javascript
 <script>
+  function Person(firstname, lastname) {
+    this.firstname = firstname
+    this.lastname = lastname
+  }
+  
   const cpn = {
     template: '#cpn'，
     props: {
-      cmovies: {
+      //多个可能的类型
+      propA: [String, Number],
+      //对象或数组默认值必须从工厂函数获取
+      propB: {
         type: Array,
         default() {
           return []
+        }
+      },
+      //自定义类型
+      propC: {
+        author: Person
+      },
+      //自定义验证函数
+      PropD: {
+        validator: function(value){
+          //这个值必须匹配下列字符串中的一个
+          return ['success','warning','danger'].indexof(value) !== -1
         }
       }
     }
   }
 </script>
 ```
-当有自定义构造函数时，验证也支持自定义的类型
+
+
+
 ##### 2.通过事件向父组件发送消息
 
 
