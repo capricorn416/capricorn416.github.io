@@ -208,7 +208,7 @@
 </script>
 ```
 #### 父子组件通信
-![image](图片1.png)
+![image](https://img.imgdb.cn/item/601508053ffa7d37b3ce7091.png)
 ##### 1.父组件通过props向子组件传递数据
 ```
 <div id='app'>
