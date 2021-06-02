@@ -1,7 +1,9 @@
 # Vue
 ## 基础语法
 ```html
-<div id='app'> {{ message }} </div>
+<div id='app'>
+  {{ message }}
+</div>
 ```
 ```javascript
 <script>
@@ -207,8 +209,53 @@
 ```
 #### 父子组件通信
 ##### 1.父组件通过props向子组件传递数据
+```
+<div id='app'>
+  <cpn v-bind:cmovies='movies' :cmessage='message'></cpn>
+</div>
 
+<template id='cpn'>
+  <div>
+    <ul>
+      <li v-for='item in cmovies'>{{ item }}</li>
+    </ul>
+    <h2>{{ cmessage }}</h2>
+  </div>
+</template>
+```
+props的值有两种方式：
 
+①**字符串数组**，数组中的字符串就是传递时的名称
+
+②**对象**，对象可以设置传递时的类型，也可以设置默认值等
+```javascript
+<script>
+  const cpn = {
+    template: '#cpn'，
+    //props: ['cmovies','cmessage']
+    props: {
+      //类型限制
+      cmovies: Array,
+      //提供默认值
+      cmessage: {
+        type: String,
+        default: ''
+      }
+    }
+  }
+  
+  const app = new Vue({
+    el: '#app',
+    data : {
+      message: '',
+      movies: ['海贼王','海尔兄弟','海的女儿']
+    },
+    components: {
+      cpn //属性增强写法
+    }
+  })
+</script>
+```
 ##### 2.通过事件向父组件发送消息
 
 
