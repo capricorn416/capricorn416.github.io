@@ -583,7 +583,8 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   <cpn v-show='isShow'></cpn> <!--Vue实例里的isShow-->
   <cpn v-for='item in names'></cpn>
 </div>
-
+```
+```
 <template id='cpn'>
   <div>
     <button v-show='isShow'></button> <!--components里cpn的isShow-->
