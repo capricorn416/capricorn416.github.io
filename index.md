@@ -596,11 +596,18 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 ```
 <div id='app'>
   <cpn></cpn>
+  <cpn>
+    <!--目的是获取子组件中的pLanguages-->
+    <template slot-scope='slot'>
+      <span v-for='item in slot.data'>{{ item }}-</span>
+      <span>{{ slot.data.join('-') }}</span>
+    </template>
+  </cpn>
 </div>
 
 <template id='cpn'>
   <div>
-    <slot>
+    <slot :data='pLanguages'>
       <ul>
         <li v-for='item in pLanguages'>{{ item }}</li>
       </ul>
@@ -625,3 +632,4 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   })
 </script>
 ```
+## 模块化开放
