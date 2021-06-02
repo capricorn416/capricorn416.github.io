@@ -724,7 +724,12 @@ import {flag, sum, Person} from './aaa.js';
 const p = new Person()
 p.run()
 ```
-使用export default导出的导入时不需要加`{}`
+导入export default中的内容时不需要加`{}`
 ```
 import addr from './aaa.js'
+```
+统一全部导入
+```
+import * as aaa from './aaa.js'
+console.log(aaa.flag)
 ```
