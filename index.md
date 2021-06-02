@@ -313,7 +313,7 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 <div id='app'>
   <cpn @itemclick='cpnClick'></cpn>
 </div>
-<!--子组件模板>
+<!--子组件模板-->
 <template id='cpn'>
   <div>
     <button v-for='item in categories' @click='btnclick(item)'>{{ item.name }}</button>
@@ -521,3 +521,4 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   })
 </script>
 ```
+### 四、slot-插槽
