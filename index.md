@@ -670,16 +670,37 @@ let {} = require('moduleA')
 ```
 ### 一、ES6的模块化实现
 `export`用来**导出**变量
-
-`import`用来**导入**模块
 ```
 <script src='aaa.js' type='module'></script>
 ```
+导出方式一
 ```
 export {
-  flag,sum
+  flag, sum
 }
 ```
+导出方式二
 ```
-import {flag, sum} from './aaa.js'
+export var num = 1000;
+export var height = 1.88
+```
+导出函数/类
+```
+export function sum(num1, num2) {
+  return num1 + num2
+}
+
+export class Person {
+  run() {
+    console.log('在奔跑')
+  }
+}
+```
+
+`import`用来**导入**模块
+```
+import {flag, sum, Person} from './aaa.js';
+
+const p = new Person()
+p.run()
 ```
