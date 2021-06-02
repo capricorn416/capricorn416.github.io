@@ -524,14 +524,30 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 ### 四、slot-插槽
 组件的插槽是为了让我们封装的组件更加具有扩展性
 
-让使用者可以决定组件内部的一些内容到底展示什么
+最好的封装方式就是将共性抽取到组件中，将不同暴露为插槽
+
+一旦我们预留了插槽，就可以让使用者根据自己的需求，决定插槽中插入什么内容
 #### 插槽的基本使用
 ```
+<div id='app'>
+  <cpn><button>按钮</button></cpn>
+  <cpn><span>呵呵</span></cpn>
+</div>
+
 <template id='cpn'>
   <div>
     <h2></h2>
     <p></p>
     <slot></slot>
+  </div>
+</template>
+```
+```
+<template id='cpn'>
+  <div>
+    <h2></h2>
+    <p></p>
+    <slot><button>按钮</button></slot>
   </div>
 </template>
 ```
