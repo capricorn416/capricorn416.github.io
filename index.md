@@ -558,6 +558,7 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 ```
 
 #### 具名插槽
+给`slot`元素一个`name`属性即可
 ```
 <div id='app'>
   <cpn><span slot='center'>标题</span></cpn>
