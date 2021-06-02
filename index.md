@@ -591,3 +591,37 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   </div>
 </template>
 ```
+#### 作用域插槽
+父组件替换插槽的标签，但是内容由子组件来提供
+```
+<div id='app'>
+  <cpn></cpn>
+</div>
+
+<template id='cpn'>
+  <div>
+    <slot>
+      <ul>
+        <li v-for='item in pLanguages'>{{ item }}</li>
+      </ul>
+     </slot>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            pLanguages: ['JavaScript','C++','Java','C#','Python']
+          }
+        }
+      }
+    }
+  })
+</script>
+```
