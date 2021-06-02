@@ -669,38 +669,56 @@ CommonJS的导入
 let {} = require('moduleA')
 ```
 ### 一、ES6的模块化实现
-`export`用来**导出**变量
+#### `export`用来**导出**变量
 ```
 <script src='aaa.js' type='module'></script>
 ```
-导出方式一
+①导出方式一
 ```
 export {
   flag, sum
 }
 ```
-导出方式二
+②导出方式二
 ```
 export var num = 1000;
 export var height = 1.88
 ```
-导出函数/类
+③导出函数/类
 ```
 export function sum(num1, num2) {
   return num1 + num2
 }
 
 export class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
   run() {
     console.log('在奔跑')
   }
 }
 ```
+④export default
 
-`import`用来**导入**模块
+某些情况下，一个模块中包含某个功能，我们并不希望给这个功能命名，而是让导入者可以自己来命名
+
+这个时候就可以使用export default
+```
+const address = '北京市'
+export default address
+```
+export default在同一个模块中，不允许同时存在多个
+
+#### `import`用来**导入**模块
 ```
 import {flag, sum, Person} from './aaa.js';
 
 const p = new Person()
 p.run()
+```
+使用export default导出的导入时不需要加{}
+```
+import addr from './aaa.js'
 ```
