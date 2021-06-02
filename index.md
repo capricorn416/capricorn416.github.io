@@ -239,7 +239,8 @@ props的值有两种方式：
       //提供默认值
       cmessage: {
         type: String,
-        default: ''
+        default: '',
+        required: true  //必传
       }
     }
   }
@@ -256,6 +257,23 @@ props的值有两种方式：
   })
 </script>
 ```
+类型是对象或者数组时，默认值必须是一个函数
+```javascript
+<script>
+  const cpn = {
+    template: '#cpn'，
+    props: {
+      cmovies: {
+        type: Array,
+        default() {
+          return []
+        }
+      }
+    }
+  }
+</script>
+```
+当有自定义构造函数时，验证也支持自定义的类型
 ##### 2.通过事件向父组件发送消息
 
 
