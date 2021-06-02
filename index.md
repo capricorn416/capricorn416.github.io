@@ -295,9 +295,27 @@ props的值有两种方式：
 </script>
 ```
 *组件模板必须包含一个根元素(比如用外层div包起来)
+
 *html不支持驼峰命名（不分大小写），可以转换成短线连接
 
 
-##### 2.通过事件向父组件发送消息
-
+##### 2.子组件通过事件向父组件发送消息
+```
+<div id='app'>
+</div>
+```
+```javascript
+<script>
+  const cpn = {
+    template: '#cpn'，
+  }
+  
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn //属性增强写法
+    }
+  })
+</script>
+```
 
