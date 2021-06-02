@@ -533,7 +533,8 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   <cpn><button>按钮</button></cpn>
   <cpn><span>呵呵</span></cpn>
 </div>
-
+```
+```
 <template id='cpn'>
   <div>
     <h2></h2>
@@ -542,13 +543,6 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   </div>
 </template>
 ```
-```
-<template id='cpn'>
-  <div>
-    <h2></h2>
-    <p></p>
-    <slot><button>按钮</button></slot>
-  </div>
-</template>
-```
+插槽的默认值`<slot><button>按钮</button></slot>`
+
 #### 
