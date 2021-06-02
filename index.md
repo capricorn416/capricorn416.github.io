@@ -406,7 +406,8 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
   })
 </script>
 ```
-`watch`
+----
+`watch`实现
 ```
   components: {
     cpn: {
