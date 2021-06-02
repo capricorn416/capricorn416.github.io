@@ -710,6 +710,11 @@ export class Person {
 const address = '北京市'
 export default address
 ```
+```
+export default function (argument) {
+	console.log(argument)
+}
+```
 export default在同一个模块中，不允许同时存在多个
 
 ##### `import`用来**导入**模块
