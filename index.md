@@ -633,3 +633,13 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
 </script>
 ```
 ## 模块化开发
+模块化有两个核心：导出和导入
+
+CommonJS的导出
+```
+module.exports = {}
+```
+CommonJS的导入
+```
+let {} = require('moduleA')
+```
