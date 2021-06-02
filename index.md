@@ -734,4 +734,4 @@ import * as info from './aaa.js'
 console.log(info.flag)
 ```
 ## Webpack
-从本质上来讲，webpack是一个现代的JavaScript应用的静态**模块*****打包**工具
+从本质上来讲，webpack是一个现代的JavaScript应用的静态**模块** **打包**工具
