@@ -394,7 +394,9 @@ v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事�
         },
         methods: {
           numInput(event){
+            //将input中的value赋值到dnumber中
             this.dnumber = event.target.value;
+            //为了让父组件可以修改值，发出一个事件
             this.$emit('numchange',this.dnumber)
           }
         }
