@@ -756,4 +756,10 @@ mathUtils.js：定义了一些数学工具函数，可以在其他地方引用�
 
 index.html：浏览器打开展示的首页html
 
-`webpack ./src/main.js ./dist/bundle.js`
+#### js文件的打包
+```webpack ./src/main.js ./dist/bundle.js```
+```index.html
+<script src='./dist/bundle.js'></script>
+```
+
+
