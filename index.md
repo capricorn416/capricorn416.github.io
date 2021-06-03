@@ -794,8 +794,21 @@ module.exports = {
 
 ```
 {
+	...
 	'scripts': {
 		'build': 'webpack'
-	}
+	},
+	...
 }
 ```
+以上使用的webpack是全局的webpack
+
+但是一个项目往往依赖特定的webpack版本，全局的版本可能和这个项目的webpack版本不一致，导致打包出现问题
+
+所以通常一个项目，都有自己局部的webpack
+
+①项目中需要安装自己局部的webpack
+```
+npm install webpack@3.6.0 --save-dev
+```
+
