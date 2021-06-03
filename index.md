@@ -735,3 +735,11 @@ console.log(info.flag)
 ```
 ## Webpack
 从本质上来讲，webpack是一个现代的JavaScript应用的静态**模块** **打包**工具
+
+webpack其中一个核心就是让我们可能进行模块化开发，并且会帮助我们处理模块间的依赖关系
+
+JavaScript、CSS、图片、json文件等等在webpack中都可以被当做模块来使用
+
+*webpack为了可以正常运行，必须依赖node环境
+
+*node环境为了可以正常执行很多代码，必须其中包含各种依赖的包 => npm工具
