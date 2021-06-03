@@ -750,11 +750,11 @@ JavaScript、CSS、图片、json文件等等在webpack中都可以被当做模�
 
 `src`文件夹：用于存放我们写的源文件
 
-main.js：项目的入口文件
+`main.js`：项目的入口文件
 
 mathUtils.js：定义了一些数学工具函数，可以在其他地方引用，并且使用
 
-index.html：浏览器打开展示的首页html
+`index.html`：浏览器打开展示的首页html
 
 #### js文件的打包
 ```
