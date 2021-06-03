@@ -770,7 +770,7 @@ bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个j
 #### webpack的配置
 `webpack.config.js`
 ```
-const path = require ('path')
+const path = require ('path')	//依赖node里的包
 
 module.exports = {
 	entry: './src/main.js',
@@ -780,4 +780,7 @@ module.exports = {
 	}
 }
 ```
-
+`package.json`：通过`npm init`生成的，npm包管理的文件
+```
+npm install
+```
