@@ -758,7 +758,11 @@ index.html：浏览器打开展示的首页html
 
 #### js文件的打包
 ```webpack ./src/main.js ./dist/bundle.js```
-```index.html
+打包后会在dist文件夹下，生成一个bundle.js文件
+
+bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个js文件，我们只需要将这个js文件在index.html中引入即可
+
+```
 <script src='./dist/bundle.js'></script>
 ```
 
