@@ -746,9 +746,9 @@ JavaScript、CSS、图片、json文件等等在webpack中都可以被当做模�
 
 ### 一、webpack的使用
 #### 准备工作
-`dist`文件夹：用于存放之后打包的文件
+**`dist`文件夹：用于存放之后打包的文件**
 
-`src`文件夹：用于存放我们写的源文件
+**`src`文件夹：用于存放我们写的源文件**
 
 `main.js`：项目的入口文件
 
@@ -767,5 +767,17 @@ bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个j
 ```
 <script src='./dist/bundle.js'></script>
 ```
+#### webpack的配置
+`webpack.config.js`
+```
+const path = require ('path')
 
+module.exports = {
+	entry: './src/main.js',
+	output: {
+		path: '',	//绝对路径 => 动态地获取路径
+		filename: ''
+	}
+}
+```
 
