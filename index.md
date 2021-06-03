@@ -768,12 +768,16 @@ bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个j
 <script src='./dist/bundle.js'></script>
 ```
 #### webpack的配置
-`webpack.config.js`
+可以将webpack的入口和出口参数写到配置中，在运行时直接读取
+
+创建一个`webpack.config.js`文件
 ```
 const path = require ('path')	//依赖node里的包
 
 module.exports = {
+	//入口：可以是字符串/数组/对象
 	entry: './src/main.js',
+	//出口：通常是一个对象，里面至少包含两个重要属性，path和filename
 	output: {
 		path: '',	//绝对路径 => 动态地获取路径
 		filename: ''
