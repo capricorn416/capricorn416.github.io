@@ -768,7 +768,11 @@ bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个j
 <script src='./dist/bundle.js'></script>
 ```
 #### webpack的配置
-可以将webpack的入口和出口参数写到配置中，在运行时直接读取
+`package.json`：通过`npm init`生成的，npm包管理的文件
+
+```npm install```
+
+可以将webpack的入口和出口参数写到配置中，在运行时直接读取:
 
 创建一个`webpack.config.js`文件
 ```
@@ -779,12 +783,19 @@ module.exports = {
 	entry: './src/main.js',
 	//出口：通常是一个对象，里面至少包含两个重要属性，path和filename
 	output: {
-		path: '',	//绝对路径 => 动态地获取路径
-		filename: ''
+		path: path.resolve(__dirname,'dist'),	//绝对路径 => 动态地获取路径
+		filename: 'bundle.js'
 	}
 }
 ```
-`package.json`：通过`npm init`生成的，npm包管理的文件
+让```webpack```命令和```npm run build```命令映射起来
+
+打开`package.json`文件：
+
 ```
-npm install
+{
+	'scripts': {
+		'build': 'webpack'
+	}
+}
 ```
