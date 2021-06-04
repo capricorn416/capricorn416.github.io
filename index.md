@@ -859,9 +859,32 @@ require('./css/normal.css')
 #### less文件的处理
 
 #### 图片文件的处理
-①当加载的图片小于limit时，会将图片编译成`base64`字符串形式
+```css
+body {
+	background: url(../imgs/1.jpg)
+}
+```
 
-②当加载的图片大于limit时，需要安装`file-loader`模块进行加载
+①当加载的图片小于`limit`（默认8196 => 8kb）时，会将图片编译成`base64`字符串形式
+
+②当加载的图片大于`limit`时，需要安装`file-loader`模块进行加载
+
+再次打包，就会发现`dist`文件夹下多了一个图片文件。
+
+因为我们整个程序是打包在dist文件夹下的，所以我们需要在路径下再添加一个dist/：
+
+
+在`webpack.config.js`中的output下进行配置
+```
+module.exports = {
+	...
+	output: {
+		...
+		publicPath: 'dist/'
+	}
+}
+```
+#### 
 
 
 
