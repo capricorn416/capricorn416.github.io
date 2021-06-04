@@ -1035,6 +1035,18 @@ plugin是插件，它是对webpack本身的扩展，是一个扩展器
 
 步骤二：在webpack.config.js中的plugins中配置插件
 
+`BannerPlugin`：为打包的文件添加版权声明，属于webpack自带的插件
+
+```
+const webpack = require('webpack')
+
+module.exports = {
+	...
+	plugins: [
+		new webpack.BannerPlugin('最终版权归...所有')
+	]
+}
+```
 
 
 
