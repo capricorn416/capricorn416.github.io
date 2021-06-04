@@ -799,6 +799,7 @@ module.exports = {
 npm install webpack@3.6.0 --save-dev
 ```
 *在终端敲```webpack```命令，用的都是全局的
+
 ②通过```node_modules/.bin/webpack```启动webpack打包
 
 我们可以在package.json的scripts中定义自己的执行脚本，让```webpack```命令和```npm run build```命令映射起来
@@ -821,3 +822,31 @@ package.json中的scripts的脚本在执行时，会按照一定的顺序寻找�
 首先，会寻找本地的node_modules/.bin路径中对应的命令
 
 如果没有找到，会去全局的环境变量中寻找
+
+
+### 二、loader
+loader是webpack中一个非常核心的概念
+
+在我们之前的实例中，我们主要是用webpack来处理我们写的js代码，并且webpack会自动处理js之间相关的依赖
+
+但是，在开发中我们不仅仅有基本的js代码处理，我们也需要加载css、图片，也包括一些高级的将ES6转成ES5代码，将TypeScript转成ES5代码，将scss、less转成css，将.jsx、.vue文件转成js文件等等
+
+对于webpack本身的能力来说，对于这些转化是不支持的
+
+所有我们需要给webpack扩展对应的loader
+
+大部分loader我们都可以在[webpack](https://webpack.docschina.org/)的官网中找到，并且学习对应的用法
+
+#### loader使用过程
+①通过npm安装需要使用的loader
+
+②在webpack.config.js中的modules关键字下进行配置
+
+#### css文件的配置
+
+①在`main.js`（入口文件）中引用：
+```
+require('./css/normal.css')
+```
+
+②
