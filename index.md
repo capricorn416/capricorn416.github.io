@@ -937,4 +937,81 @@ module.exports = {
 }
 ```
 
+#### 创建Vue时template和el关系
+el用于指定Vue要管理的DOM，可以帮助解析其中的指令、事件监听等等；
 
+而如果Vue实例中同时指定了template，那么template模板的内容会替换掉挂载的对应el的模板
+
+这样做就不需要在以后的开发中再次操作index.html，只需要在template中写入对应的标签即可
+```
+new Vue({
+	el: '#app',
+	template: `
+		<div>
+			<h2>{{ message }}</h2>
+		</div>
+	`
+})
+```
+#### 	Vue的使用
+```app.vue
+<template>
+	<div>
+		<h2 class='title'>{{ message }}</h2>
+		<button @click='btnClick'>按钮</button>
+	</div>
+</template>
+
+<script>
+	export default {
+		name: 'App',
+		data() {
+			return {
+				message: 'Hello Webpack'
+			}
+		},
+		methods: {
+			btnClick() {
+			}
+		}			
+	}
+</script>
+
+<style scoped>
+	.title {
+		color: yellow;
+	}
+</style>
+```
+
+```main.js
+import App from './vue/App.vue'
+
+new Vue({
+	el: '#app',
+	template: '<App/>',
+	components: {
+		APP
+	}
+})
+```
+安装`vue-loader`和`vue-template-compiler`
+
+修改webpack.config.js的配置文件
+```
+{
+	test: /\.vue$/,
+	use: ['vue-loader']
+}
+```
+省略js、css、vue的后缀名
+
+修改webpack.config.js的配置文件
+
+```
+module.exports = {
+	resolve: {
+		extensions: ['.js','.css','.vue']
+	}
+}
+```
