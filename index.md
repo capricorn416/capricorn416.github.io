@@ -872,11 +872,22 @@ body {
 
 再次打包，就会发现`dist`文件夹下多了一个图片文件
 
-(webpack自动帮助我们生成一个非常长的名字，这是一个32位hash值，目的是防止名字重复
+（webpack自动帮助我们生成一个非常长的名字，这是一个32位hash值，目的是防止名字重复
 
 但是，真实开发中，我们可能对打包的图片名字有一定的要求
 
-比如，将所有的图片放在一个文件夹中，跟上图片原来的名称，同时也要防止重复)
+比如，将所有的图片放在一个文件夹中，跟上图片原来的名称，同时也要防止重复）
+
+```webpack.config.js
+options: {
+	limit: 8192,
+	name: 'img/[name].[hash:8].[ext]'
+}
+//img：文件要打包到的文件夹
+//name：获取图片原来的名字，放在该位置
+//hash:8：为了防止图片名称冲突，依然使用hash，但是我们只保留8位
+//ext：使用图片原来的扩展名
+```
 
 图片没有显示 => 我们整个程序是打包在dist文件夹下的，所以我们需要在路径下再添加一个dist/：
 
@@ -891,8 +902,27 @@ module.exports = {
 }
 ```
 
+#### ES6转ES5的babel
+如果仔细阅读webpack打包的js文件，发现写的ES6语法并没有转成ES5，那么就意味着可能一些对ES6还不支持的浏览器没有办法很好的运行代码
 
-#### 
+如果希望将ES6的语法转成ES5，那么就需要使用babel
+
+而在webpack中，直接使用babel对应的loader就可以了
+
+配置webpack.config.js文件
+
+#### 配置Vue
+```
+npm install vue --save
+```
+使用Vue进行开发
+```
+import Vue from 'vue'
+```
+`runtime-only` -> 代码中不可以有任何的template
+
+`runtime-compiler` -> 代码中可以有template，因为有compiler可以用于编译template
+
 
 
 
