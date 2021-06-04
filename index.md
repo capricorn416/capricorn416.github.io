@@ -857,3 +857,11 @@ require('./css/normal.css')
 ```
 
 #### less文件的处理
+
+#### 图片文件的处理
+①当加载的图片小于limit时，会将图片编译成`base64`字符串形式
+
+②当加载的图片大于limit时，需要安装`file-loader`模块进行加载
+
+
+
