@@ -840,13 +840,20 @@ loader是webpack中一个非常核心的概念
 #### loader使用过程
 ①通过npm安装需要使用的loader
 
-②在webpack.config.js中的modules关键字下进行配置
+②在webpack.config.js中的module关键字下进行配置
 
 #### css文件的配置
+`css-loader`只负责加载css文件，但是并不负责将css具体样式嵌入到文档中
 
-①在`main.js`（入口文件）中引用：
+`style-loader`负责将样式添加到DOM中
+
+*style-loader需要放在css-loader的前面。
+
+*因为webpack在读取使用的loader的过程中，是按照**从右向左**的顺序读取的。
+
+在`main.js`（入口文件）中引用：
 ```
 require('./css/normal.css')
 ```
 
-②
+#### less文件的处理
