@@ -26,3 +26,7 @@ Vue CLI使用前提 - Webpack
 ## 二、vue-cli2的目录结构
 ![图片3.jpg](图片3.jpg)
 
+## 三、
+`runtime compiler`:
+
+`runtime-only`
