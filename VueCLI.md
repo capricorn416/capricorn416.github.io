@@ -18,8 +18,11 @@ Vue CLI使用前提 - Webpack
 
 拉取2.x模板（旧版本）：`npm install -g @vue/cli-init`
 
-**Vue CLI2初始化项目：`vue init webpack 项目名称`
+**Vue CLI2初始化项目：`vue init webpack 项目名称`**
 ![图片2.jpg](图片2.jpg)
 
-**Vue CLI3初始化项目：`vue create 项目名称`
+**Vue CLI3初始化项目：`vue create 项目名称`**
+
+## 二、vue-cli2的目录结构
+![图片3.jpg](图片3.jpg)
 
