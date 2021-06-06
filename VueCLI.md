@@ -70,10 +70,10 @@ new Vue({
 
 如果在之后的开发中，使用的是.vue文件夹开发，那么可以选择Runtime-only
 
-npm run build
+**npm run build**
 ![图片5.jpg](图片5.jpg)
 
-npm run dev
+**npm run dev**
 ![图片6.jpg](图片6.jpg)
 
 ## 三、vue-cli3
