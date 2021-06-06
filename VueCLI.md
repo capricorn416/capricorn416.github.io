@@ -99,7 +99,7 @@ module.exports = {
 }
 ```
 *箭头函数中this的使用：
-向外层作用域中，一层层查找this，直到有this的定义*
+向外层作用域中，一层层查找this，直到有this的定义
 ```
 const obj = {
   aaa() {
