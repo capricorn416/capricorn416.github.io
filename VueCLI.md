@@ -337,4 +337,14 @@ const router = new VueRouter({
 ```
 <router-link replace></router-link>
 ```
-active-class: 当<router-link>对应的路由匹配成功时, 会自动给当前元素设置一个router-link-active的class, 设置active-class可以修改默认的名称.
+`active-class`: 当<router-link>对应的路由匹配成功时, 会自动给当前元素设置一个router-link-active的class, 设置active-class可以修改默认的名称
+```
+<router-link active-class='active'></router-link>
+```
+批量改
+```index.js
+const router = new VueRouter({
+  linkActiveClass: 'active'  
+})
+```
+### 通过代码跳转路由
