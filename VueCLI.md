@@ -382,6 +382,9 @@ export default {
 }
 ```
 ```User.vue
+  <h2>{{ userId }}</h2>
+  <h2>{{ $route.params.userId }}</h2>
+  
   export default {
     name: 'User',
     computed: {
