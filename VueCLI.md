@@ -220,4 +220,11 @@ history.go(-1)
 *这三个接口等同于浏览器界面的前进后退
 
 ## 三、Vue-router
-[vue-router](https://router.vuejs.org/zh/)是Vue.js官方的路由插件，它和vue.js是深度集成的，适合用于构建单页面应用
+[vue-router](https://router.vuejs.org/zh/)是Vue.js官方的路由插件，它和vue.js是深度集成的，适合用于构建单页面应用vue-router是基于路由和组件的
+
+路由用于设定访问路径, 将路径和组件映射起来
+
+在vue-router的单页面应用中, 页面的路径的改变就是组件的切换
+
+
+
