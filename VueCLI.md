@@ -330,7 +330,11 @@ const router = new VueRouter({
 ```
 ### router-link的属性补充
 `tag`: tag可以指定<router-link>之后渲染成什么组件, 而不是默认的<a>
-```<router-link tag='button'></router-link>```
-`replace`: replace不会留下history记录, 所以指定replace的情况下, 后退键返回不能返回到上一个页面中
-
+```
+<router-link tag='button'></router-link>
+```
+`replace`: replace不会留下history记录, 所以指定replace的情况下, 不能返回到上一个页面中
+```
+<router-link replace></router-link>
+```
 active-class: 当<router-link>对应的路由匹配成功时, 会自动给当前元素设置一个router-link-active的class, 设置active-class可以修改默认的名称.
