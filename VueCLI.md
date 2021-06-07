@@ -184,15 +184,35 @@ SPA：单页面富应用。整个网页只有一个html页面
 
 **前端路由**的核心：改变URL，但是页面不进行整体的刷新
 
-## 二、
+## 二、前端路由
 ### URL的hash
 URL的hash也就是锚点（#），本质上是改变window.location的href属性
 
 可以通过直接赋值location.hash来改变href，但是页面不发生刷新
 
-在控制台输入location.hash = 'aaa'
+在控制台输入`location.hash = 'aaa'`
 
-### HTML5的history模式：pushState
+### HTML5的history模式
 
-在控制台输入history.pushState({},'','home')
+#### pushState
+在控制台输入`history.pushState({},'','home')`
+*类似栈，可以返回
 
+#### replaceState
+在控制台输入`history.replaceState({},'','home')`
+*不能返回
+
+#### go
+在控制台输入
+```
+history.pushState({},'','home')
+history.pushState({},'','about')
+history.pushState({},'','me')
+history.pushState({},'','test')
+history.go(-1)
+```
+*`history.go(-1)`等价于`history.back()`
+
+*`history.go(1)`等价于`history.forward()`
+
+*这三个接口等同于浏览器界面的前进后退
