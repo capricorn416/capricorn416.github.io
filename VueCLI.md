@@ -196,10 +196,12 @@ URL的hash也就是锚点（#），本质上是改变window.location的href属�
 
 #### pushState
 在控制台输入`history.pushState({},'','home')`
+
 *类似栈，可以返回
 
 #### replaceState
 在控制台输入`history.replaceState({},'','home')`
+
 *不能返回
 
 #### go
@@ -216,3 +218,6 @@ history.go(-1)
 *`history.go(1)`等价于`history.forward()`
 
 *这三个接口等同于浏览器界面的前进后退
+
+## 三、Vue-router
+[vue-router](https://router.vuejs.org/zh/)是Vue.js官方的路由插件，它和vue.js是深度集成的，适合用于构建单页面应用
