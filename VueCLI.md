@@ -246,13 +246,26 @@ import Vue from 'vue'
 Vue.use(VueRouter)
 
 //2.创建VueRouter对象
-const routes
+const routes = [
+  
+]
 
 const router = new VueRouter({
   // 配置路由和组件之间的应用关系
   routes
 })
+
+//3.将router对象传入到vue实例
+export default router
 ```
+```main.js
+import router from './router'
+
+new Vue({
+  el: '#app',
+  router,
+  render: h => h(App)
+})
 
 
 
