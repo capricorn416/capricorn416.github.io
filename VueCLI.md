@@ -329,7 +329,7 @@ const router = new VueRouter({
 })
 ```
 ### router-link的属性补充
-`tag`: tag可以指定<router-link>之后渲染成什么组件, 而不是默认的<a>
+`tag`: tag可以指定<router-link>之后渲染成什么组件, 而不是默认的<a>标签
 ```
 <router-link tag='button'></router-link>
 ```
