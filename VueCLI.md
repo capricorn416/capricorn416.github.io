@@ -357,3 +357,37 @@ const router = new VueRouter({
 *不能返回
 
 #### 动态路由
+```
+import User from '../components/User'
+const routes = [
+  {
+    path: '/user/:userId',
+    component: User
+  }  
+]
+```
+```
+  <router-link to='/user/zhangsan'></router-link>
+``` 
+```App.vue
+  <router-link :to="'/user/'+userId"></router-link>
+
+export default {
+  name: 'App'
+  data() {
+    return{
+      userId: 'lisi'
+    }
+  }
+}
+```
+```User.vue
+  export default {
+    name: 'User',
+    computed: {
+      userId() {
+        return this.$route
+      }
+    }
+  }
+```
