@@ -185,3 +185,14 @@ SPA：单页面富应用。整个网页只有一个html页面
 **前端路由**的核心：改变URL，但是页面不进行整体的刷新
 
 ## 二、
+### URL的hash
+URL的hash也就是锚点（#），本质上是改变window.location的href属性
+
+可以通过直接赋值location.hash来改变href，但是页面不发生刷新
+
+在控制台输入location.hash = 'aaa'
+
+### HTML5的history模式：pushState
+
+在控制台输入history.pushState({},'','home')
+
