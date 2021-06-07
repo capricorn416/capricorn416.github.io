@@ -386,7 +386,7 @@ export default {
     name: 'User',
     computed: {
       userId() {
-        return this.$route
+        return this.$route.params.userId
       }
     }
   }
