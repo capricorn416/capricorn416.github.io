@@ -226,5 +226,33 @@ history.go(-1)
 
 在vue-router的单页面应用中, 页面的路径的改变就是组件的切换
 
+### 安装和使用
+安装vue-router：`npm install vue-router --save`
+
+在模块化工程中使用它(因为是一个插件, 所以可以通过Vue.use()来安装路由功能):
+
+①导入路由对象，并且调用Vue.use(VueRouter)
+
+②创建路由实例，并且传入路由映射配置
+
+③在Vue实例中挂载创建的路由实例
+
+```src/router/index.js
+//配置路由相关的信息
+import VueRouter from 'vue-router'
+import Vue from 'vue'
+
+//1.通过Vue.use(插件)，安装插件
+Vue.use(VueRouter)
+
+//2.创建VueRouter对象
+const routes
+
+const router = new VueRouter({
+  // 配置路由和组件之间的应用关系
+  routes
+})
+```
+
 
 
