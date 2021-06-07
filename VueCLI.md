@@ -348,3 +348,12 @@ const router = new VueRouter({
 })
 ```
 ### 通过代码跳转路由
+`this.$router.push('/home')`
+  
+*可以返回
+  
+`this.$router.replace('/home')`
+  
+*不能返回
+
+#### 动态路由
