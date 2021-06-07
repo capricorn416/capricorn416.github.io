@@ -291,7 +291,17 @@ const router = [
 ```App.vue
 <template>
   <div id='app'>
+    <router-link to='/home'>首页</router-link>
+    <router-link to='/about'>关于</router-link>
+    <router-view></router-view>
   </div>
 </template>
 ```
+`<router-link>`: 该标签是一个vue-router中已经内置的组件, 它会被渲染成一个<a>标签
+  
+`<router-view>`: 该标签会根据当前的路径, 动态渲染出不同的组件 *相当于一个占位的东西
+  
+网页的其他内容, 比如顶部的标题/导航, 或者底部的一些版权信息等会和<router-view>处于同一个等级
+
+在路由切换时, 切换的是<router-view>挂载的组件, 其他内容不会发生改变
 
