@@ -305,3 +305,26 @@ const router = [
 
 在路由切换时, 切换的是<router-view>挂载的组件, 其他内容不会发生改变
 
+### 路由的默认值
+让路径默认跳到到首页, 并且<router-view>渲染首页组件
+```
+const routes = [
+  {
+    path: '',
+    //重定向
+    redirect: '/home'
+  },  
+  ...
+]
+```
+*改变路径的方式有两种：URL的hash和HTML5的history
+  
+*默认情况下, 路径的改变使用的URL的hash => localhost:8081/#/home
+
+*如果希望使用HTML5的history模式，配置:
+```index.js
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+})
+```
