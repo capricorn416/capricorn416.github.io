@@ -486,4 +486,8 @@ const Home = () => import('../components/Home.vue')
   <h2>{{ $route.query.name }}</h2>
 ```
   
-###
+### $route和$router的区别
+$router为VueRouter实例，想要导航到不同URL，则使用$router.push方法
+  
+$route为当前router跳转对象，里面可以获取name、path、query、params等 
+
