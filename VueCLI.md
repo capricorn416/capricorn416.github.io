@@ -466,6 +466,24 @@ const Home = () => import('../components/Home.vue')
 传递的方式：对象中使用query的key作为传递方式
   
 传递后形成的路径：/router?id=123
-```
-  <router-link :to='{path: '/profile'}'></router-link>
+```App.vue
+  <router-link :to='{path: '/profile', query: {name: 'why', age: 18, height: 1.88}}'></router-link>
+  
+  this.$router.push('/user/' + this.userId)
+  this.$router.push({
+    path: '/profile',
+    query: {
+      name: 'kobe',
+      age: 19,
+      height: 1.87
+    }
+  })
+  
 ```  
+获取参数通过`$route`对象获取
+  
+```Profile.Vue
+  <h2>{{ $route.query.name }}</h2>
+```
+  
+###
