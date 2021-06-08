@@ -509,6 +509,8 @@ created() {
 `mounted()`：组件挂载到DOM上时回调
   
 `updated()`：界面更新时回调
+
+`destroy()`：组件销毁时回调
   
 #### 全局导航守卫
 ##### 前置守卫(guard)
@@ -544,3 +546,22 @@ router.afterEach((to, from) => {
 路由独享的守卫
   
 组件内的守卫
+
+### keep-alive
+`keep-alive` 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染（避免组件被频繁销毁、创建）
+```
+  <keep-alive>
+    <router-view/>
+  </keep-alive>
+```  
+```
+  activated(){
+    this.$router.push(this.path);
+  }
+  beforeRouteLeave(to, from, next) {
+    this.path = this.$route.path;
+    next()
+  }
+```
+`activated()`和`deactivated()`：只有该组件被使用了keep-alive时，才是有效的
+ 
