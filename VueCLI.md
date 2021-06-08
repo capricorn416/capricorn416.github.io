@@ -453,16 +453,16 @@ const Home = () => import('../components/Home.vue')
 传递参数主要有两种类型: params和query
   
 #### ①params
-配置路由格式: `/router/:id`
+配置路由格式： `/router/:id`
   
-传递的方式: 在path后面跟上对应的值
+传递的方式：在path后面跟上对应的值
   
-传递后形成的路径: /router/123
+传递后形成的路径：/router/123
   
 #### ②query
   
-配置路由格式: /router, 也就是普通配置
+配置路由格式：`/router`，也就是普通配置
   
-传递的方式: 对象中使用query的key作为传递方式
+传递的方式：对象中使用query的key作为传递方式
   
-传递后形成的路径: /router?id=123
+传递后形成的路径：/router?id=123
