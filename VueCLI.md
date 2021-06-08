@@ -498,7 +498,7 @@ vue-router提供的**导航守卫**主要用来监听路由的进入和离开
   
 vue-router提供了`beforeEach`和`afterEach`的钩子函数, 它们会在路由即将改变前和改变后触发
 
-生命周期函数：
+#### 生命周期函数
 
 `created()`：组件创建出来时回调
 ```
@@ -510,4 +510,27 @@ created() {
   
 `updated()`：界面更新时回调
   
+#### 全局导航守卫
+```
+const routes = [
+  {
+    path: '/home',
+    component: Home,
+    meta: {
+      title: '首页'
+    }
+  }  
+]
   
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  document.title = to.matched[0].meta.title
+  next()  
+})
+```  
+to：即将要进入的目标的路由对象
+  
+from：当前导航即将要离开的路由对象
+  
+next：必须调用该方法后, 才能进入下一个钩子
+
