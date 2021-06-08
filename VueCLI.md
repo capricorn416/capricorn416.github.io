@@ -419,4 +419,50 @@ const About = resolve => require(['../components/About.vue'], resolve);
 ```
 const Home = () => import('../components/Home.vue')
 ```
+### 嵌套路由
+####嵌套路由的步骤
+①创建对应的子组件, 并且在路由映射中配置对应的子路由
+```
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: '',
+        redirect: 'news'
+      },
+      {
+        path: 'news',
+        component: Homenews
+      },
+      {
+        path: 'message',
+        component: HomeMessage
+      }
+    ]
+  }
+```  
+②在组件内部使用<router-view>标签
+```Home.vue
+  <router-link to='/home/news'></router-link>
+  <router-link to='/home/message'></router-link>
+  <router-view></router-view>
+```
 
+### 传递参数
+传递参数主要有两种类型: params和query
+  
+#### ①params
+配置路由格式: `/router/:id`
+  
+传递的方式: 在path后面跟上对应的值
+  
+传递后形成的路径: /router/123
+  
+#### ②query
+  
+配置路由格式: /router, 也就是普通配置
+  
+传递的方式: 对象中使用query的key作为传递方式
+  
+传递后形成的路径: /router?id=123
