@@ -466,3 +466,6 @@ const Home = () => import('../components/Home.vue')
 传递的方式：对象中使用query的key作为传递方式
   
 传递后形成的路径：/router?id=123
+```
+  <router-link :to='{path: '/profile'}'></router-link>
+```  
