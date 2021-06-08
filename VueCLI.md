@@ -536,3 +536,11 @@ from：当前导航即将要离开的路由对象
 next：必须调用该方法后, 才能进入下一个钩子
 
 ##### 后置钩子(hook)
+```
+router.afterEach((to, from) => {  
+})
+```  
+#### 其他守卫[](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AE%88%E5%8D%AB)
+路由独享的守卫
+  
+组件内的守卫
