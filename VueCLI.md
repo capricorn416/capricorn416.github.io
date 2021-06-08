@@ -548,7 +548,7 @@ router.afterEach((to, from) => {
 组件内的守卫
 
 ### keep-alive
-`keep-alive` 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染（避免组件被频繁销毁、创建）
+`keep-alive` 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染（避免组件被频繁创建、销毁）
 ```
   <keep-alive>
     <router-view/>
@@ -564,4 +564,12 @@ router.afterEach((to, from) => {
   }
 ```
 `activated()`和`deactivated()`：只有该组件被使用了keep-alive时，才是有效的
- 
+#### keep-alive的属性
+`include`：字符串或正则表达，只有匹配的组件会被缓存
+  
+`exclude`：字符串或正则表达式，任何匹配的组件都不会被缓存
+```
+  <keep-alive exclude='Profile,User'> <!--逗号后面不能加空格-->
+    <router-view/>
+  </keep-alive>
+```  
