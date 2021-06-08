@@ -400,10 +400,23 @@ export default {
 只有在这个路由被访问到的时候, 才加载对应的组件
 ![图片9.jpg](图片9.jpg)
 
-*app. 当前应用程序开发的所有代码（业务代码
+*app： 当前应用程序开发的所有代码（业务代码）
   
 *manifest：为打包的代码做底层支撑
 
 *vendor：提供商，第三方/vue/vue-router/axios/bs
 
+#### 路由懒加载的方式
+①结合Vue的异步组件和Webpack的代码分析
+```
+const Home = resolve => { require.ensure(['../components/Home.vue'], () => { resolve(require('../components/Home.vue')) })};
+```
+②AMD写法
+```
+const About = resolve => require(['../components/About.vue'], resolve);
+```
+③在ES6中, 我们可以有更加简单的写法来组织Vue异步组件和Webpack的代码分割
+```
+const Home = () => import('../components/Home.vue')
+```
 
