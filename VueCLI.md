@@ -573,5 +573,22 @@ router.afterEach((to, from) => {
     <router-view/>
   </keep-alive>
 ```  
-
+### 路径别名
+```webpack.base.conf.js
+  resolve: {
+    extensions: ['.js','.vue','.json'],
+    alias: {
+      '@': resolve('src'),
+      'assets': resolve('@/assets'),
+      'components': resolve('@/components'),
+      'views': resolve('@/views')
+    }
+  }
+  
+```
+*html中
+```
+  <img src='~assets/img/tabbar/home.svg'>
+```  
+  
 # [Promise](Promise.md)
