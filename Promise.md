@@ -110,3 +110,18 @@ new Promise((resolve, reject) => {
   console.log(data);
 })
 ```
+```
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('aaa')
+  },1000)
+}).then(data => {
+  console.log(data);
+  return 'data'+'111'
+}).then(data => {
+  console.log(data);
+  return 'data'+'222'
+}).then(data => {
+  console.log(data);
+})
+```
