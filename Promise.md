@@ -55,3 +55,54 @@ Promise是异步编程的一种解决方案
 ②fulfill：满足状态，当我们主动回调了resolve时，就处于该状态，并且会回调.then()
 
 ③reject：拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调.catch()
+
+```
+//另外处理方式
+new Promosie((resolve, reject) => {
+  setTimeout(() => {
+    //  resolve('Hello Vuejs')
+    reject('error message')
+  },1000)
+}).then(data => {
+  console.log(data)
+}, err => {
+  console.log(err);
+})
+```
+
+## 三、Promise链式调用
+```
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('aaa')
+  },1000)
+}).then(data => {
+  console.log(data);
+  return new Promise((resolve) => {
+    resolve(data+'111')
+  })
+}).then(data => {
+  console.log(data);
+  
+  return new Promise((resolve) => {
+    resolve(data+'222')
+  })
+}).then(data => {
+  console.log(data);
+})
+```
+```
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('aaa')
+  },1000)
+}).then(data => {
+  console.log(data);
+  return Promise.resolve('data'+'111')
+}).then(data => {
+  console.log(data);
+  return Promise.resolve('data'+'222')
+}).then(data => {
+  console.log(data);
+})
+```
