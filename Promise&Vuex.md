@@ -113,7 +113,7 @@ new Promise((resolve, reject) => {
   console.log(data);
 })
 ```
-### 省略掉Promise.resolve
+### 省略Promise.resolve
 ```
 new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -151,3 +151,22 @@ new Promise((resolve, reject) => {
   console.log(err);
 })
 ```
+## Promise的all方法使用
+```
+Promise.all([
+  new Promise((resolve, reject) => {
+   setTimeout(() => {
+    resolve('result1');
+   }, 2000)
+  }),
+  new Promise((resolve, reject) => {
+   setTimeout(() => {
+    resolve('result2');
+   }, 1000) 
+  })
+]).then(results => {
+  console.log(results);
+})
+```
+
+# Vuex
