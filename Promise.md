@@ -78,6 +78,7 @@ new Promise((resolve, reject) => {
   },1000)
 }).then(data => {
   console.log(data);
+  
   return new Promise((resolve) => {
     resolve(data+'111')
   })
@@ -102,9 +103,11 @@ new Promise((resolve, reject) => {
   },1000)
 }).then(data => {
   console.log(data);
+  
   return Promise.resolve('data'+'111')
 }).then(data => {
   console.log(data);
+  
   return Promise.resolve('data'+'222')
 }).then(data => {
   console.log(data);
@@ -118,11 +121,33 @@ new Promise((resolve, reject) => {
   },1000)
 }).then(data => {
   console.log(data);
+  
   return 'data'+'111'
 }).then(data => {
   console.log(data);
+  
   return 'data'+'222'
 }).then(data => {
   console.log(data);
+})
+```
+```
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('aaa')
+  },1000)
+}).then(data => {
+  console.log(data);
+  
+  //return Promise.reject('error message');
+  throw 'error message'
+}).then(data => {
+  console.log(data);
+  
+  return 'data'+'222'
+}).then(data => {
+  console.log(data);
+}).catch(err => {
+  console.log(err);
 })
 ```
