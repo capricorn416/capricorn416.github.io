@@ -91,6 +91,10 @@ new Promise((resolve, reject) => {
   console.log(data);
 })
 ```
+`Promise.resovle()`：将数据包装成Promise对象，并且在内部回调resolve()函数
+
+`Promise.reject()`：将数据包装成Promise对象，并且在内部回调reject()函数
+
 ```
 new Promise((resolve, reject) => {
   setTimeout(() => {
