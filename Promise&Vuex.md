@@ -464,7 +464,11 @@ const moduleA = {
   state: {
     name: 'zhangsan'
   },
-  mutations: {},
+  mutations: {
+    updateName(state, payload) {
+      state.name = payload
+    }
+  },
   actions: {},
   getters: {}
 }
@@ -477,4 +481,6 @@ const store = new Vuex.Store({
 ```
 ```
 $store.state.a.name
+
+this.$store.commit('updateName', 'lisi')
 ```
