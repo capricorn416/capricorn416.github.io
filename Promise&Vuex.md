@@ -210,6 +210,10 @@ const store = new Vuex.Store({
     counter: 0
   },
   mutations: {
+    // 方法
+    increment(state) {
+      state.counter++
+    }
   },
   actions: {
   },
@@ -229,14 +233,16 @@ export default store
 <template>
   <div>
     <h2>{{ $store.state.counter }}</h2>
-    <button @click=''>+</button>
+    <button @click='addition'>+</button>
   </div>
 </template>
 
 <script>
   export default {
     methods: {
-      
+      addition() {
+        this.$store.commit('increment')
+      }
     }
   }
 </script>
