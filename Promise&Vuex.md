@@ -371,9 +371,9 @@ Vuex的store中的state是响应式的, 当state中的数据发生改变时, Vue
 
 （2）当给state中的对象添加新属性时, 使用下面的方式：
 
-&ensp; &ensp;①使用Vue.set(obj, 'newProp', 123)
+&ensp; &ensp; ①使用Vue.set(obj, 'newProp', 123)
 
-&ensp; &ensp;②用新对象给旧对象重新赋值
+&ensp; &ensp; ②用新对象给旧对象重新赋值
 
 ### Action
 
