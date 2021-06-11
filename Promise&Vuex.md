@@ -182,8 +182,21 @@ View：视图层，可以针对State的变化，显示不同的信息
 Actions：这里主要是用户的各种操作：点击、输入等等，会导致状态的改变
 
 ### 多界面的状态管理
+![图片12](图片12.jpg)
+
+Actions：异步操作
 
 ## 二、Vuex的基本使用
+1.提取出一个公共的store对象，用于保存在多个组件中共享的状态
+
+2.将store对象放置在new Vue对象中，这样可以保证在所有的组件中都可以使用到
+
+3.在其他组件中使用store对象中保存的状态即可
+
+·通过`this.$store.state.`属性的方式来访问状态
+
+·通过`this.$store.commit('mutation中方法')`来修改状态
+
 ```src/store/index.js
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -216,6 +229,15 @@ export default store
 <template>
   <div>
     <h2>{{ $store.state.counter }}</h2>
+    <button @click=''>+</button>
   </div>
 </template>
+
+<script>
+  export default {
+    methods: {
+      
+    }
+  }
+</script>
 ```
