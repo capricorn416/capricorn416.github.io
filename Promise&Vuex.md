@@ -374,7 +374,23 @@ Vuex的store中的state是响应式的, 当state中的数据发生改变时, Vue
 &ensp; &ensp; ①使用Vue.set(obj, 'newProp', 123)
 
 &ensp; &ensp; ②用新对象给旧对象重新赋值
-
+```
+state: {
+  info: {
+    name: 'kobe',
+    age: 40,
+    height: 1.98
+  }
+},
+mutations: {
+  updateInfo(state) {
+    //非响应式 state.info['address'] = '洛杉矶'
+    Vue.set(state.info, 'address', '洛杉矶')
+    //非响应式 delete state.info.age
+    Vue.delete(state.info, 'age')
+  }
+}
+```
 ### Action
 
 ### Module
