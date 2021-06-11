@@ -316,9 +316,9 @@ Vuex的store状态的更新唯一方式：提交Mutation
 
 Mutation主要包括两部分：
 
-  字符串的事件类型（type）
+&ensp; 字符串的事件类型（type）
 
-  一个回调函数（handler），该回调函数的第一个参数就是state
+&ensp; 一个回调函数（handler），该回调函数的第一个参数就是state
 
 在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数：参数被称为是mutation的载荷(Payload)
 
