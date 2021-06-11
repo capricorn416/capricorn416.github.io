@@ -428,18 +428,53 @@ Action类似于Mutation, 但是是用来代替Mutation进行**异步操作**的
 ```
 actions: {
   aUpdateInfo(context, payload) {
-    setTimeout(() => {
-      context.commit('updateInfo')
-    }, 1000)
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        context.commit('updateInfo');
+        console.log(payload);
+        resolve('111')
+      }, 1000)
+    })
   }
 }
 ```
+在Vue组件中, 如果我们调用action中的方法, 那么就需要使用dispatch
+
+同样的, 也是支持传递payload
+
 ```
 methods: {
   updateInfo() {
-    this.$store.dispatch('aUpdateInfo', '我是payload')
+    this.$store
+    .dispatch('aUpdateInfo', '我是payload')
+    .then(res => {
+      console.log('里面完成了提交');
+      console.log(res)
+    })
   }
 }
 ```
 ### Module
+Vue使用单一状态树,那么也意味着很多状态都会交给Vuex来管理;当应用变得非常复杂时,store对象就有可能变得相当臃肿
 
+为了解决这个问题, Vuex允许我们将store分割成模块(Module), 而每个模块拥有自己的state、mutations、actions、getters等
+
+```
+const moduleA = {
+  state: {
+    name: 'zhangsan'
+  },
+  mutations: {},
+  actions: {},
+  getters: {}
+}
+
+const store = new Vuex.Store({
+  modules: {
+    a: moduleA
+  }
+})
+```
+```
+$store.state.a.name
+```
