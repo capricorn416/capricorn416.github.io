@@ -184,8 +184,6 @@ Actions：这里主要是用户的各种操作：点击、输入等等，会导�
 ### 多界面的状态管理
 ![图片12](图片12.jpg)
 
-Actions：异步操作
-
 ## 二、Vuex的基本使用
 1.提取出一个公共的store对象，用于保存在多个组件中共享的状态
 
@@ -247,3 +245,33 @@ export default store
   }
 </script>
 ```
+## 三、Vuex核心概念
+### State
+#### State单一状态树
+如果你的状态信息是保存到多个Store对象中的，那么之后的管理和维护等等都会变得特别困难
+
+所以Vuex也使用了单一状态树来管理应用层级的全部状态
+
+单一状态树能够让我们最直接的方式找到某个状态的片段，而且在之后的维护和调试过程中，也可以非常方便地管理和维护
+
+### Getters
+类似计算属性
+```
+const store = new Vuex.Store({
+  state: {
+    counter: 1000
+  },
+  getters: {
+    powerCounter(state) {
+      return state.counter * state.counter
+    }
+  }
+})
+```
+
+### Mutation
+
+### Action
+
+### Module
+
