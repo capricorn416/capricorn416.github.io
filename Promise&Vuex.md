@@ -320,8 +320,9 @@ Mutation主要包括两部分：
 
 &ensp; 一个回调函数（handler），该回调函数的第一个参数就是state
 
-1.在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数：参数被称为是mutation的载荷(Payload)
-2.当有很多参数需要传递时，通常以对象的形式传递, 也就是payload是一个对象
+在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数：参数被称为是mutation的载荷(Payload)
+
+当有很多参数需要传递时，通常以对象的形式传递, 也就是payload是一个对象
 
 
 ```
@@ -338,6 +339,31 @@ methods: {
   }
 }
 ```
+#### Mutation的提交风格
+通过commit进行提交是一种普通的方式
+
+Vue还提供了另外一种风格, 它是一个包含type属性的对象
+
+Mutation中的处理方式是将整个commit的对象作为payload使用
+```
+mutations: {
+  incrementCount(state, payload) {
+    state.counter += payload.count
+  }
+}
+```
+```
+methods: {
+  addCount(count) {
+    this.$store.commit({
+      type: 'incrementCount',
+      count
+    })
+  }
+}
+```
+#### Mutation的响应规则
+
 ### Action
 
 ### Module
