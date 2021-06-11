@@ -256,6 +256,9 @@ export default store
 
 ### Getters
 类似计算属性
+
+getters默认是不能传递参数的, 如果希望传递参数, 那么只能让getters本身返回另一个函数
+
 ```
 const store = new Vuex.Store({
   state: {
@@ -272,7 +275,15 @@ const store = new Vuex.Store({
       return state.counter * state.counter
     },
     more20stu(state) {
-      return state.student.filter(s => s.age > 20)
+      return state.students.filter(s => s.age > 20)
+    },
+    more20stuLength(state, getters) {
+      return getters.more20stu.length
+    },
+    moreAgeStu(state) {
+      return function(age) {
+        return state.students.filter(s => s.age > age)
+      }
     }
   }
 })
@@ -284,6 +295,8 @@ const store = new Vuex.Store({
     // <h2>{{ more20stu }}</h2>
     <h2>{{ $store.getters.more20stu }}</h2>
     <h2>{{ $store.getters.more20stu.length }}</h2>
+    <h2>{{ $store.getters.more20stuLength }}</h2>
+    <h2>{{ $store.getters.moreAgeStu(12) }}</h2>
   </div>
 </template>
 ```
@@ -299,7 +312,33 @@ const store = new Vuex.Store({
 </script>
 ```
 ### Mutation
+Vuex的store状态的更新唯一方式：提交Mutation
 
+Mutation主要包括两部分：
+
+  字符串的事件类型（type）
+
+  一个回调函数（handler），该回调函数的第一个参数就是state
+
+在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数：参数被称为是mutation的载荷(Payload)
+
+当有很多参数需要传递时，通常以对象的形式传递, 也就是payload是一个对象
+
+
+```
+mutations: {
+  incrementCount(state, count) {
+    state.counter += count
+  }
+}
+```
+```
+methods: {
+  addCount(count) {
+    this.$store.commit('incrementCount', count)
+  }
+}
+```
 ### Action
 
 ### Module
