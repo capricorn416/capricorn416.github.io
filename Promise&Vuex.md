@@ -469,8 +469,17 @@ const moduleA = {
       state.name = payload
     }
   },
-  actions: {},
-  getters: {}
+  getters: {
+    fullname(state) {
+      return state.name + '111'
+    },
+    fullname2(state, getters) {
+      return getters.fullname + '222'
+    },
+    fullname3(state, getters, rootState) {
+      return getters.fullname2 + rootState.counter
+    }
+  }
 }
 
 const store = new Vuex.Store({
@@ -483,4 +492,9 @@ const store = new Vuex.Store({
 $store.state.a.name
 
 this.$store.commit('updateName', 'lisi')
+
+$store.getters.fullname
 ```
+
+## 四、Vuex的项目结构
+![图片13](图片13.jpg)
