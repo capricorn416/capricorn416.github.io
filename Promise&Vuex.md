@@ -391,7 +391,40 @@ mutations: {
   }
 }
 ```
+#### Mutation的类型常量
+在各种Flux实现中, 一种很常见的方案就是使用常量替代Mutation事件的类型
+
+我们可以将这些常量放在一个单独的文件中, 方便管理以及让整个app所有的事件类型一目了然
+
+我们可以创建一个文件: mutation-types.js, 并且在其中定义我们的常量
+
+定义常量时, 我们可以使用ES2015中的风格, 使用一个常量来作为函数的名称
+```
+export INCREMENT = 'increment'
+```
+```
+mutations: {
+  [INCREMENT](state) {
+    state.counter++
+  }
+}
+```
+```
+methods: {
+  addition() {
+    this.$store.commit(INCREMENT)
+  }
+}
+```
+#### Mutation的同步函数
+通常情况下, Vuex要求我们Mutation中的方法必须是**同步方法**
+
+主要的原因是当我们使用devtools时, devtools可以帮助我们捕捉mutation的快照
+
+但是如果是异步操作, 那么devtools将不能很好地追踪这个操作什么时候会被完成
+
 ### Action
+Action类似于Mutation, 但是是用来代替Mutation进行**异步操作**的
 
 ### Module
 
