@@ -498,3 +498,6 @@ $store.getters.fullname
 
 ## 四、Vuex的项目结构
 ![图片13](图片13.jpg)
+
+
+# 网络模块封装
