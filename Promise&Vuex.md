@@ -259,16 +259,45 @@ export default store
 ```
 const store = new Vuex.Store({
   state: {
-    counter: 1000
+    counter: 1000,
+    students: [
+      {name: 'why', age: 18},
+      {name: 'kobe', age: 24},
+      {name: 'james', age: 30},
+      {name: 'curry', age: 10}
+    ]
   },
   getters: {
     powerCounter(state) {
       return state.counter * state.counter
+    },
+    more20stu(state) {
+      return state.student.filter(s => s.age > 20)
     }
   }
 })
 ```
-
+```
+<template>
+  <div>
+    <h2>{{ $store.getters.powerCounter }}</h2>
+    // <h2>{{ more20stu }}</h2>
+    <h2>{{ $store.getters.more20stu }}</h2>
+    <h2>{{ $store.getters.more20stu.length }}</h2>
+  </div>
+</template>
+```
+```
+<script>
+  export default {
+    computed: {
+     // more20stu() {
+     //   return this.$store.state.students.filter(s => s.age > 20)
+     // }
+    }
+  }
+</script>
+```
 ### Mutation
 
 ### Action
