@@ -316,7 +316,7 @@ Vuex的store状态的更新唯一方式：提交Mutation
 
 Mutation主要包括两部分：
 
-&ensp; 字符串的事件类型（type）
+&nbsp; 字符串的事件类型（type）
 
 &ensp; 一个回调函数（handler），该回调函数的第一个参数就是state
 
