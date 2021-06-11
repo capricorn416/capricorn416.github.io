@@ -170,3 +170,33 @@ Promise.all([
 ```
 
 # Vuex
+## 一、认识Vuex
+Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，用于在多个组件间共享状态
+### 单界面的状态管理
+![图片11](图片11.jpg)
+
+State：状态，姑且可以当做是data中的属性
+
+View：视图层，可以针对State的变化，显示不同的信息
+
+Actions：这里主要是用户的各种操作：点击、输入等等，会导致状态的改变
+
+### 多界面的状态管理
+
+## 二、Vuex的基本使用
+```src/store/index.js
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+//  1.安装插件
+Vue.use(Vuex)
+
+//  2.创建对象
+const store = new Vuex.Store({
+
+})
+
+//  3.导出store对象
+export default store
+
+```
