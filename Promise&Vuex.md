@@ -363,6 +363,16 @@ methods: {
 }
 ```
 #### Mutation的响应规则
+Vuex的store中的state是响应式的, 当state中的数据发生改变时, Vue组件会自动更新
+
+这就要求我们必须遵守一些Vuex对应的规则:
+
+&ensp;（1）提前在store中初始化好所需的属性
+
+&ensp;（2）当给state中的对象添加新属性时, 使用下面的方式:
+
+①使用Vue.set(obj, 'newProp', 123)
+②用新对象给旧对象重新赋值
 
 ### Action
 
