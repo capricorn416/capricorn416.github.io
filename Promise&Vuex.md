@@ -425,6 +425,21 @@ methods: {
 
 ### Action
 Action类似于Mutation, 但是是用来代替Mutation进行**异步操作**的
-
+```
+actions: {
+  aUpdateInfo(context) {
+    setTimeout(() => {
+      context.commit('updateInfo')
+    }, 1000)
+  }
+}
+```
+```
+methods: {
+  updateInfo() {
+    this.$store.dispatch('aUpdateInfo')
+  }
+}
+```
 ### Module
 
