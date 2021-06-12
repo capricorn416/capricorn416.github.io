@@ -501,3 +501,31 @@ $store.getters.fullname
 
 
 # 网络模块封装
+## 一、axios的基本使用
+```
+import axios from 'axios'
+
+axios({
+  url: 'http://123.207.32.32:8000/home/multidata',
+  method: 'get'
+}).then(res => {
+  console.log(res);
+})
+
+axios({
+  url: 'http://123.207.32.32:8000/home/data',
+  // 专门针对get请求的参数拼接
+  params: {
+    type: 'pop',
+    page: 1
+  }
+}).then(res => {
+  console.log(res);
+})
+```
+## 二、axios发送并发请求
+```
+axios.all([axios(), axios()])
+  .then(results => {
+  })
+```
