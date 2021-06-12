@@ -549,5 +549,41 @@ axios.all([axios(), axios()])
 axios.defaults.baseURL = 'http://123.207.32.32:8000'
 axios.defaults.timeout = 5000
 ```
+## 四、axios的实例和模块封装
+某些请求需要使用特定的baseURL或者timeout或者content-Type等
+
+这个时候, 我们就可以创建新的实例, 并且传入属于该实例的配置信息
+
+### 创建对应的axios的实例
+```
+const instance1 = axios.create({
+  baseURL: '',
+  timeout: 
+})
+
+instance1({
+  url: '/home/multidata'
+}).then(res => {
+  console.log(res);
+})
+
+instance1({
+  url: '/home/data',
+  params: {
+    type: 'pop',
+    page: 1
+  }
+}).then(res => {
+  console.log(res);
+})
+```
+
+
+
+
+
+
+
+
 
 
