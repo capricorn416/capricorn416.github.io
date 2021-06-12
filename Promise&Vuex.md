@@ -695,8 +695,14 @@ export function request(config) {
   })
   
   // 2.axios的拦截器
-  instance.interceptors.request;
-  instance.interceptors.response
+  instance.interceptors.request.use(config => {
+    console.log(config);
+    // 1.比如config中的一些信息不符合服务器的要求
+    // 2.比如每次发送网络请求时，都希望在界面中显示一个请求的图标
+    return config
+  }, err => {
+    console.log(config);
+  })
   
   // 3.发送真正的网络请求
   return instance(config)
