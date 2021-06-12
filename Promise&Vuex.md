@@ -524,8 +524,30 @@ axios({
 })
 ```
 ## 二、axios发送并发请求
+`axios.all`，可以放入多个请求的数组
+
+`axios.all([])` 返回的结果是一个数组，使用 `axios.spread` 可将数组 [res1,res2] 展开为 res1, res2
+
 ```
 axios.all([axios(), axios()])
   .then(results => {
   })
 ```
+```
+axios.all([axios(), axios()])
+  .then(axios.spread((res1, res2) => {
+    console.log(res1),
+    console.log(res2)
+  })
+```
+## 三、axios的配置
+在开发中可能很多参数都是固定的
+
+这个时候我们可以进行一些抽取, 也可以利用axiox的**全局配置**：
+
+```
+axios.defaults.baseURL = 'http://123.207.32.32:8000'
+axios.defaults.timeout = 5000
+```
+
+
