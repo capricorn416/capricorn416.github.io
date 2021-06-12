@@ -554,7 +554,7 @@ axios.defaults.timeout = 5000
 
 这个时候, 我们就可以创建新的实例, 并且传入属于该实例的配置信息
 
-### 创建对应的axios的实例
+### 创建axios实例
 ```
 const instance1 = axios.create({
   baseURL: '',
@@ -577,13 +577,129 @@ instance1({
   console.log(res);
 })
 ```
+### axios封装
+方式一
+```request.js
+import axios from 'axios'
 
+export function request(config, success, failure) {
+  const instance = axios.create({
+    baseURL: '',
+    timeout: 
+  })
+  
+  instance(config)
+    .then(res => {
+      success(res);
+    })
+    .catch(err => {
+      failure(err)
+    })
+}
+```
+```main.js
+import {request} from './network/request'
 
+request({
+  url: '/home/multidata'
+}, res => {
+  console.log(res);
+}, err => {
+  console.log(err);
+})
+```
+方式二
+```request.js
+import axios from 'axios'
 
+export function request(config) {
+  const instance = axios.create({
+    baseURL: '',
+    timeout: 
+  })
+  
+  instance(config.baseConfig)
+    .then(res => {
+      config.success(res);
+    })
+    .catch(err => {
+      config.failure(err)
+    })
+}
+```
+```main.js
+import {request} from './network/request'
 
+request({
+  baseConfig: {
+  },
+  success: function(res) {
+  },
+  failure: function(err) {
+  }
+})
+```
+**方式三**
+```
+export function request(config) {
+  return new Promise((resolve, reject) => {
+    const instance = axios.create({
+      baseURL: '',
+      timeout: 
+    })
 
+    instance(config)
+      .then(res => {
+        resovle(res)
+      })
+      .catch(err => {
+        reject(err)
+      })  
+  })
+}
+```
+```main.js
+import {request} from './network/request'
 
+request({
+  url: ''
+}).then(res => {
+  console.log(res);
+}).catch(err => {
+  console.log(err);
+})
+```
+**方法四**
+```
+export function request(config) {
+  const instance = axios.create({
+    baseURL: '',
+    timeout: 
+  })
+  
+  return instance(config)
+}
+```
+### 五、axios的拦截器
+axios提供了拦截器，用于我们在发送每次请求或者得到相应后，进行对应的处理
 
+`instance.interceptors.request`：拦截请求
 
-
+`instance.interceptors.response`：拦截响应
+```
+export function request(config) {
+  // 1.创建axios的实例
+  const instance = axios.create({
+    baseURL: '',
+    timeout: 
+  })
+  
+  // 2.axios的拦截器
+  instance.interceptors.request;
+  instance.interceptors.response
+  
+  // 3.发送真正的网络请求
+  return instance(config)
+}
+```
 
