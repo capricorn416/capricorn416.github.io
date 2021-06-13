@@ -22,7 +22,10 @@
      ```
     let a: number;
     let b: boolean = true;
+    function sum(a: number, b: number): number{
+      return a + b;
+    }
     ```
   + 自动类型判断
-      
+    - 当对变量的声明和赋值是同时进行的，TS编译器会自动判断变量的类型       
   
