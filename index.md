@@ -21,18 +21,7 @@
 1. 创建组件构造器
 2. 注册组件
 3. 使用组件
-```html
-<div id='app'>
-  <!--3.使用组件-->
-  <mycpn></mycpn>
-  <mycpn></mycpn>
-  <div>
-    <mycpn></mycpn>
-  </div>
-</div>
-```
 ```javascript
-<script>
   //1.创建组件构造器对象
   const cpnC = Vue.extend({
     template: `
@@ -44,26 +33,25 @@
   
   //2.注册组件(全局组件)
   Vue.component('mycpn',cpnC)
-  
-  const app = new Vue({
-    el: '#app',
-    data : {
-      message: ''
-    }
-  })
-</script>
+```
+```html
+<div id='app'>
+  <!--3.使用组件-->
+  <mycpn></mycpn>
+  <mycpn></mycpn>
+  <div>
+    <mycpn></mycpn>
+  </div>
+</div>
 ```
 ### 二、全局组件和局部组件
 #### 1.全局组件
-
-上面方法注册的是全局组件
-
-全局组件意味着可以在任意Vue的实例下面使用
++ 上面方法注册的是全局组件
++ 全局组件意味着可以在任意Vue的实例下面使用
 
 #### 2.局部组件
 如果我们注册的组件是挂载在某个实例中，那么就是一个局部组件
 ```javascript
-<script>
   const cpnC = Vue.extend({
       template: `
         <div>
@@ -80,7 +68,6 @@
       mycpn: cpnC
     }
   })
-</script>
 ```
 ### 三、父组件和子组件
 ```javascript
@@ -121,9 +108,8 @@
   })
 </script>
 ```
-父子组件错误用法：以子标签的形式在Vue实例中使用
-
-上述代码中cpn1是无法直接在html中使用的
++ 父子组件错误用法：以子标签的形式在Vue实例中使用
+  - 上述代码中cpn1是无法直接在html中使用的
 
 #### 注册组件语法糖
 ```javascript
