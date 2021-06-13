@@ -64,4 +64,9 @@
       if(typeof e === 'string'){
         s = e;
       }
+      ```
+      ```
+      // 类型断言
+      s = e as sting;
+      ```
       
