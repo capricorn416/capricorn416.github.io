@@ -1,12 +1,12 @@
 # TypeScript
 ## 一、TS介绍
-1.以JavaScript为基础构建的语言
+<li>以JavaScript为基础构建的语言
 
-2.一个JavaScript的超集
+<li>一个JavaScript的超集
 
-3.可以在任何支持JavaScript的平台中执行
+<li>可以在任何支持JavaScript的平台中执行
 
-4.TypeScript扩展了JavaScript，并添加了类型
+<li>TypeScript扩展了JavaScript，并添加了类型
 
 *TS不能被JS解析器直接执行 => 编译
 
