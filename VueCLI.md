@@ -590,5 +590,20 @@ router.afterEach((to, from) => {
 ```
   <img src='~assets/img/tabbar/home.svg'>
 ```  
-  
+在vue-cli3中新建`vue.config.js`
+```
+module.exports = {
+    configureWebpack: {
+        resolve: {
+            alias: {
+                'assets': '@/assets',
+                'common': '@/common',
+                'components': '@/components',
+                'network': '@/network',
+                'views': '@/views',
+            }
+        }
+    }
+}
+```
 # [Promise](Promise.md)
