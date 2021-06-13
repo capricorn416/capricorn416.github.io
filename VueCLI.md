@@ -603,7 +603,7 @@ module.exports = {
     }
 }
 ```
-+ 在**html**中使用时
++ 在**html**中使用时要加`~`
 ```
   <img src='~assets/img/tabbar/home.svg'>
 ```  
