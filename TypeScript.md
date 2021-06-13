@@ -84,4 +84,5 @@
       function fn(): never{
         throw new Error('报错了');
       }
-
+      ```
+      
