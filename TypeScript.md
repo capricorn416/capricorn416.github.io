@@ -71,17 +71,17 @@
       s = <sring>e;
       ```
     - void
-    
+      
       用来表示空，以函数为例，表示没有返回值的函数
       ```
       function fn(): void{
         return undefined;
       }
-   - never
+    - never
    
-     表示永远不会返回结果
-     ```
-     function fn(): never{
-       throw new Error('报错了');
-     }
-   
+      表示永远不会返回结果
+      ```
+      function fn(): never{
+        throw new Error('报错了');
+      }
+
