@@ -587,10 +587,6 @@ router.afterEach((to, from) => {
   }
   
 ```
-    - *html中
-```
-  <img src='~assets/img/tabbar/home.svg'>
-```  
 + 在**vue-cli3**中新建`vue.config.js`：
 ```
 module.exports = {
@@ -607,4 +603,8 @@ module.exports = {
     }
 }
 ```
++ 在**html**中使用时
+```
+  <img src='~assets/img/tabbar/home.svg'>
+```  
 # [Promise](Promise.md)
