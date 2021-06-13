@@ -574,7 +574,8 @@ router.afterEach((to, from) => {
   </keep-alive>
 ```  
 ### 路径别名
-```webpack.base.conf.js
++ **vue-cli2**的`webpack.base.conf.js`中：
+```
   resolve: {
     extensions: ['.js','.vue','.json'],
     alias: {
@@ -586,11 +587,11 @@ router.afterEach((to, from) => {
   }
   
 ```
-*html中
+  - *html中
 ```
   <img src='~assets/img/tabbar/home.svg'>
 ```  
-在vue-cli3中新建`vue.config.js`
++ 在**vue-cli3**中新建`vue.config.js`：
 ```
 module.exports = {
     configureWebpack: {
