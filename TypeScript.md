@@ -31,12 +31,12 @@
   + 自动类型判断
     - 当对变量的声明和赋值是同时进行的，TS编译器会自动判断变量的类型       
   + 类型
-    - 字面量：
+    - 字面量
       ```
       let a: 10;
       let b: 'male' | 'female';
       let c: boolean | string;
-    - any：
+    - any
     
       any表示的是任意类型，一个变量设置类型为any后相当于对该变量关闭了TS的类型检测（不建议使用）
       
@@ -44,5 +44,24 @@
       ```
       let d: any;
       let d;
+      d = 10;
+      d = 'hello';
+      d = true;
       ```
-    
+    - unknown
+      
+      unknown表示未知类型的值
+      ```
+      let e: unknown;
+      e = 10;
+      e = 'hello';
+      e = true;
+      ```
+      any类型可以赋值给任意变量，unknown类型不能直接赋值给其他变量
+      ```
+      let s: sring;
+      e = 'hello';
+      if(typeof e === 'string'){
+        s = e;
+      }
+      
