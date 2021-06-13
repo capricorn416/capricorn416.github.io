@@ -587,7 +587,7 @@ router.afterEach((to, from) => {
   }
   
 ```
-  - *html中
+    - *html中
 ```
   <img src='~assets/img/tabbar/home.svg'>
 ```  
