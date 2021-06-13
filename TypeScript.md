@@ -57,7 +57,7 @@
       e = 'hello';
       e = true;
       ```
-      any类型可以赋值给任意变量，unknown类型不能直接赋值给其他变量
+      **any类型可以赋值给任意变量，unknown类型不能直接赋值给其他变量**
       ```
       let s: sring;
       e = 'hello';
@@ -66,7 +66,22 @@
       }
       ```
       ```
-      // 类型断言
+      // 类型断言,可以用来告诉解析器变量的实际类型
       s = e as sting;
+      s = <sring>e;
       ```
-      
+    - void
+    
+      用来表示空，以函数为例，表示没有返回值的函数
+      ```
+      function fn(): void{
+        return undefined;
+      }
+   - never
+   
+     表示永远不会返回结果
+     ```
+     function fn(): never{
+       throw new Error('报错了');
+     }
+   
