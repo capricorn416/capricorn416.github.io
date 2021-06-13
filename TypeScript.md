@@ -11,13 +11,10 @@
 *TS不能被JS解析器直接执行 => 编译
 
 ## 二、TS开发环境搭建
-1.安装Node.js
-
-2.使用npm全局安装typescript：`npm i -g typescript`
-
-3.创建一个ts文件
-
-4.使用`tsc xxx.ts`对ts文件进行编译
+1. 安装Node.js
+2. 使用npm全局安装typescript：`npm i -g typescript`
+3. 创建一个ts文件
+4. 使用`tsc xxx.ts`对ts文件进行编译
 
 ## 三、TS的类型声明
 ### 1.基本类型
