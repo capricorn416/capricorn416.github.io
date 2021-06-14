@@ -20,9 +20,7 @@
 + 内部样式表（嵌入式）
   - <style>标签理论上可以放在HTML文档的任何地方，但一般会放在文档的<head>标签中
 + 外部样式表（链接式）
-  - ```
-  <link rel='stylesheet' href=''>
-  ```
+  - ```<link rel='stylesheet' href=''>```
 ## 四、字体属性
 + `font-family`：字体系列
 + `font-size`：字体大小
