@@ -25,4 +25,4 @@
   - italic（斜体）
 + 复合属性
   - ```font: font-style font-weight font-size/line-height font-family;```
-  - 不需要设置的属性可以省略（取默认值），但必须保留font-size和font-family属性，否则font属性将不起作用
+  - 不需要设置的属性可以省略（取默认值），但必须保留**font-size**和**font-family**属性，否则font属性将不起作用
