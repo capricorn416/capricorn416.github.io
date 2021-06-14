@@ -14,19 +14,19 @@
 + id选择器
 + 通配符选择器：`*`，表示选取页面中所有元素（标签）
 ## 三、字体属性
-+ `font-family`：**字体系列**
++ **`font-family`：字体系列**
 + **`font-size`：字体大小**
   - 谷歌浏览器默认字体大小为16px
-+ `font-weight`：字体粗细
++ **`font-weight`：字体粗细**
   - 400 = normal
   - 700 = bold
-+ `font-style`：文字样式
++ **`font-style`：文字样式**
   - normal
   - italic（斜体）
-+ 复合属性
++ **复合属性**
   - ```font: font-style font-weight font-size/line-height font-family;```
   - 不需要设置的属性可以省略（取默认值），但必须保留**font-size**和**font-family**属性，否则font属性将不起作用
 ## 四、文本属性
-+ `color`：文本颜色
++ **`color`：文本颜色**
   - 开发中最常用的是十六进制
 + 对齐文本
