@@ -128,4 +128,11 @@
     - 常见于logo或者一些装饰性的小图片或者是超大的背景图片，优点是非常便于控制位置
     - none
     - url()
-  + `background-repeat`
+  + `background-repeat`：背景平铺
+    - repeat（默认）
+    - no-repeat
+    - repeat-x
+    - repeat-y
+  + `background-position`：背景图片位置
+    - `background-positon: x y;`
+    - x坐标和y坐标可以使用方位名词或者精确单位
