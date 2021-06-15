@@ -120,4 +120,12 @@
   + 转换为块元素：`display: block;`
   + 转换为行内元素：`display: inline;`
   + 转换为行内块：`display: inline-block;`
-
+## 七、背景
+  + `background-color`：背景颜色
+    - transparent（默认）
+    - color
+  + `background-image`：背景图片
+    - 常见于logo或者一些装饰性的小图片或者是超大的背景图片，优点是非常便于控制位置
+    - none
+    - url()
+  + `background-repeat`
