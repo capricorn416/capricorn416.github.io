@@ -41,7 +41,7 @@ ctx.strokeStyle = 'rgb()';
 ctx.strokeRect(x, y, width, height);
 ```
 ```
-// 清楚矩形
-
-
+// 清除矩形
+ctx.clearRect(x, y, width, height);
 ```
+### 2. 绘制路径
