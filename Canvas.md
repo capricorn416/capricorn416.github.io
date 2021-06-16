@@ -45,8 +45,30 @@ ctx.strokeRect(x, y, width, height);
 ctx.clearRect(x, y, width, height);
 ```
 ### （二）绘制路径
-+ 创建起始点
++ 创建起始路径
 + 使用画图命令画出路径
 + 把路径闭合
 + 通过描边或填充绘制图形
 #### 1. 三角形
+```
+ctx.beginPath();
+// 起始点
+ctx.moveTo(x1, y1);
+// 二点
+ctx.lineTo(x2, y2);
+// 三点
+ctx.lineTo(x3, y3);
+
+// 填充三角形
+// ctx.fill();
+
+// 描边三角形
+// ctx.lineTo(x1, y1);
+// ctx.stroke();
+
+// 描边三角形
+ctx.closePath();
+ctx.stroke();
+```
+
+#### 2. 圆形
