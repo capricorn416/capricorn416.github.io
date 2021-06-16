@@ -88,3 +88,4 @@ ctx.stroke();
 + anticlockwise是boolean值，默认为 false（顺时针）
 
 ### （三）渐变
+#### 1. 线性渐变
