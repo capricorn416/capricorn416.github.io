@@ -89,3 +89,16 @@ ctx.stroke();
 
 ### （三）渐变
 #### 1. 线性渐变
+```
+// 参数1：起点x1； 参数2：起点x2； 参数3：终点x2； 参数4：终点y2
+var lingrad = ctx.createLinearGradient(x1,y1,x2,y2);
+
+// 参数1：0.0~1.0之间的数值，表示颜色所在的相对位置； 参数2：颜色
+lingrad.addColorStop(0, '#cc6677');
+lingrad.addColorStop(0.5, '#fff');
+lingrad.addColorStop(0.5, '#c6c776');
+lingrad.addColorStop(1, '#fff');
+
+ctx.fillStyle = lingrad;
+ctx.fillRect(10,10,130,130);
+```
