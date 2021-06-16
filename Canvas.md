@@ -72,3 +72,19 @@ ctx.stroke();
 ```
 
 #### 2. 圆形
+```
+ctx.strokeStyle = 'orange';
+ctx.lineWidth = 10;
+
+cxt.beginPath();
+ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+
+ctx.stroke();
+```
++ 开始角度和结束角度
+  - 0是三点钟方向
+  - 用 Math.PI 的倍数表示
+  - 代表从三点钟方向顺时针转过取得的角度
++ anticlockwise是boolean值，默认为 false（顺时针）
+
+### （三）渐变
