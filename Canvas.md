@@ -26,7 +26,7 @@ function draw() {
 }
 ```
 ## 三、简单例子
-### 1. 矩形
+### （一）矩形
 ```
 // 填充矩形
 ctx.fillStyle = 'rgb()';
@@ -44,4 +44,4 @@ ctx.strokeRect(x, y, width, height);
 // 清除矩形
 ctx.clearRect(x, y, width, height);
 ```
-### 2. 绘制路径
+### （二）绘制路径
