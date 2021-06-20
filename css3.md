@@ -230,4 +230,5 @@
  + `border-radius`：外边框圆角
    - （椭）圆与边框的交集形成圆角效果
    - 参数值可以为数值或百分比的形式
-   - 该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角（顺时针）                                                                                                  - 分开写：border-top-left-radius、 border-top-right-radius、 border-bottom-right-radius、 border-bottom-left-radius、
+   - 该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角（顺时针）
+   - 分开写：border-top-left-radius、 border-top-right-radius、 border-bottom-right-radius、 border-bottom-left-radius、
