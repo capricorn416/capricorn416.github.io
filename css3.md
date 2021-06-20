@@ -235,7 +235,7 @@
      - 该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角（顺时针）
      - 分开写：border-top-left-radius、 border-top-right-radius、 border-bottom-right-radius、 border-bottom-left-radius
  ### 5. 盒子阴影
-  + `box-shadow: h-shadow v-shadow blur spread color inset` 
+  + `box-shadow: h-shadow v-shadow blur spread color inset;` 
     - h-shadow：必需。水平阴影的位置。允许负值
     - v-shadow：必需。垂直阴影的位置。允许负值  
     - blur：可选。模糊距离
@@ -244,3 +244,14 @@
     - inset：可选。将外部阴影改为内部阴影
       * 默认的是外阴影（outset），但是不可以写这个单词，否则导致阴影无效
   + 盒子阴影不占用空间，不会影响其他盒子排列                                                                                              
+### 6. 文字阴影
+  + `text-shadow: h-shadow v-shadow blur color;`
+
+## 十、浮动
+CSS提供了三种传统布局方式：
++ 普通流（标准流/文档流）
+  - 标签按照规定好默认方式排列
+    1. 块级元素会独占一行，从上到下顺序排列
+      * 常用元素：div、hr、p、h1~h6、ul、ol、dl、form、table                                                                                                
++ 浮动
++ 定位                                                                                                    
