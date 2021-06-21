@@ -14,6 +14,12 @@
 + 空格规范
   - 属性值前面，冒号后面，保留一个空格
   - 选择器（标签）和大括号中间保留空格
+### 3. CSS属性书写顺序
++ 布局定位属性：display/position/float/clear/visibility/overflow
++ 自身属性：width/height/margin/padding/border/background
++ 文本属性：color/font/text-decoration/text-align/vertical-align/white-space/break-word
++ 其他属性：content/cursor/border-radius/box-shadow/text-shadow/background:linear-gradient
+
 ## 二、CSS选择器
 ### 1. 基础选择器
 + 标签选择器
@@ -323,5 +329,10 @@ CSS提供了三种传统布局方式：
         *zoom: 1;    
       }
       ```                                                                                                   
-                                                                                                    
+#### 5. 案例
+  + 导航栏
+    - 用li包含链接（li+a）的做法
+      * 让导航栏一行显示，给li加浮动，因为li是块级元素，需要一行显示
+      * 导航栏可以不给宽度，将来可以继续添加剩余文字
+      * 因为导航栏里面文字不一样多，所以最好给链接a左右padding撑开盒子，而不是指定宽度
                                                                                                     
