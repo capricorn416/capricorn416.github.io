@@ -289,11 +289,27 @@ CSS提供了三种传统布局方式：
     - left：不允许左侧有浮动元素（清除左侧浮动的影响）
     - right：不允许右侧有浮动元素（清除右侧浮动的影响）   
     - both：同时清除左右两侧浮动的影响
-  + 清除浮动的策略是：闭合浮动
+  + 清除浮动的策略是：闭合浮动。只让浮动在父盒子内部影响，不影响父盒子外面的其他盒子
   + 清除浮动方法：
     - 额外标签法/隔墙法
+      * 在浮动元素末尾添加一个空的标签，例如 <div style=" clear: both "></div> 或者 <br/>
+      * 新的空标签必须是块级元素
     - 父级添加overflow方法
-    - 父级添加after伪元素
+      * `overflow: hidden/auto/scroll;`
+    - 父级添加:after伪元素
+      ```
+      .x:after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      .x {
+        /* IE6、7专有 */
+        *zoom: 1;    
+      }
+      ```
     - 父级添加双伪元素                                                                                                
                                                                                                     
                                                                                                     
