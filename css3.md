@@ -298,19 +298,30 @@ CSS提供了三种传统布局方式：
       * `overflow: hidden/auto/scroll;`
     - 父级添加:after伪元素
       ```
-      .x:after {
+      .clearfix:after {
         content: '';
         display: block;
         height: 0;
         clear: both;
         visibility: hidden;
       }
-      .x {
+      .clearfix {
         /* IE6、7专有 */
         *zoom: 1;    
       }
       ```
     - 父级添加双伪元素                                                                                                
-                                                                                                    
+      ```
+      .clearfix:before,.clearfix:after {
+        content: '';
+        display: table;
+      }
+      .clearfix:after {
+        clear: both;
+      }
+      .clearfix {
+        *zoom: 1;    
+      }
+      ```                                                                                                   
                                                                                                     
                                                                                                     
