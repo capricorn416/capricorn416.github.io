@@ -347,7 +347,7 @@ CSS提供了三种传统布局方式：
     - 边偏移决定了该元素的最终位置
   + 定位模式
     - `position`
-      * static
-      * relative
-      * absolute
-      * fixed
+      * static（静态定位）
+      * relative（相对定位）
+      * absolute（绝对定位）
+      * fixed（固定定位）
