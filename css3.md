@@ -455,4 +455,12 @@ CSS提供了三种传统布局方式：
     - 灵活性
     - 兼容性
 ### 1. 字体图标的下载
-  [icomoon字库](http://icomoon.io)
+  + [icomoon字库](http://icomoon.io)
+  + [阿里iconfont字库](http://www.iconfont.cn/)
+### 2. 字体图标的引入
+  + 把下载包里面的fonts文件夹放入页面根目录下
+  + 在CSS样式中全局声明字体
+    ```
+    @font-face {
+    }
+    ```
