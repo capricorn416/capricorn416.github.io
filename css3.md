@@ -469,4 +469,30 @@ CSS提供了三种传统布局方式：
     }
     ```
 ### 3. 字体图标的追加
+  + 把压缩包里面的selection.json重新上传，然后选中自己想要的新图标，重新下载压缩包，并替换原来的文件即可
+## 十五、CSS三角
+  ```
+  .x {
+    width: 0;
+    height: 0;
+    /* 兼容性
+    line-height: 0;
+    font-size: 0;
+    */
+    border: 50px solid transparent;
+    border-left-color: pink;
+  }
+  ```
+  ## 十六、用户界面样式
+  ### 1. 鼠标样式 `cursor`
+    + default（小白，默认）
+    + pointer（小手）
+    + move（移动）
+    + text（文本）
+    + not-allowed（禁止）
+  ### 2. 表单轮廓线 `outline`
+    + 0/none（去掉默认的蓝色边框）
+  ### 3. 拖拽文本域 `resize`
+    + none（防止拖拽文本域）
+  
   
