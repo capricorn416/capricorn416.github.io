@@ -472,7 +472,6 @@ CSS提供了三种传统布局方式：
   + 把压缩包里面的selection.json重新上传，然后选中自己想要的新图标，重新下载压缩包，并替换原来的文件即可
 ## 十五、CSS三角
   ```
-  .x {
     width: 0;
     height: 0;
     /* 兼容性
@@ -481,7 +480,6 @@ CSS提供了三种传统布局方式：
     */
     border: 50px solid transparent;
     border-left-color: pink;
-  }
   ```
 ## 十六、用户界面样式
 ### 1. 鼠标样式 
@@ -537,6 +535,21 @@ CSS提供了三种传统布局方式：
     - 如果没有定位，则加相对定位（保留位置）
     - 如果有定位，则加z-index
 ### 2. 文字围绕浮动元素
-  
 ### 3. 行内块的巧妙运用
 ### 4. css三角强化
+  ```
+  width: 0;
+  height: 0;
+  border-top: 100px solid transparent;
+  border-right: 50px solid black;
+  border-bottom: 0;
+  border-left: 0;
+  ```
+  ```
+  width: 0;
+  height: 0;
+  border-color: transparent red transparent transparent;
+  border-style: solid;
+  border-width: 22px 8px 0 0;
+  ```
+  
