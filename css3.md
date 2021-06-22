@@ -568,7 +568,11 @@ CSS提供了三种传统布局方式：
     - 其实，我们移动端更喜欢使用这些标签
 ### 2. 新增的多媒体标签
   + `<audio>`：音频
-     - `<audio src="" controls="controls"></audio>`
+    - `<audio src="" controls="controls"></audio>`
+      * autoplay（谷歌把音频和视频自动播放禁止了）
+      * controls
+      * loop
+      * src
   + `<video>`：视频
     - `video src="" controls="controls"`</video>`
       * autoplay（视频就绪自动播放）（谷歌浏览器需要添加muted来解决自动播放问题）
