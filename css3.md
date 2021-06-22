@@ -484,16 +484,18 @@ CSS提供了三种传统布局方式：
   }
   ```
   ## 十六、用户界面样式
-  ### 1. 鼠标样式 `cursor`
-  
-    + default（小白，默认）
-    + pointer（小手）
-    + move（移动）
-    + text（文本）
-    + not-allowed（禁止）
-  ### 2. 表单轮廓线 ```outline```
-    + 0/none（去掉默认的蓝色边框）
-  ### 3. 拖拽文本域 ```resize```
-    + none（防止拖拽文本域）
+  ### 1. 鼠标样式 
+    + `cursor`
+      - default（小白，默认）
+      - pointer（小手）
+      - move（移动）
+      - text（文本）
+      - not-allowed（禁止）
+  ### 2. 表单轮廓线
+    + `outline`
+      - 0/none（去掉默认的蓝色边框）
+  ### 3. 拖拽文本域 
+    + `resize`
+      - none（防止拖拽文本域）
   
   
