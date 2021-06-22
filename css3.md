@@ -514,11 +514,29 @@ CSS提供了三种传统布局方式：
     ```
     /* 先强制一行内显示文本 */
     white-space: nowrap;  // 默认normal自动换行
+  
     /* 超出的部分隐藏 */
     overflow: hidden;
+  
     /* 文字用省略号替代超出的部分 */
     text-overflow: ellipsis;
     ```
 ### 2. 多行文本溢出显示省略号
-    
+  + 有较大兼容性问题，适合于webkit浏览器或移动端（移动端大部分是webkit内核）
+    ```
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    ``` 
+## 十九、常见布局技巧
+### 1. margin负值的运用
+  + 让每个盒子margin往左侧移动-px正好压住相邻盒子边框
+  + 鼠标经过某个盒子的时候，提高当前盒子的层级即可
+    - 如果没有定位，则加相对定位（保留位置）
+    - 如果有定位，则加z-index
+### 2. 文字围绕浮动元素
   
+### 3. 行内块的巧妙运用
+### 4. css三角强化
