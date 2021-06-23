@@ -682,6 +682,7 @@ CSS提供了三种传统布局方式：
   + 过渡
     - 在不使用Flash动画或JavaScript的情况下，当元素从一种样式变换为另一种样式时为元素添加效果
     - 过渡动画：是从一个状态渐渐地过渡到另外一个状态
+    - 经常和:hover一起搭配使用
     - ```transition: 要过渡的属性 花费时间 运动曲线 何时开始;``` 
       * 属性：想要变化的css属性；如果想要所有的属性都变化过渡，写一个all就可以
       * 花费时间：单位是秒（必须写单位）
@@ -692,15 +693,18 @@ CSS提供了三种传统布局方式：
         * ease-out（减速）
         * ease-in-out（先加速后减速）
       * 何时开始：单位是秒（必须写单位），可以设置延迟触发时间，默认是0s（可以省略）
+      * 如果想写多个属性值，利用逗号进行分割
     - 谁做过渡给谁加
       ```
       div {
         width: 200px;
         height: 100px;
         background-color: pink;
-        transition: width .5s;
+        // transition: width .5s, height .5s;
+        transition: all 0.5s;
       }
       div:hover {
         width: 400px;
+        height: 200px;
       }
       ```
