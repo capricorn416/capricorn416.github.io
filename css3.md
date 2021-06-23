@@ -655,10 +655,23 @@ CSS提供了三种传统布局方式：
       ```
   + 伪元素选择器
     - 可以帮助我们利用CSS创建新标签元素，而不需要html标签，从而简化html结构
-      * ::before 在父元素内部的前面插入内容
-      * ::after 在父元素内部的后面插入内容
+      * ::before 在元素内部的前面插入内容
+      * ::after 在元素内部的后面插入内容
     - before和after创建一个元素，但是属于行内元素
     - 新创建的这个元素在文档树中是找不到的，所以我们称为伪元素
     - before和after必须有content属性
-    - 伪元素选择器和标签选择器一样，权重为1
+  + 伪元素选择器和标签选择器一样，权重为1（记得总权重还要加上前面的E）
   + 类选择器、属性选择器、伪类选择器，权重为10（记得总权重还要加上前面的E）
+### 2. CSS3盒子模型
+  + CSS3中可以通过`box-sizing`来指定盒子模型，有2个值：即可指定为content-box、border-box，这样我们计算盒子大小的方式就发生了改变
+    - content-box 
+      * 盒子大小为width+padding+border（以前默认的）
+    - border-box
+      * 盒子大小为width
+      * 如果盒子模型我们改为了box-sizing:border-box，那padding和border就不会撑大盒子了（前提padding和border不会超过width宽度）
+      * 此时如果想设置垂直居中对齐，则line-height的值需要减去上下的border和padding
+### 3. CSS3其他特性
+  + `filter`：滤镜
+    - 将模糊或颜色偏移等图形效果应用于元素
+    - `filter: 函数();`
+      * filter: blur(5px);  blur模糊处理，数值越大越模糊 
