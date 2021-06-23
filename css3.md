@@ -633,28 +633,32 @@ CSS提供了三种传统布局方式：
     - 区别
       * nth-child对父元素里面所有孩子排序选择（序号是固定的），先找到第n个孩子，然后看看是否和E匹配
       * nth-of-type对父元素里面指定子元素进行排序选择。先去匹配E，然后再根据E找第n个孩子
-        ```html
-        <section>
-          <p>光头强</p>
-          <div>熊大</div>
-          <div>熊二</div>
-        </section>
-        ```
-        ```css
-        // nth-child 会把所有的盒子都排列序号
-        // 执行的时候首先看 :nth-child(1)，之后回去看前面div
-        section div:nth-child(1) {
-          background-color: red;  //无选出
-        }
+      ```html
+      <section>
+        <p>光头强</p>
+        <div>熊大</div>
+        <div>熊二</div>
+      </section>
+      ```
+      ```css
+      // nth-child 会把所有的盒子都排列序号
+      // 执行的时候首先看 :nth-child(1)，之后回去看前面div
+      section div:nth-child(1) {
+        background-color: red;  //无选出
+      }
 
-        // nth-of-type 会把指定元素的盒子都排列序号
-        // 执行的时候首先看div指定的元素，之后回去看 :nth-of-type(1) 第几个孩子    
-        section div:nth-of-type(1) {
-          background-color: red;  //选出了熊大
-        }
-        ```
+      // nth-of-type 会把指定元素的盒子都排列序号
+      // 执行的时候首先看div指定的元素，之后回去看 :nth-of-type(1) 第几个孩子    
+      section div:nth-of-type(1) {
+        background-color: red;  //选出了熊大
+      }
+      ```
   + 伪元素选择器
     - 可以帮助我们利用CSS创建新标签元素，而不需要html标签，从而简化html结构
-      * ::before 在元素内部的前面插入内容
-      * ::after 在元素内部的后面插入内容
+      * ::before 在父元素内部的前面插入内容
+      * ::after 在父元素内部的后面插入内容
+    - before和after创建一个元素，但是属于行内元素
+    - 新创建的这个元素在文档树中是找不到的，所以我们称为伪元素
+    - before和after必须有content属性
+    - 伪元素选择器和标签选择器一样，权重为1
   + 类选择器、属性选择器、伪类选择器，权重为10（记得总权重还要加上前面的E）
