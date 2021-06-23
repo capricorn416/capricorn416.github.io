@@ -16,20 +16,17 @@
   - 小屏幕：设置宽度为750px
   - 中等屏幕：设置宽度为970px
   - 大屏幕：设置宽度为1170px
-  ```
+  ```css
   @media screen and (max-width: 767px) {
     .container {
       width: 100%
     }
   }
   
-  @media screen and (min-width: 768px) {
-  }
+  @media screen and (min-width: 768px) {}
   
-  @media screen and (min-width: 992px) {
-  }
+  @media screen and (min-width: 992px) {}
   
-  @media screen and (min-width: 1200px) {
-  }
+  @media screen and (min-width: 1200px) {}
   ```
-###  3. 响应式导航案例
+# [Bootstrap](http://bootstrap.css88.com/)
