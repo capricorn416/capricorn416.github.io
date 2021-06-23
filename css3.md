@@ -336,7 +336,6 @@ CSS提供了三种传统布局方式：
       * 让导航栏一行显示，给li加浮动，因为li是块级元素，需要一行显示
       * 导航栏可以不给宽度，将来可以继续添加剩余文字
       * 因为导航栏里面文字不一样多，所以最好给链接a左右padding撑开盒子，而不是指定宽度
-  +                                                                                                   
 
 ## 十一、定位
 ### 1. 为什么需要定位
@@ -586,3 +585,18 @@ CSS提供了三种传统布局方式：
       * src（视频url地址）
       * poster（加载等待的画面图片）
       * muted（静音播放）
+### 3. 新增input表单
+  + type
+    - email/url/date/time/month/week/number/tel/search/color
+    - 验证的时候必须添加form表单域
+    - 当点击提交按钮时就可以验证表单了
+  + 属性
+    - required（内容不能为空，必填）
+    - placeholder（提示信息）
+      * `input::placeholder { color:pink; }`
+    - autofocus（自动聚焦，页面加载完成自动聚焦到指定表单）
+    - autocomplete（当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项，需要放在表单内，同时加上name属性，同时成功提交）
+      * off
+      * on（默认）
+    - multiple（可以多选文件提交）
+  
