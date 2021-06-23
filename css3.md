@@ -630,5 +630,20 @@ CSS提供了三种传统布局方式：
       * E:first-of-type 指定类型E的第一个
       * E:last-of-type 指定类型E的最后一个
       * E:nth-of-type(n) 指定类型E的最后一个
+      * 比较
+        * ```
+          <section>
+            <p>光头强</p>
+            <div>熊大</div>
+            <div>熊二</div>
+          </section>
+         ```
+         ```
+         section div:nth-child(1) {
+          background-color: red;  //不会执行
+         }
+         // nth-child会把所有的盒子都排列序号
+         // 执行的时候首先看 :nth-child(1) 之后回去看前面div
+         ```
   + 伪元素选择器
   + 类选择器、属性选择器、伪类选择器，权重为10（记得总权重还要加上前面的E）
