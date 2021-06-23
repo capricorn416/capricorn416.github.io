@@ -631,14 +631,14 @@ CSS提供了三种传统布局方式：
       * E:last-of-type 指定类型E的最后一个
       * E:nth-of-type(n) 指定类型E的最后一个
       * 区别
-        ```
+        ```html
         <section>
           <p>光头强</p>
           <div>熊大</div>
           <div>熊二</div>
         </section>
         ```
-        ```
+        ```css
         // nth-child 会把所有的盒子都排列序号
         // 执行的时候首先看 :nth-child(1)，之后回去看前面div
         section div:nth-child(1) {
@@ -651,5 +651,7 @@ CSS提供了三种传统布局方式：
           background-color: red;  //选出了熊大
         }
         ```
+        * nth-child对父元素里面所有孩子排序选择（序号是固定的），先找到第n个孩子，然后看看是否和E匹配
+        * nth-of-type对父元素里面指定子元素进行排序选择。先去匹配E，然后再根据E找第n个孩子
   + 伪元素选择器
   + 类选择器、属性选择器、伪类选择器，权重为10（记得总权重还要加上前面的E）
