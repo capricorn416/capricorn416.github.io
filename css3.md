@@ -764,5 +764,5 @@ CSS提供了三种传统布局方式：
   - animation-delay：规定动画何时开始，默认是0
   - animation-iteration-count：规定动画播放的次数，默认是1，还有infinite
   - animation-direction：规定动画是否在下一周期逆向播放，默认是"normal"，alternate逆播放
-  - animation-play-state：规定动画是否正在运行或暂停，默认是"running"，
+  - animation-play-state：规定动画是否正在运行或暂停，默认是"running"，还有"paused"
   - animation-fill-mode：规定动画结束后状态，保持forwards，回到起始backwards
