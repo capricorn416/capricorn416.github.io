@@ -708,3 +708,21 @@ CSS提供了三种传统布局方式：
         height: 200px;
       }
       ```
+  + 2D转换
+    - 转换（transform）可以实现元素的位移、选择、缩放等效果
+    - 移动（translate）
+      * `transform: translate(x, y);`或者```transform: translateX(n); transform: translateY(n);```
+      * 不会影响到其他元素的位置
+      * translate中的百分比单位是相对于自身元素的宽度或高度
+      * 对行内标签没有效果
+    - 旋转（rotate）
+      * `transform: rotate(度数);`
+      * rorate里面跟度数，单位是deg
+      * 角度为正时，顺时针；负时，为逆时针
+      * 默认旋转的中心点是元素的中心点
+      * 转换中心点（transform-origin）
+        * ```transform-origin: x y;```
+        * x y默认转换的中心点是元素的中心点（50% 50%）
+        * 还可以给x y设置像素或者方位名词（top bottom left right center）
+    - 缩放（scale）
+      * 
