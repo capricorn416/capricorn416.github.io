@@ -761,6 +761,7 @@ CSS提供了三种传统布局方式：
     ```
 + 常用属性
   - `animation-timing-function`：规定动画的速度曲线，默认是"ease"
+    * steps()：指定了时间函数中的间隔数量（步长）
   - `animation-delay`：规定动画何时开始，默认是0
   - `animation-iteration-count`：规定动画播放的次数，默认是1，还有infinite
   - `animation-direction`：规定动画是否在下一周期逆向播放，默认是"normal"，alternate逆播放
@@ -769,4 +770,5 @@ CSS提供了三种传统布局方式：
   - 简写
     * `animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 动画起始或者结束的状态;`
     * 简写的属性里面不包含animation-play-state
+    * 暂停动画：animation-play-state: paused; 经常和鼠标经过等其他配合使用
   
