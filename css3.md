@@ -708,7 +708,7 @@ CSS提供了三种传统布局方式：
         height: 200px;
       }
       ```
-  + 2D转换
+### 4. 2D转换
     - 转换（transform）可以实现元素的位移、选择、缩放等效果
     - 移动（translate）
       * `transform: translate(x, y);`或者```transform: translateX(n); transform: translateY(n);```
