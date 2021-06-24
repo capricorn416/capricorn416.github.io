@@ -749,4 +749,20 @@ CSS提供了三种传统布局方式：
       }
     }
     ```
-  - 再使用（调用）动画
+    * 0%是动画的开始，100%是动画的完成 => 动画序列
+    * 动画是使元素从一种样式逐渐变化为另一种样式的效果，可以改变任意多的样式任意多的次数
+    * 用百分比来规定变化发生的时间（总的时间的划分），或用关键词"from"和"to"，等同于0%和100%
+  - 元素使用（调用）动画
+    ```
+    div {
+      animation-name: 动画名称;
+      animation-duration: 持续时间;
+    }
+    ```
++ 常用属性
+  - animation-timing-function：规定动画的速度曲线，默认是"ease"
+  - animation-delay：规定动画何时开始，默认是0
+  - animation-iteration-count：规定动画播放的次数，默认是1，还有infinite
+  - animation-direction：规定动画是否在下一周期逆向播放，默认是"normal"，alternate逆播放
+  - animation-play-state：规定动画是否正在运行或暂停，默认是"running"，
+  - animation-fill-mode：规定动画结束后状态，保持forwards，回到起始backwards
