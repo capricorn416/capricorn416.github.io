@@ -813,7 +813,7 @@ CSS提供了三种传统布局方式：
   + -ms-：代表ie浏览器私有属性
   + -webkit-：代表safari、chrome私有属性
   + -o-：代表Opera私有属性
-  + 提倡写法
+### 2. 提倡写法
     ```
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
