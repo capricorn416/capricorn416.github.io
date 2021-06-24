@@ -761,6 +761,11 @@ CSS提供了三种传统布局方式：
     ```
 + 常用属性
   - `animation-timing-function`：规定动画的速度曲线，默认是"ease"
+    * linear：匀速
+    * ease：动画以低速开始，然后加快，在结束前变慢
+    * ease-in：动画以低速开始
+    * ease-out：动画以低速结束
+    * ease-in-out：动画以低速开始和结束
     * steps()：指定了时间函数中的间隔数量（步长）
   - `animation-delay`：规定动画何时开始，默认是0
   - `animation-iteration-count`：规定动画播放的次数，默认是1，还有infinite
