@@ -777,3 +777,22 @@ CSS提供了三种传统布局方式：
     * 简写的属性里面不包含animation-play-state
     * 暂停动画：animation-play-state: paused; 经常和鼠标经过等其他配合使用
 ### 6. 3D转换  
++ 三维坐标系
+  - x轴：水平向右（x右边是正值，左边是负值）
+  - y轴：垂直向下（y下面是正值，上面是负值）
+  - z轴：垂直屏幕（往外面是正值，往里面是负值）
++ 3D位移（translate3d）
+  - `transform: translateX()`
+  - `transform: translateY()`
+  - `transform: translateZ()` （translateZ一般用px单位）
+  - `transform: translate3d(x,y,z)`
+  - 透视（perspective）
+    * 也称为视距：视距就是人的眼睛到屏幕的距离
+    * 距离视觉点越近的在电脑平面成像越大，越远成像越小
+    * 透视的单位是像素
+    * 透视写在**被观察元素的父盒子**上面
++ 3D旋转
+  
++ 透射
++ 3D呈现
+  
