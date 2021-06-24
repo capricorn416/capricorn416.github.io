@@ -709,8 +709,8 @@ CSS提供了三种传统布局方式：
       }
       ```
 ### 4. 2D转换
-    - 转换（transform）可以实现元素的位移、选择、缩放等效果
-    - 移动（translate）
+- 转换（transform）可以实现元素的位移、选择、缩放等效果
+- 移动（translate）
       * `transform: translate(x, y);`或者```transform: translateX(n); transform: translateY(n);```
       * 不会影响到其他元素的位置
       * translate中的百分比单位是相对于自身元素的宽度或高度
