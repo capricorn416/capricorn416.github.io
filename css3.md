@@ -768,4 +768,5 @@ CSS提供了三种传统布局方式：
   - `animation-fill-mode`：规定动画结束后状态，保持forwards，回到起始backwards
   - 简写
     * `animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 动画起始或者结束的状态;`
+    * 简写的属性里面不包含animation-play-state
   
