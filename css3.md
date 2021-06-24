@@ -786,13 +786,37 @@ CSS提供了三种传统布局方式：
   - `transform: translateY()`
   - `transform: translateZ()` （translateZ一般用px单位）
   - `transform: translate3d(x,y,z)`
-  - 透视（perspective）
-    * 也称为视距：视距就是人的眼睛到屏幕的距离
-    * 距离视觉点越近的在电脑平面成像越大，越远成像越小
-    * 透视的单位是像素
-    * 透视写在**被观察元素的父盒子**上面
-+ 3D旋转
-  
-+ 透射
-+ 3D呈现
-  
++ 3D旋转（rotate3d）
+  - 3D旋转指可以让元素在三维平面内沿着x轴，y轴，z轴或者自定义轴进行旋转
+  - `transform: rotateX()`
+  - `transform: rotateY()`
+  - `transform: rotateZ()`
+  - 左手准则
+    * 左手的大拇指指向轴的正方向
+    * 其余手指的弯曲方向就是该元素沿着轴旋转的方向（正值）
+  - `transform: rotate3d(x,y,z,deg)`
+    * xyz表示旋转轴的矢量
++ 透视（perspective）
+  - 也称为视距：视距就是人的眼睛到屏幕的距离
+  - 距离视觉点越近的在电脑平面成像越大，越远成像越小
+  - 透视的单位是像素
+  - 透视写在**被观察元素的祖宗盒子**上面  
++ 3D呈现（transform-style）
+  - 控制子元素是否开启三维立体环境
+  - flat（子元素不开启立体空间 默认）
+  - preserve-3d（子元素开启立体空间）
+  - 代码写给父级，但是影响的是子盒子
+## 三、浏览器私有前缀
+  + 浏览器私有前缀是为了兼容老版本的写法，比较新版本的浏览器无须添加
+### 1. 私有前缀
+  + -moz-：代表firefox浏览器私有属性
+  + -ms-：代表ie浏览器私有属性
+  + -webkit-：代表safari、chrome私有属性
+  + -o-：代表Opera私有属性
+  + 提倡写法
+    ```
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    ```
