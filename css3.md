@@ -878,11 +878,14 @@ CSS提供了三种传统布局方式：
     * 通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充
     * `max-width/height`：最大宽度/高度
     * `min-width/height`：最小宽度/高度  
-  + flex弹性布局     
+  + flex弹性布局  
+    - 任何一个容器都可以指定为flex布局
+      * 当把父盒子设为flex布局以后，子元素的float、clear和vertical-align属性将失效
+    - 采用flex布局的元素，称为flex容器（flex container），简称"容器"。  
   + less+rem+媒体查询布局
   + 混合布局
 #### （2）响应式页面兼容移动端（其次）
-+ 媒体查询
-+ bootstrap
+  + 媒体查询
+  + bootstrap
 
   
