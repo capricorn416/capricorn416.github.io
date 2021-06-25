@@ -881,7 +881,36 @@ CSS提供了三种传统布局方式：
   + flex弹性布局  
     - 任何一个容器都可以指定为flex布局
       * 当把父盒子设为flex布局以后，子元素的float、clear和vertical-align属性将失效
-    - 采用flex布局的元素，称为flex容器（flex container），简称"容器"。  
+    - 采用flex布局的元素，称为flex容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称"项目"
+    - flex布局原理：通过给父盒子添加flex属性`display: flex;`，来控制子盒子的位置和排列方式
+    - 常见父项属性
+      * `flex-direction`：设置主轴方向
+        * 主轴与侧轴
+          * 默认主轴方向就是x轴方向，水平向右
+          * 默认侧轴方向就是y轴方向，水平向下
+          * 我们的子元素是跟着主轴来排列的
+        * row（默认值 从左到右）
+        * row-reverse（从右到左）
+        * column（从上到下）
+        * column-reverse（从下到上）
+      * `justify-content`：设置主轴上的子元素排列方式
+        * flex-start（默认值 从头部开始）
+        * flex-end（从尾部开始排列）
+        * center（在主轴居中对齐）
+        * space-around（平分剩余空间）
+        * space-between（先两遍贴边 再平分剩余空间）
+      * `flex-wrap`：设置子元素是否换行
+        * flex布局中，默认子元素是不换行的，如果装不开，会缩小子元素的宽度放到父元素里面
+        * nowrap
+        * wrap
+      * `align-content`：设置侧轴上的子元素的排列方式（多行）
+        
+      * `align-items`：设置侧轴上的子元素排列方式（单行）
+        * flex-start（从上到下）
+        * flex-end（从下到上）
+        * center（挤在一起居中（垂直居中））
+        * stretch（拉伸 默认值）
+      * `flex-flow`：复合属性，相当于同时设置了flex-direction和flex-wrap
   + less+rem+媒体查询布局
   + 混合布局
 #### （2）响应式页面兼容移动端（其次）
