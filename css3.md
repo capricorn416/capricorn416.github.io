@@ -862,7 +862,28 @@ CSS提供了三种传统布局方式：
       - contain把图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域（可能有空白区域）
 ### 4. 移动端技术解决方案
   + CSS初始化 [normalize.css](https://necolas.github.io/normalize.css/)
-  
-    
-  
+  + CSS3盒子模型（box-sizing）
+    - `box-sizing: content-box;`
+      * 传统盒子模型：盒子的宽度=CSS中设置的width+border+padding
+    - `box-sizing: border-box;`
+      * CSS3盒子模型：盒子的宽度=CSS中设置的宽度width（里面包含了border和padding）
+      * CSS3中的盒子模型，padding和border不会撑大盒子了
+  + 特殊样式
+    - `-webkit-tap-highlight-color: transparent;` 清除点击高亮
+    - `-webkit-appearance: none;` 移动端浏览器默认的外观在加上这个属性才能给按钮和输入框自定义样式
+    - `-webkit-touch-callout: none;` 禁用长按页面时的弹出菜单
+### 5. 移动端常见布局
+  + 单独制作移动端页面（主流）
+    - 流式布局（百分比布局/非固定像素布局）
+      * 通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充
+      * `max-width/height`：最大宽度/高度
+      * `min-width/height`：最小宽度/高度  
+    - flex弹性布局
+      
+    - less+rem+媒体查询布局
+    - 混合布局
+  + 响应式页面兼容移动端（其次）
+    - 媒体查询
+    - bootstrap
+
   
