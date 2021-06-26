@@ -927,7 +927,19 @@ CSS提供了三种传统布局方式：
         * 数值越小，排列越靠前，默认为0
   + less+rem+媒体查询布局
       - rem基础
-        * rem是一个相对单位，基准是相对于html元素的字体大小
+        * rem是一个相对单位，基准是相对于html元素的字体大小（em相对于父元素的字体大小）
+        * rem的优点是可以通过修改html里面的文字大小来整体控制改变页面中元素的大小
+      - 媒体查询
+        * @media可以针对不同的屏幕尺寸设置不同的样式
+        * `@media mediatype and|not|only (media feature) {}`
+        * mediatype 媒体类型
+          * all（所有设备）
+          * print（打印机和打印预览）
+          * screen（电脑屏幕，平板电脑，智能手机等）
+        * 媒体特性
+          * width
+          * min-width
+          * max-width
   + 混合布局
 #### （2）响应式页面兼容移动端（其次）
   + 媒体查询
