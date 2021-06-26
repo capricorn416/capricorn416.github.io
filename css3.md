@@ -904,14 +904,30 @@ CSS提供了三种传统布局方式：
         * nowrap
         * wrap
       * `align-content`：设置侧轴上的子元素的排列方式（多行）
-        
+        * 只能用于子项出现换行的情况，在单行下是没有效果的
+        * flex-start（默认值 在侧轴的头部开始排列）
+        * flex-end（在侧轴的尾部开始排列）
+        * center（在侧轴中间显示）
+        * space-around：子项在侧轴平分剩余空间
+        * space-between：子项在侧轴先分布在两头，再平分剩余空间
+        * stretch（设置子项元素高度平分父元素高度）
       * `align-items`：设置侧轴上的子元素排列方式（单行）
         * flex-start（从上到下）
         * flex-end（从下到上）
         * center（挤在一起居中（垂直居中））
         * stretch（拉伸 默认值）
       * `flex-flow`：复合属性，相当于同时设置了flex-direction和flex-wrap
+        * `flex-flow: row wrap;`
+    - 子项常见属性
+      * `flex`：定义子项目分配剩余空间，表示占多少份数
+      * `align-self`：控制子项自己在侧轴上的排列方式
+        * 允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性
+        * 默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch
+      * `order`：定义项目的排列顺序
+        * 数值越小，排列越靠前，默认为0
   + less+rem+媒体查询布局
+      - rem基础
+        * rem是一个相对单位，基准是相对于html元素的字体大小
   + 混合布局
 #### （2）响应式页面兼容移动端（其次）
   + 媒体查询
