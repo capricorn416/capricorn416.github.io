@@ -946,6 +946,11 @@ CSS提供了三种传统布局方式：
           * width
           * min-width（包含等于）
           * max-width（包含等于）
+      - 引入资源
+        * 直接在link中判断设备的尺寸，然后引用不同的css文件
+        * `<link rel="stylesheet" media="mediatype and|not|only (media feature)" href="">`
+      - [less](https://less.bootcss.com/)基础
+        
   + 混合布局
 #### （2）响应式页面兼容移动端（其次）
   + 媒体查询
