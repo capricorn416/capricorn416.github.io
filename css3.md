@@ -551,6 +551,12 @@ CSS提供了三种传统布局方式：
   border-style: solid;
   border-width: 22px 8px 0 0;
   ```
+## 二十、补充
+### 1. favicon图标
+  + favicon.ico一般用于作为缩略的网站标志，它显示在浏览器的地址栏或者标签上
+  + 引入
+    - 在html页面里面的<head></head>元素之间引入代码
+    - `<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">`
 # HTML5和CSS3提高
 ## 一、HTML5的新特性
 ### 1. 新增的语义化标签
