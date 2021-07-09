@@ -35,12 +35,10 @@
       ```
       let a: 10;
       let b: 'male' | 'female';
-      let c: boolean | string;
+      let c: boolean | string;  // 联合类型
     - any
-    
-      any表示的是任意类型，一个变量设置类型为any后相当于对该变量关闭了TS的类型检测（不建议使用）
-      
-      声明变量如果不指定类型，TS解析器会自动判断变量的类型为any（隐式any）
+      * any表示的是任意类型，一个变量设置类型为any后相当于对该变量关闭了TS的类型检测（不建议使用）
+      * 声明变量如果不指定类型，TS解析器会自动判断变量的类型为any（隐式any）
       ```
       let d: any;
       let d;
@@ -48,9 +46,8 @@
       d = 'hello';
       d = true;
       ```
-    - unknown
-      
-      unknown表示未知类型的值
+    - unknown（类型安全的any）
+      * unknown表示未知类型的值
       ```
       let e: unknown;
       e = 10;
@@ -59,6 +56,7 @@
       ```
       **any类型可以赋值给任意变量，unknown类型不能直接赋值给其他变量**
       ```
+      let e: unknown;
       let s: sring;
       e = 'hello';
       if(typeof e === 'string'){
@@ -67,22 +65,70 @@
       ```
       ```
       // 类型断言,可以用来告诉解析器变量的实际类型
-      s = e as sting;
-      s = <sring>e;
+      s = e as sting; // 变量 as 类型
+      s = <sring>e; // <类型>变量
       ```
     - void
-      
-      用来表示空，以函数为例，表示没有返回值的函数
+      * 用来表示空，以函数为例，表示没有返回值的函数
       ```
       function fn(): void{
-        return undefined;
+        return undefined/null;
       }
     - never
-   
-      表示永远不会返回结果
+      * 表示永远不会返回结果
       ```
       function fn(): never{
-        throw new Error('报错了');
+        throw new Error('报错了！');
       }
       ```
-    - 
+    - object
+      ```
+      // {} 用来指定对象中可以包含哪些属性
+      let b: {
+        name: string,
+        age?: number  // ?表示属性可选
+      };
+      let c: { 
+        name: string, 
+        [propName: string]: any // 表示任意类型的属性
+      };
+      
+      // 设置函数结构的类型声明
+      let d: (a: number, b: number) => number;
+      ```
+    - array
+      * 类型[]
+      * Array<类型>
+      ```
+      let e: string[];  // 表示字符串数组
+      let g: Array<number>;
+      ```
+    - turple
+      * 元祖，固定长度的数组
+      ```
+      let h: [string, string];
+      ```
+    - enum
+      * 枚举
+      ```
+      enum Gender{
+        Male = 1,
+        Female = 0
+      }
+      let i: {name: string, gender: Gender};
+      i = {
+        name: '',
+        gender: Gender.Male
+      }
+      ```
+      ```
+      // &表示同时
+      let j: { name: string } & { age: number };
+      ```
+      ```
+      // 类型的别名
+      type myType = 1|2|3|4|5;
+      let m: myType;
+      ```
+## 四、TS编译选项
+  
