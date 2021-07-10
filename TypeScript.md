@@ -171,5 +171,73 @@
         ]
       }
       ```
-  + tsconfig.json
- 
+    - compilerOptions
+      * 编译器选项
+        * target：指定ts被编译为的es版本
+          * `"target": "ES3"`
+        * module：指定要使用的模块化的规范
+          * `"module": "es2015"`
+        * lib：指定项目中要使用的库
+        * outDir：指定编译后文件所在的目录
+          * `outDir: "./dist"`
+        * outFile：所有的全局作用域中的代码会合并到同一个文件
+          * `outFile: "./dist/app.js"`  
+        * allowJs：是否对js文件进行编译，默认是false
+          * `"allowJs: false"`  
+        * checkJs：是否检查js文件是否符合语法规范，默认是false
+          * `"checkJs": false`
+        * removeComments：是否移除注释
+        * noEmit：不生成编译后的文件
+        * noEmitOnError：当有错误时不生成编译后的文件
+        * alwaysStrict：用来设置编译后的文件是否使用严格模式
+        * noImplicitAny：不允许隐式的any类型
+        * noImplicitThis：不允许不明确类型的this
+        * strictNullChecks：严格检查空值
+          ```box1?.addEventListener('click', function(){});```
+        * strict：所有严格检查的总开关
+## 五、使用webpack打包ts代码
+  + `npm init -y`：初始化项目，生成package.json
+  + `npm i -D webpack webpack-cli typescript ts-loader`
+  + 创建 webpack.config.json
+    ```
+    // 引入一个包
+    const path = require('path');
+
+    // webpack中所有的配置信息都应该写在module.exports中
+    module.exports = {
+        // 指定入口文件
+        entry: "./src/index.ts",
+        // 指定打包文件所在目录
+        output : {
+            // 指定打包文件的目录
+            path: path.resolve(__dirname, 'dist'),
+            // 打包后文件的名字
+            filename: "bundle.js"
+        },
+        // 指定webpack打包时要使用的模块
+        module: {
+            // 指定要加载的规则
+            rules: [
+                {
+                    // test指定的是规则失效的文件
+                    test: /\.ts$/,
+                    // 要使用的loader
+                    use: 'ts-loader',
+                    // 要排除的文件
+                    exclude: /node_modules/
+                }
+            ]
+        }
+    }
+    ```
+  + 创建tsconfig.json
+    ```
+    {
+      "compilerOptions": {
+        "module": "es2015",
+        "target": "es2015",
+        "strict": true
+      }
+    }  
+    ```
+  + package.json中，scripts下加`"build": "webpack"`
