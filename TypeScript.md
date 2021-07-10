@@ -196,6 +196,7 @@
           ```box1?.addEventListener('click', function(){});```
         * strict：所有严格检查的总开关
 ## 五、使用webpack打包ts代码
+### 1. 
   + `npm init -y`：初始化项目，生成package.json
   + `npm i -D webpack webpack-cli typescript ts-loader`
   + 创建 webpack.config.json
@@ -241,3 +242,6 @@
     }  
     ```
   + package.json中，scripts下加`"build": "webpack"`
+### 2.
+  + `npm i -D html-webpack-plugin`：自动生成html文件
+  + 在webpack.config.js中引入html插件：`const HTMLWebpackPlugin = require('html-webpack-plugin');`
