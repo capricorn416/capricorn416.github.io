@@ -270,10 +270,10 @@
         })
       ]
       ```  
- ### 3. 
+### 3. 
   + `npm i -D webpack-dev-server`：内置服务器
   + package.json中，scripts下加`"start": "webpack serve --open chrome.exe"`
- ### 4.
+### 4.
   + `npm i -D clean-webpack-plugin`：清除dist目录
   + 在webpack.config.js中
     - 引入clean插件：`const { CleanWebpackPlugin } = require('clean-webpack-plugin');`
@@ -283,11 +283,133 @@
         new CleanWebpackPlugin()
       ]
       ```
-  ### 5.
-   + 在webpack.config.js中设置引用模块
-     ```
-     resolve: {
-      extensions: ['.ts', '.js']
-     }
-     ```
-     
+### 5.
+  + 在webpack.config.js中设置引用模块
+    ```
+    resolve: {
+     extensions: ['.ts', '.js']
+    }
+    ```
+### 6. 
+  + `npm i -D @babel/core @babel/preset-env babel-loader core-js`：兼容性
+  + 配置webpack.config.js
+    ```
+    module: {
+        // 指定要加载的规则
+        rules: [
+            {
+                // 要使用的loader
+                use: [
+                    // 配置babel
+                    {
+                        // 指定加载器
+                        loader: "babel-loader",
+                        // 设置babel
+                        options: {
+                            // 设置预定义的环境
+                            presets: [
+                                [
+                                    // 指定环境的插件
+                                    "@babel/preset-env",
+                                    // 配置信息
+                                    {   
+                                        // 要兼容的目标浏览器
+                                        targets: {
+                                            "chrome": "58",
+                                            "ie": "11"
+                                        },
+                                        // 指定corejs的版本
+                                        "corejs": "3",
+                                        // 使用corejs的方式
+                                        "useBuiltIns": "usage"  // "usage"表示按需加载
+                                    }
+                                ]
+                            ]
+                        }
+                    },
+                    'ts-loader'
+                ]
+            }
+        ]
+    }
+    ```
+    + 生成的bundle.js前面含箭头函数
+      - webpack.config.js
+        ```
+        output : {
+          // 告诉webpack不使用箭头函数
+          environment: {
+            arrowFunction: false
+          }
+        }
+        ```
+## 六、面向对象
+### 1.类
+  + 使用class关键字来定义类
+    - 属性
+      * 直接定义的属性是**实例属性**，需要通过对象的实例（new）去访问
+      * 使用static开头的属性是**静态属性（类属性）**，可以直接通过类去访问
+      * readonly开头的属性表示一个只读的属性，无法修改
+      * 顺序：static readonly
+    - 方法
+      * 方法名() {}
+      * 实例方法
+      * 类方法 
+### 2.构造函数和this
+  ```
+  class Dog {
+    name: string;
+    age: number;
+    // constructor 被称为构造函数
+    // 构造函数会在对象创建时调用
+    constructor(name: string, age: number) {
+      // 在实例方法中，this就表示当前的实例
+      // 在构造函数中当前对象就是当前新建的那个对象
+      // 可以通过this向新建的对象中添加属性
+      this.name = name;
+      this.age = age;
+    }
+    bark(){
+      // 在方法中可以通过this来表示当前调用方法的对象
+      console.log(this.name);
+    }
+  }
+  ```
+### 3.继承
+  + 子类覆盖掉父类方法的形式，称为方法重写  
+### 4.super关键字
+  + 如果在子类中写了构造函数，在子类构造函数中必须对父类的构造函数进行调用
+### 5.抽象类
+  + 以abstract开头的类是抽象类，不能用来创建对象
+  + 抽象类就是专门用来被继承的类
+  + 抽象方法使用abstract开头，没有方法体
+  + 抽象方法只能定义在抽象类中，子类必须对抽象方法进行重写
+  + ```abstract sayHello():void;```
+### 6.接口
+  + 接口用来定义一个类结构，用来定义一个类中应该包含哪些属性和方法
+  + 接口也可以当成类型声明去使用
+  + 接口可以在定义类的时候去限制类的结构
+    - 接口中的所有属性都不能有实际值
+    - 在接口中所有的方法都是抽象方法
+    - 接口只定义对象的结构，而不考虑实际值
+  ```
+  (function(){
+    interface myInterface{
+        name: string;
+        age: number;
+    }
+    interface myInterface{
+        gender: string;
+        sayHello():void;
+    }
+    const obj: myInterface = {
+        name: 'sss',
+        age: 11,
+        gender: '男',
+        sayHello(){}
+    }
+  })();
+  ```
+  + 定义类时，可以使类去实现一个接口，即：使类满足接口的要求
+  + ```class MyClass implements myInterface{}```
+### 7.属性的封装
