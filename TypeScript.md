@@ -243,5 +243,55 @@
     ```
   + package.json中，scripts下加`"build": "webpack"`
 ### 2.
-  + `npm i -D html-webpack-plugin`：自动生成html文件
-  + 在webpack.config.js中引入html插件：`const HTMLWebpackPlugin = require('html-webpack-plugin');`
+  + `npm i -D html-webpack-plugin`：自动生成html文件（dist目录下）
+  + 在webpack.config.js中
+    - 引入html插件：`const HTMLWebpackPlugin = require('html-webpack-plugin');`
+    - 配置webpack插件：
+      ```
+      plugins: [
+        new HTMLWebpackPlugin(),
+      ]
+      ```
+  + 修改网页模板
+    - 在webpack.config.js中
+      ```
+      plugins: [
+        new HTMLWebpackPlugin(
+          options: {
+            title: "自定义title"
+          }
+        ),
+      ]
+      ```
+      * ？ts报错了
+    - 设置网页模板
+      ```
+      plugins: [
+        new HTMLWebpackPlugin(
+          options: {
+            template: "./src/index.html"
+          }
+        ),
+      ]
+      ```  
+ ### 3. 
+  + `npm i -D webpack-dev-server`：内置服务器
+  + package.json中，scripts下加`"start": "webpack serve --open chrome.exe"`
+ ### 4.
+  + `npm i -D clean-webpack-plugin`：清除dist目录
+  + 在webpack.config.js中
+    - 引入clean插件：`const { CleanWebpackPlugin } = require('clean-webpack-plugin');`
+    - 配置webpack插件
+      ```
+      plugins: [
+        new CleanWebpackPlugin()
+      ]
+      ```
+  ### 5.
+   + 在webpack.config.js中设置引用模块
+     ```
+     resolve: {
+      extensions: ['.ts', '.js']
+     }
+     ```
+     
