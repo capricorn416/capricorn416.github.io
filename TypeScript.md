@@ -444,7 +444,6 @@
     })();
     ```
     ```
-    ```
     (function(){
       class Person{
         private name: string;
@@ -467,4 +466,53 @@
       console.log(per.name);
     })();
     ```
+  + protected 受保护的属性，只能在当前类和当前类的子类中访问修改
+  + 语法糖
+    ```
+    class Person{
+      constructor(public name: string, public age: number){
+      }
+    }
+    ```
+### 8.泛型
+  + 在定义函数或是类时，如果遇到类型不明确就可以使用泛型
+  + 定义
+    ```
+    function fn<T>(a: T): T{
+      return a;
+    }
+    ```
+    ```
+    // 泛型可以同时指定多个
+    function fn2<T, K>(a: T, b: K): T{
+      return a;
+    }
+    ``` 
+    ```
+    interface Inter{
+      length: number;
+    }
+    // 泛型T是Inter实现类（子类）
+    function fn3<T extends Inter>(a: T): number{
+      return a.length;
+    }
+    ``` 
+    ```
+    class Myclass<T>{
+      name: T;
+      constructor(name: T) {
+        this.name = name;
+      }
+    }
+    ```
+  + 使用
+    ```
+    // 可以直接调用
+    fn(10); // 不指定泛型，ts可以自动对类型进行推断
     
+    fn<string>('hello'); // 指定泛型
+    ```
+    ```
+    const mc1 = new MyClass('孙悟空');
+    const mc2 = new MyClass<string>('猪八戒');
+    ```
