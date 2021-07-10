@@ -131,4 +131,45 @@
       let m: myType;
       ```
 ## 四、TS编译选项
-  
+  + 自动编译
+    - 使用-w指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译
+    - ```tsc xxx.ts -w```
+  + 自动编译整个项目
+    - `tsc`：将当前项目下的所有ts文件编译为js文件
+      * 需要在根目录下创建ts的配置文件tsconfig.json
+    - `tsc -w`：监视所有ts文件
+  + tsconfig.json配置选项
+    - include
+      * 用来指定哪些ts文件目录需要被编译
+      * 路径：\**表示任意目录，\*表示任意文件
+      ```
+      {
+        "include": [
+          "./src/**/*"
+        ]
+      }
+      ```
+    - exclude
+      * 不需要被编译的文件目录
+      * 默认值： `["node_modules","bower_components","jspm_packages"]
+      ```
+      {
+        "exclude": [
+          "./src/hello/**/*"
+        ]
+      }
+      ```
+    - extends
+      * 继承配置文件
+    - files
+      * 指定被编译的文件的列表
+      ```
+      {
+        "files": [
+          "core.ts",
+          "sys.ts"
+        ]
+      }
+      ```
+  + tsconfig.json
+ 
