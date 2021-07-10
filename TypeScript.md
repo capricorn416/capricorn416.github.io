@@ -256,22 +256,18 @@
     - 在webpack.config.js中
       ```
       plugins: [
-        new HTMLWebpackPlugin(
-          options: {
-            title: "自定义title"
-          }
-        ),
+        new HTMLWebpackPlugin({
+          title: "自定义title"
+        }),
       ]
       ```
-      * ？ts报错了
+      
     - 设置网页模板
       ```
       plugins: [
-        new HTMLWebpackPlugin(
-          options: {
-            template: "./src/index.html"
-          }
-        ),
+        new HTMLWebpackPlugin({
+          template: "./src/index.html"
+        })
       ]
       ```  
  ### 3. 
