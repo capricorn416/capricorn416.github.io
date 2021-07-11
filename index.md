@@ -753,7 +753,7 @@ npm install
   ```
   - 以上使用的webpack是全局的webpack
   - 但是一个项目往往依赖特定的webpack版本，全局的版本可能和这个项目的webpack版本不一致，导致打包出现问题。所以通常一个项目，都有自己局部的webpack
-+ 
++ plus
   - ①项目中需要安装自己局部的webpack
     ```
     npm install webpack@3.6.0 --save-dev
@@ -774,93 +774,66 @@ npm install
       - 首先，会寻找本地的node_modules/.bin路径中对应的命令
       - 如果没有找到，会去全局的环境变量中寻找
 ### 二、loader
-loader是webpack中一个非常核心的概念
-
-在我们之前的实例中，我们主要是用webpack来处理我们写的js代码，并且webpack会自动处理js之间相关的依赖
-
-但是，在开发中我们不仅仅有基本的js代码处理，我们也需要加载css、图片，也包括一些高级的将ES6转成ES5代码，将TypeScript转成ES5代码，将scss、less转成css，将.jsx、.vue文件转成js文件等等
-
-对于webpack本身的能力来说，对于这些转化是不支持的
-
-所有我们需要给webpack扩展对应的loader
-
-大部分loader我们都可以在[webpack](https://webpack.docschina.org/)的官网中找到，并且学习对应的用法
-
-#### loader使用过程
++ loader是webpack中一个非常核心的概念
++ 在我们之前的实例中，我们主要是用webpack来处理我们写的js代码，并且webpack会自动处理js之间相关的依赖
++ 但是，在开发中我们不仅仅有基本的js代码处理，我们也需要加载css、图片，也包括一些高级的将ES6转成ES5代码，将TypeScript转成ES5代码，将scss、less转成css，将.jsx、.vue文件转成js文件等等
++ 对于webpack本身的能力来说，对于这些转化是不支持的
++ 所以我们需要给webpack扩展对应的loader
++ 大部分loader我们都可以在[webpack](https://webpack.docschina.org/)的官网中找到，并且学习对应的用法
+#### 1. loader使用过程
 ①通过npm安装需要使用的loader
 
 ②在webpack.config.js中的module关键字下进行配置
 
-#### css文件的配置
-`css-loader`只负责加载css文件，但是并不负责将css具体样式嵌入到文档中
-
-`style-loader`负责将样式添加到DOM中
-
-*style-loader需要放在css-loader的前面。
-
-*因为webpack在读取使用的loader的过程中，是按照**从右向左**的顺序读取的。
-
-在`main.js`（入口文件）中引用：
-```
-require('./css/normal.css')
-```
-
-#### less文件的处理
-
-#### 图片文件的处理
+#### 2. css文件的配置
++ `css-loader`只负责加载css文件，但是并不负责将css具体样式嵌入到文档中
++ `style-loader`负责将样式添加到DOM中
+  - style-loader需要放在css-loader的前面
+  - 因为webpack在读取使用的loader的过程中，是按照**从右向左**的顺序读取的。
++ 在`main.js`（入口文件）中引用：
+  ```
+  require('./css/normal.css')
+  ```
+#### 3. less文件的处理
+#### 4. 图片文件的处理
 ```css
 body {
 	background: url(../imgs/1.jpg)
 }
 ```
-安装`url-loader`
-
-##### ①当加载的图片小于`limit`（默认8196 => 8kb）时，会将图片编译成`base64`字符串形式
-
-##### ②当加载的图片大于`limit`时，需要安装`file-loader`模块进行加载
-
-再次打包，就会发现`dist`文件夹下多了一个图片文件
-
-（webpack自动帮助我们生成一个非常长的名字，这是一个32位hash值，目的是防止名字重复
-
-但是，真实开发中，我们可能对打包的图片名字有一定的要求
-
-比如，将所有的图片放在一个文件夹中，跟上图片原来的名称，同时也要防止重复）
-
-```webpack.config.js
-options: {
-	limit: 8192,
-	name: 'img/[name].[hash:8].[ext]'
-}
-//img：文件要打包到的文件夹
-//name：获取图片原来的名字，放在该位置
-//hash:8：为了防止图片名称冲突，依然使用hash，但是我们只保留8位
-//ext：使用图片原来的扩展名
-```
-
-图片没有显示 => 我们整个程序是打包在dist文件夹下的，所以我们需要在路径下再添加一个dist/：
-
-##### 在`webpack.config.js`中的output下进行配置
-```
-module.exports = {
-	...
-	output: {
-		...
-		publicPath: 'dist/'
-	}
-}
-```
-
-#### ES6转ES5的babel
-如果仔细阅读webpack打包的js文件，发现写的ES6语法并没有转成ES5，那么就意味着可能一些对ES6还不支持的浏览器没有办法很好的运行代码
-
-如果希望将ES6的语法转成ES5，那么就需要使用babel
-
-而在webpack中，直接使用babel对应的loader就可以了
-
-配置webpack.config.js文件
-
-#### 配置Vue
++ 安装`url-loader`
+  - 当加载的图片小于`limit`（默认8196 => 8kb）时，会将图片编译成`base64`字符串形式
+  - 当加载的图片大于`limit`时，需要安装`file-loader`模块进行加载
++ 再次打包，就会发现`dist`文件夹下多了一个图片文件
+  - webpack自动帮助我们生成一个非常长的名字，这是一个32位hash值，目的是防止名字重复
+  - 但是，真实开发中，我们可能对打包的图片名字有一定的要求
+    * 比如，将所有的图片放在一个文件夹中，跟上图片原来的名称，同时也要防止重复
+  ```webpack.config.js
+  options: {
+    limit: 8192,
+    name: 'img/[name].[hash:8].[ext]'
+  }
+  //img：文件要打包到的文件夹
+  //name：获取图片原来的名字，放在该位置
+  //hash:8：为了防止图片名称冲突，依然使用hash，但是我们只保留8位
+  //ext：使用图片原来的扩展名
+  ```
++ 图片没有显示 => 我们整个程序是打包在dist文件夹下的，所以我们需要在路径下再添加一个dist/：
+  - 在`webpack.config.js`中的output下进行配置
+  ```
+  module.exports = {
+    output: {
+      ...
+      publicPath: 'dist/'
+    }
+  }
+  ```
+#### 5. ES6转ES5的babel
++ 如果仔细阅读webpack打包的js文件，发现写的ES6语法并没有转成ES5，那么就意味着可能一些对ES6还不支持的浏览器没有办法很好的运行代码
++ 如果希望将ES6的语法转成ES5，那么就需要使用babel
++ 而在webpack中，直接使用babel对应的loader就可以了
++ 配置webpack.config.js文件
+#### 6. 配置Vue
 ```
 npm install vue --save
 ```
