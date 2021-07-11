@@ -191,7 +191,7 @@
 ```
 #### 父子组件通信
 ![image](https://img.imgdb.cn/item/601508053ffa7d37b3ce7091.png)
-##### 1.父组件通过`props`向子组件传递数据
+1. 父组件通过`props`向子组件传递数据
 ```
 <div id='app'>
   <cpn v-bind:cmovies='movies' :cmessage='message'></cpn>
@@ -277,7 +277,7 @@
 + 组件模板必须包含一个根元素(比如用外层div包起来)
 + html不支持驼峰命名（不分大小写），可以转换成短线连接
 
-##### 2.子组件通过`$emit()`事件向父组件发送消息
+2. 子组件通过`$emit()`事件向父组件发送消息
 + v-on不仅可以用于监听DOM事件，也可以用于组件间的自定义事件
   - 自定义事件的流程：
     * 在子组件内，通过`$emit()`来触发事件
@@ -328,7 +328,7 @@
   })
 </script>
 ```
-##### 结合双向绑定
+3. 结合双向绑定
 ```
 <div id='app'>
   <cpn :number='num' @numchange='numchange'/>
