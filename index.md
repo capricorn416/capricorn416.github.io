@@ -711,22 +711,15 @@ console.log(info.flag)
 + 从本质上来讲，webpack是一个现代的JavaScript应用的静态**模块** **打包**工具
 + webpack其中一个核心就是让我们可能进行模块化开发，并且会帮助我们处理模块间的依赖关系
   - JavaScript、CSS、图片、json文件等等在webpack中都可以被当做模块来使用
-
-*webpack为了可以正常运行，必须依赖node环境
-
-*node环境为了可以正常执行很多代码，必须其中包含各种依赖的包 => npm工具(node packages manager)
-
++ webpack为了可以正常运行，必须依赖node环境
+  - node环境为了可以正常执行很多代码，必须其中包含各种依赖的包 => npm工具(node packages manager)
 ### 一、webpack的使用
-#### 准备工作
-**`dist`文件夹：用于存放之后打包的文件**
-
-**`src`文件夹：用于存放我们写的源文件**
-
-`main.js`：项目的入口文件
-
-mathUtils.js：定义了一些数学工具函数，可以在其他地方引用，并且使用
-
-`index.html`：浏览器打开展示的首页html
+#### 1.准备工作
++ **`dist`文件夹：用于存放之后打包的文件**
++ **`src`文件夹：用于存放我们写的源文件**
++ `main.js`：项目的入口文件
+  - mathUtils.js：定义了一些数学工具函数，可以在其他地方引用，并且使用
++ `index.html`：浏览器打开展示的首页html
 
 #### js文件的打包
 ```
