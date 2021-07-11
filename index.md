@@ -714,24 +714,22 @@ console.log(info.flag)
 + webpack为了可以正常运行，必须依赖node环境
   - node环境为了可以正常执行很多代码，必须其中包含各种依赖的包 => npm工具(node packages manager)
 ### 一、webpack的使用
-#### 1.准备工作
+#### 1. 准备工作
 + **`dist`文件夹：用于存放之后打包的文件**
 + **`src`文件夹：用于存放我们写的源文件**
 + `main.js`：项目的入口文件
   - mathUtils.js：定义了一些数学工具函数，可以在其他地方引用，并且使用
 + `index.html`：浏览器打开展示的首页html
 
-#### js文件的打包
+#### 2. js文件的打包
 ```
 webpack ./src/main.js ./dist/bundle.js
 ```
-打包后会在dist文件夹下，生成一个bundle.js文件
-
-bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个js文件，我们只需要将这个js文件在index.html中引入即可
-
-```
-<script src='./dist/bundle.js'></script>
-```
++ 打包后会在dist文件夹下，生成一个bundle.js文件
+  - bundle.js文件，是webpack处理了项目直接文件依赖后生成的一个js文件，我们只需要将这个js文件在index.html中引入即可
+  ```
+  <script src='./dist/bundle.js'></script>
+  ```
 #### webpack的配置
 `package.json`：通过`npm init`生成的，npm包管理的文件
 
