@@ -730,33 +730,30 @@ webpack ./src/main.js ./dist/bundle.js
   ```
   <script src='./dist/bundle.js'></script>
   ```
-#### webpack的配置
-`package.json`：通过`npm init`生成的，npm包管理的文件
+#### 3. webpack的配置
++ `package.json`：通过`npm init`生成的，npm包管理的文件
 
 ```npm install```
 
-可以将webpack的入口和出口参数写到配置中，在运行时直接读取:
++ 可以将webpack的入口和出口参数写到配置中，在运行时直接读取:
+  - 创建一个`webpack.config.js`文件
+  ```
+  const path = require ('path')	//依赖node里的包
 
-创建一个`webpack.config.js`文件
-```
-const path = require ('path')	//依赖node里的包
-
-module.exports = {
-	//入口：可以是字符串/数组/对象
-	entry: './src/main.js',
-	//出口：通常是一个对象，里面至少包含两个重要属性，path和filename
-	output: {
-		path: path.resolve(__dirname,'dist'),	//绝对路径 => 动态地获取路径
-		filename: 'bundle.js'
-	}
-}
-```
-以上使用的webpack是全局的webpack
-
-但是一个项目往往依赖特定的webpack版本，全局的版本可能和这个项目的webpack版本不一致，导致打包出现问题
-
-所以通常一个项目，都有自己局部的webpack
-
+  module.exports = {
+    //入口：可以是字符串/数组/对象
+    entry: './src/main.js',
+	
+    //出口：通常是一个对象，里面至少包含两个重要属性，path和filename
+    output: {
+      path: path.resolve(__dirname,'dist'),	//绝对路径 => 动态地获取路径
+      filename: 'bundle.js'
+    }
+  }
+  ```
+  - 以上使用的webpack是全局的webpack
+  - 但是一个项目往往依赖特定的webpack版本，全局的版本可能和这个项目的webpack版本不一致，导致打包出现问题。所以通常一个项目，都有自己局部的webpack
+  - 
 ①项目中需要安装自己局部的webpack
 ```
 npm install webpack@3.6.0 --save-dev
