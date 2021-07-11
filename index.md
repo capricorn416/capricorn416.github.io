@@ -732,9 +732,9 @@ webpack ./src/main.js ./dist/bundle.js
   ```
 #### 3. webpack的配置
 + `package.json`：通过`npm init`生成的，npm包管理的文件
-
-```npm install```
-
+```
+npm install
+```
 + 可以将webpack的入口和出口参数写到配置中，在运行时直接读取:
   - 创建一个`webpack.config.js`文件
   ```
@@ -753,11 +753,10 @@ webpack ./src/main.js ./dist/bundle.js
   ```
   - 以上使用的webpack是全局的webpack
   - 但是一个项目往往依赖特定的webpack版本，全局的版本可能和这个项目的webpack版本不一致，导致打包出现问题。所以通常一个项目，都有自己局部的webpack
-  - 
-①项目中需要安装自己局部的webpack
-```
-npm install webpack@3.6.0 --save-dev
-```
++ ①项目中需要安装自己局部的webpack
+  ```
+  npm install webpack@3.6.0 --save-dev
+  ```
 *在终端敲```webpack```命令，用的都是全局的
 
 ②通过```node_modules/.bin/webpack```启动webpack打包
