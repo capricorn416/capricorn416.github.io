@@ -856,11 +856,9 @@ module.exports = {
 ```
 
 #### 创建Vue时template和el关系
-el用于指定Vue要管理的DOM，可以帮助解析其中的指令、事件监听等等；
-
-而如果Vue实例中同时指定了template，那么template模板的内容会替换掉挂载的对应el的模板
-
-这样做就不需要在以后的开发中再次操作index.html，只需要在template中写入对应的标签即可
++ el用于指定Vue要管理的DOM，可以帮助解析其中的指令、事件监听等等；
++ 而如果Vue实例中同时指定了template，那么template模板的内容会替换掉挂载的对应el的模板
++ 这样做就不需要在以后的开发中再次操作index.html，只需要在template中写入对应的标签即可
 ```
 new Vue({
 	el: '#app',
@@ -913,47 +911,37 @@ new Vue({
 	}
 })
 ```
-安装`vue-loader`和`vue-template-compiler`
-
-修改webpack.config.js的配置文件
++ 安装`vue-loader`和`vue-template-compiler`
++ 修改webpack.config.js的配置文件
 ```
 {
 	test: /\.vue$/,
 	use: ['vue-loader']
 }
 ```
-省略js、css、vue的后缀名
++ 省略js、css、vue的后缀名
+  - 修改webpack.config.js的配置文件
 
-修改webpack.config.js的配置文件
-
-```
-module.exports = {
-	resolve: {
-		extensions: ['.js','.css','.vue']
-	}
-}
-```
-
+  ```
+  module.exports = {
+    resolve: {
+      extensions: ['.js','.css','.vue']
+    }
+  }
+  ```
 ### 三、plugin
 #### plugin是什么？
-
-plugin是插件的意思，通常是用于对某个现有的架构进行扩展
-
-webpack中的插件，就是对webpack现有功能的各种扩展，比如打包优化，文件压缩等等
-
++ plugin是插件的意思，通常是用于对某个现有的架构进行扩展
++ webpack中的插件，就是对webpack现有功能的各种扩展，比如打包优化，文件压缩等等
 #### loader和plugin区别
-
-loader主要用于转换某些类型的模块，它是一个转换器
-
-plugin是插件，它是对webpack本身的扩展，是一个扩展器
-
++ loader主要用于转换某些类型的模块，它是一个转换器
++ plugin是插件，它是对webpack本身的扩展，是一个扩展器
 #### plugin的使用过程
-
 步骤一：通过npm安装需要使用的plugins(某些webpack已经内置的插件不需要安装)
 
 步骤二：在webpack.config.js中的plugins中配置插件
 
-`BannerPlugin`：为打包的文件添加版权声明，属于webpack自带的插件
++ `BannerPlugin`：为打包的文件添加版权声明，属于webpack自带的插件
 
 ```
 const webpack = require('webpack')
