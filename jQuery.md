@@ -1,6 +1,6 @@
 # jQuery
 ## 一、jQuery的基本使用
-### 1.入口函数
+#### 1. 入口函数
 ```
 $(function() {
 
@@ -13,10 +13,10 @@ $(document).ready(function(){
 ```
 + 等着DOM结构渲染完毕即可执行内部代码，不必等到所有外部资源加载完成
 + 相当于原生js中的DOMContentLoaded
-### 2.$
+#### 2. $
 + $是jQuery的别称，可以使用jQuery代替$
 + $是jQuery的顶级对象，相当于原生js中的window
-### 3.jQuery对象和DOM对象
+#### 3. jQuery对象和DOM对象
 + DOM对象：用原生js获取过来的对象
 + jQuery对象：用jQuery方式获取过来的对象
   - 本质： 通过$把DOM元素进行了封装（伪数组形式存储）
@@ -28,7 +28,7 @@ $(document).ready(function(){
     * `$('div')[index]` index是索引号
     * `$('div').get[index]` index是索引号
 ## 二、jQuery常用API
-### （1）jQuery选择器
+### (1) jQuery选择器
 #### 1. jQuery选择器
 + 基础选择器
   - `$("选择器")` 里面选择器直接写css选择器即可，但是要加引号
@@ -61,5 +61,25 @@ $("button").click(function() {
   $(this).siblings("button").css("background", "");
 });
 ```
-#### 6.链式编程
++ 获得索引号
+`var index = $(this).index();`
+#### 6. 链式编程
 `$(this).css("color", "pink").siblings().css("color", "");`
+
+### (2) jQuery样式操作
+#### 1. 操作css方法
++ 参数只写属性名，则是返回属性值
+  - `$(this).css('color');`
++ 参数是属性名，属性值，逗号分隔，是设置一组样式
+  - 属性必须加引号，值如果是数字可以不用跟单位和引号
++ 参数可以是对象形式，设置多组样式
+  - 属性名和属性值用冒号隔开
+  - 属性可以不加引号（驼峰命名法），值如果是数字可以不用跟单位和引号
+#### 2. 设置类样式方法
++ `addClass()` 添加类
+  - `$("div").addClass("");`
+  - 注意操作类里面的参数不要加点
++ `removeClass()` 删除类
++ `toggleClass()` 切换类
++ 原生js中className会覆盖元素原先里面的类名
++ jQuery里面类操作只是对指定类进行操作，不影响原先的类名
