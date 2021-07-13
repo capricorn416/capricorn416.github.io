@@ -28,6 +28,7 @@ $(document).ready(function(){
     * `$('div')[index]` index是索引号
     * `$('div').get[index]` index是索引号
 ## 二、jQuery常用API
+### (1)jQuery选择器
 ### 1.jQuery选择器
 + 基础选择器
   - `$("选择器")` 里面选择器直接写css选择器即可，但是要加引号
@@ -45,12 +46,20 @@ $(document).ready(function(){
 + `:odd` 获取到的元素中，选择索引号为奇数的元素
 + `:even` 获取到的元素中，选择索引号为偶数的元素
 ### 4.jQuery筛选方法
-+ parent() 父级（亲爸爸）
-+ children(selector) 最近一级（亲儿子）
-+ find(selector) 后代
-+ siblings(selector) 兄弟节点，不包括自己本身
-+ nextAll(\[expre]) 当前元素之后的所有同辈元素
-+ prevtAll(\[expre]) 当前元素之前的所有同辈元素
-+ eq(index)
-+ hasClass(class) 检查当前的元素是否含有某个特定的类，如果有，则返回true
++ `parent()` 父级（亲爸爸）
++ `children(selector)` 最近一级（亲儿子）
++ `find(selector)` 后代
++ `siblings(selector)` 兄弟节点，不包括自己本身
++ `nextAll(\[expre])` 当前元素之后的所有同辈元素
++ `prevtAll(\[expre])` 当前元素之前的所有同辈元素
++ `eq(index)`
++ `hasClass(class)` 检查当前的元素是否含有某个特定的类，如果有，则返回true
 ### 5.排他思想
+```
+$("button").click(function() {
+  $(this).css("background", "pink");
+  $(this).siblings("button").css("background", "");
+});
+```
+### 6.链式编程
+`$(this).css("color", "pink").siblings().css("color", "");`
