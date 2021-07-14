@@ -1,6 +1,6 @@
 # jQuery
 ## 一、jQuery的基本使用
-#### (1) 入口函数
+### (1) 入口函数
 ```
 $(function() {
 
@@ -13,13 +13,13 @@ $(document).ready(function(){
 ```
 + 等着DOM结构渲染完毕即可执行内部代码，不必等到所有外部资源加载完成
 + 相当于原生js中的DOMContentLoaded
-#### (2) $
+### (2) $
 + $是jQuery的别称，可以使用jQuery代替$
 + $是jQuery的顶级对象，相当于原生js中的window
-#### (3) jQuery对象和DOM对象
+### (3) jQuery对象和DOM对象
 + DOM对象：用原生js获取过来的对象
 + jQuery对象：用jQuery方式获取过来的对象
-  - 本质： 通过$把DOM元素进行了封装（伪数组形式存储）
+  - 本质： 通过$把DOM元素进行了封装（**伪数组**形式存储）
   - `$('div')`
 + jQuery对象只能使用jQuery方法，DOM对象则使用原生js的属性和方法
 + DOM对象与jQuery对象之间是可以相互转换的
@@ -27,7 +27,13 @@ $(document).ready(function(){
   - jQuery对象转换为DOM对象
     * `$('div')[index]` index是索引号
     * `$('div').get[index]` index是索引号
- 
+### (4) jQuery冲突问题
+#### 1. 释放jQuery的使用权
++ `jQuery.noConflict();`
+  - 释放操作必须在编写其他jQuery代码之前，释放之后就不能再使用$，改为使用jQuery
+#### 2. 自定义访问符号
++ `var nj = jQuery.noConflict();`
+
 ## 二、jQuery常用API
 ### (1) jQuery选择器
 #### 1. jQuery选择器
@@ -161,7 +167,7 @@ $("button").click(function() {
   })
   ```
 + `$.each(object, function(index, element) {})`
-  - 可用于遍历任何对象，主要用于数据处理，比如数组，对象
+  - 可用于遍历任何对象，主要用于数据处理，比如数组,伪数组，对象
   - 遍历对象时，index输出的是属性名，element输出的是属性值
 #### 2. 创建元素
 + `$("")`
@@ -248,4 +254,26 @@ $("button").click(function() {
     * 浅拷贝是把被拷贝
   - target：要拷贝的目标对象
   - object1：待拷贝到第一个对象的对象
-  
+
+
+## 五、jQuery静态方法
+### (1) each()
++ `$.each(object, function(index, element) {})`
+  - 默认的返回值：遍历谁就返回谁
+  - 不支持在回调函数中对遍历的数组进行处理
+### (2) map()
++ `$.map(arr, function(value, index)) {}`
+  - 可以遍历伪数组
+  - 默认的返回值是一个空数组
+  - 可以在回调函数中通过return对遍历的数组进行处理，然后生成一个新的数组返回
+### (3) trim()
++ `$.trim(string)`
+  - 返回去除两端空格之后的字符串
+### (4) isWindow()
++ `$.isWindow(obj)`
+  - 判断传入的对象是否是window对象
+  - 返回值是布尔值
+### (5) isArray()
++ `$.isArray(arr)`
+  - 判断传入的对象是否是真数组
+  - 返回值是布尔值
