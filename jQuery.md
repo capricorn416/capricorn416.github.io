@@ -179,3 +179,16 @@ $("button").click(function() {
 + `element.empty()` 删除匹配的元素集合中所有的子节点
 + `element.html("")` 清空匹配的元素内容
   
+### (7) jQuery尺寸、位置操作
+#### 1. jQuery尺寸
++ `width()/height()` 只算width/height
++ `innerWidth()/innerHeight()` 包含padding
++ `outerWidth()/outHeight()` 包含padding、border
++ `outerWidth(true)/outerHeight(true)` 包含padding、border、margin
++ 如果参数为空，则是获取相应值，返回的是数字型
++ 如果参数为数字，则是修改相应值，参数可以不写单位
+#### 2. jQuery位置
++ `offset()` 设置或返回被选元素相对于**文档**的偏移坐标，跟父级没有关系
+  - 有2个属性`offset().top`和`offset().left`
+  - 可以设置元素的偏移：`offset({top: 10, left: 30})`
++ `position()` 返回被选元素相对于**带有定位的父级**偏移坐标，如果父级都没有定位，则以文档为准
