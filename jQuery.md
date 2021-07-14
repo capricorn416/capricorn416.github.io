@@ -215,4 +215,6 @@ $("button").click(function() {
     $("div").on("mouseenter mouseleave", function() {})
     ```
   - 可以事件委派：把原来加给子元素身上的事件绑定在父元素身上
+    * `$("ul").on("click", "li", function() {});`
+  - 动态创建的元素，click()没有办法绑定事件，on()可以给后来动态生成的元素绑定事件
 ### (3) jQuery事件对象
