@@ -121,7 +121,8 @@ $("button").click(function() {
 #### 6. 自定义动画
   - `animate(params, [speed], [easing], [fn])`
     * params: 想要更改的样式属性，以对象形式传递，必须写。属性名可以不用带引号（驼峰命名法）
-
+    * 是元素做动画
+      - `$("body, html").animate()`而不是`$(document)`
 ### (4) jQuery属性操作
 #### 1. 设置或获取元素固有属性值
 + `prop("属性名")` 获取属性
@@ -192,3 +193,26 @@ $("button").click(function() {
   - 有2个属性`offset().top`和`offset().left`
   - 可以设置元素的偏移：`offset({top: 10, left: 30})`
 + `position()` 返回被选元素相对于**带有定位的父级**偏移坐标，如果父级都没有定位，则以文档为准
+  - 只能获取不能设置
++ `scrollTop()/scrollLeft()` 设置或获取元素被卷去的头部和左侧
+
+## 三、jQuery事件
+### (1) jQuery事件注册
++ 单个事件注册
+  - `element.事件(function() {})`
+### (2) jQuery事件处理
++ `on()` 在匹配元素上绑定一个或多个事件
+  - `element.on(events, [selector], fn)`
+    * events：一个或多个用空格分隔的事件类型
+    * selector：元素的子元素选择器
+    ```
+    $("div").on({
+      mouseenter: function() {},
+      click: function() {}
+    })
+    ```
+    ```
+    $("div").on("mouseenter mouseleave", function() {})
+    ```
+  - 可以事件委派：把原来加给子元素身上的事件绑定在父元素身上
+### (3) jQuery事件对象
