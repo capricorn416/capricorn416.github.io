@@ -45,6 +45,7 @@ $(document).ready(function(){
 + `:eq(index)` 获取到的元素中，选择索引号为index的元素（index从0开始）
 + `:odd` 获取到的元素中，选择索引号为奇数的元素
 + `:even` 获取到的元素中，选择索引号为偶数的元素
++ `:checked` 查找被选中的表单元素
 #### 4. jQuery筛选方法
 + `parent()` 父级（亲爸爸）
 + `children(selector)` 最近一级（亲儿子）
@@ -132,3 +133,16 @@ $("button").click(function() {
 + `data("name", "value")` 附加数据
 + `data("name")` 获取数据 
 + 可以读取H5自定义属性data-index：`data("index")`，返回的是数字型
+
+### (5) jQuery内容文本值
+#### 1. 普通元素内容
++ `html()` 获取元素的内容
++ `html("")` 设置元素的内容
+#### 2. 普通元素文本内容
++ `text()` 获取元素的文本内容
++ `text("")` 设置元素的文本内容
+#### 3. 表单值
++ `val()`
++ `val("")`
+
+### (6) 
