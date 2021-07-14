@@ -277,3 +277,8 @@ $("button").click(function() {
 + `$.isArray(arr)`
   - 判断传入的对象是否是真数组
   - 返回值是布尔值
+### (5) isFunction()
++ `$.isFunction(fn)`
+  - 判断传入的对象是否是函数
+  - jQuery框架本质上是一个函数
+  - 返回值是布尔值
