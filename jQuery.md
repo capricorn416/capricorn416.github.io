@@ -136,7 +136,7 @@ $("button").click(function() {
 + `data("name")` 获取数据 
 + 可以读取H5自定义属性data-index：`data("index")`，返回的是数字型
 
-### (5) jQuery内容文本值
+### (5) jQuery文本属性值
 #### 1. 普通元素内容
 + `html()` 获取元素的内容
 + `html("")` 设置元素的内容
@@ -148,4 +148,19 @@ $("button").click(function() {
 + `val("")`
 #### 4. 保留小数
 + `toFixed(number)`
-### (6) 
+
+### (6) jQuery元素操作
+#### 1. 遍历元素
++ `each(function(index, domEle) {})`
+  - domEle是每个DOM元素对象，不是jQuery对象 
+  ```
+  var arr = ["red", "green", "blue"];
+  $("div").each(function(i, domEle) {
+    $(domEle).css("color", arr[i]);
+  })
+  ```
++ `$.each(object, function(index, element) {})`
+  - 可用于遍历任何对象，主要用于数据处理，比如数组，对象
+  - 遍历对象时，index输出的是属性名，element输出的是属性值
+#### 3. 
+  
