@@ -1,6 +1,6 @@
 # jQuery
 ## 一、jQuery的基本使用
-#### 1. 入口函数
+#### (1) 入口函数
 ```
 $(function() {
 
@@ -13,10 +13,10 @@ $(document).ready(function(){
 ```
 + 等着DOM结构渲染完毕即可执行内部代码，不必等到所有外部资源加载完成
 + 相当于原生js中的DOMContentLoaded
-#### 2. $
+#### (2) $
 + $是jQuery的别称，可以使用jQuery代替$
 + $是jQuery的顶级对象，相当于原生js中的window
-#### 3. jQuery对象和DOM对象
+#### (3) jQuery对象和DOM对象
 + DOM对象：用原生js获取过来的对象
 + jQuery对象：用jQuery方式获取过来的对象
   - 本质： 通过$把DOM元素进行了封装（伪数组形式存储）
@@ -200,8 +200,10 @@ $("button").click(function() {
 ### (1) jQuery事件注册
 + 单个事件注册
   - `element.事件(function() {})`
+  
 ### (2) jQuery事件处理
-+ `on()` 在匹配元素上绑定一个或多个事件
+#### 1. `on()` 绑定事件
++ 在匹配元素上绑定一个或多个事件
   - `element.on(events, [selector], fn)`
     * events：一个或多个用空格分隔的事件类型
     * selector：元素的子元素选择器
@@ -214,7 +216,36 @@ $("button").click(function() {
     ```
     $("div").on("mouseenter mouseleave", function() {})
     ```
-  - 可以事件委派：把原来加给子元素身上的事件绑定在父元素身上
-    * `$("ul").on("click", "li", function() {});`
-  - 动态创建的元素，click()没有办法绑定事件，on()可以给后来动态生成的元素绑定事件
++ 可以事件委派：把原来加给子元素身上的事件绑定在父元素身上
+  - `$("ul").on("click", "li", function() {});`
++ 动态创建的元素，click()没有办法绑定事件，on()可以给后来动态生成的元素绑定事件
+#### 2. `off()` 解绑事件
++ `$("p").off();` 解绑p元素所有事件处理程序
++ `$("p").off("click");` 解绑p元素上面的点击事件
++ `$("ul").off("click", "li");` 解绑事件委托
+#### 3. `one()` 绑定只触发一次的事件
+#### 4. `trigger()` 自动触发事件
++ `element.click()`
++ `element.trigger("type")`
++ `element.triggerHandler("type")`
+  - 不会触发元素的默认行为
+  ```
+  $("div").on("click", function() {});
+  // $("div").click();
+  // $("div").trigger("click");
+  $("div").triggerHandler("click");
+  ```
 ### (3) jQuery事件对象
++ `element.on(events, [selector], function(event) {})`
++ `event.preventDefault()`或者`return false` 阻止默认行为
++ `event.stopPropagation()` 阻止冒泡
+
+## 四、jQuery其他方法
+### (1) jQuery拷贝对象
++ 如果想要把某个对象拷贝（合并）给另外一个对象使用，此时可以使用$.extend()方法
++ `$.extend([deep], target, object1, [objectN])`
+  - deep：默认为false，浅拷贝；true为深拷贝
+    * 浅拷贝是把被拷贝
+  - target：要拷贝的目标对象
+  - object1：待拷贝到第一个对象的对象
+  
