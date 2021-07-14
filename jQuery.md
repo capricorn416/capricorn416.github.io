@@ -51,8 +51,8 @@ $(document).ready(function(){
 + `children(selector)` 最近一级（亲儿子）
 + `find(selector)` 后代
 + `siblings(selector)` 兄弟节点，不包括自己本身
-+ `nextAll(\[expre])` 当前元素之后的所有同辈元素
-+ `prevtAll(\[expre])` 当前元素之前的所有同辈元素
++ `nextAll([expre])` 当前元素之后的所有同辈元素
++ `prevtAll([expre])` 当前元素之前的所有同辈元素
 + `eq(index)`
 + `hasClass(class)` 检查当前的元素是否含有某个特定的类，如果有，则返回true
 #### 5. 排他思想
