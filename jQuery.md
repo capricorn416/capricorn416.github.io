@@ -83,3 +83,43 @@ $("button").click(function() {
 + `toggleClass()` 切换类
 + 原生js中className会覆盖元素原先里面的类名
 + jQuery里面类操作只是对指定类进行操作，不影响原先的类名
+
+### (3) jQuery效果
+#### 1. 显示隐藏
+  - `show([speed, [easing], [fn]])` 显示
+    * 参数都可以省略，无动画直接显示
+    * speed: slow/normal/fast/表示动画时长的毫秒数值
+    * easing："swing"(默认)/"linear"
+    * fn：回调函数，在动画完成时执行的函数，每个元素执行一次
+  - `hide([speed, [easing], [fn]])` 隐藏
+  - `toggle([speed, [easing], [fn]])` 切换
+#### 2. 滑动
+  - `slideDown([speed, [easing], [fn]])` 下滑
+  - `slideUp([speed, [easing], [fn]])` 上滑
+  - `slideToggle([speed, [easing], [fn]])` 滑动切换
+#### 3. 事件切换
+  - `hover([over,] out)`
+    * over：鼠标移到元素上要触发的函数
+    * out：鼠标移出元素要触发的函数
+  - 如果只写一个函数，那么鼠标经过和离开都会触发这个函数
+#### 4. 动画队列及其停止排队方法
+  - 动画或效果队列
+    * 动画或者效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行
+  - 停止排队
+    * `stop()` 用于停止动画或效果
+    * 写到动画或者效果的前面，相当于停止结束上一次的动画
+#### 5. 淡入淡出
+  - `fadeIn([speed, [easing], [fn]])` 
+  - `fadeOut([speed, [easing], [fn]])`
+  - `fadeToggle([speed, [easing], [fn]])`
+  - `fadeTo(([speed, opacity, [easing], [fn]]))` 渐进方式调整到指定的不透明度
+    * opacity：透明度必须写，取值0~1之间
+    * speed：必须写
+#### 6. 自定义动画
+  - `animate(params, [speed], [easing], [fn])`
+    * params: 想要更改的样式属性，以对象形式传递，必须写。属性名可以不用带引号（驼峰命名法）
+
+### (4) jQuery属性操作
+#### 1. 设置或获取元素固有属性值
++ `prop("属性名")`
+ 
