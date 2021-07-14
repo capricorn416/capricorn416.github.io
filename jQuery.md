@@ -162,5 +162,14 @@ $("button").click(function() {
 + `$.each(object, function(index, element) {})`
   - 可用于遍历任何对象，主要用于数据处理，比如数组，对象
   - 遍历对象时，index输出的是属性名，element输出的是属性值
-#### 3. 
-  
+#### 2. 创建元素
++ `$("")`
+  - `var li = $("<li>我是后来创建的li</li>");`
+#### 3. 添加元素
++ 内部添加
+  - `element.append("内容")` 把内容放入匹配元素内部最后面
+  - `element.prepend("内容")` 把内容放入匹配元素内部最前面
++ 外部添加
+  - `element.after("内容")` 把内容放入目标元素后面
+  - `element.before("内容")` 把内容放入目标元素前面
+      
