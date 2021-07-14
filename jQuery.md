@@ -176,4 +176,6 @@ $("button").click(function() {
   - 外部添加元素，生成之后，它们是兄弟关系
 #### 4. 删除元素
 + `element.remove()` 删除匹配的元素（本身）
-      
++ `element.empty()` 删除匹配的元素集合中所有的子节点
++ `element.html("")` 清空匹配的元素内容
+  
