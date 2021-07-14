@@ -27,6 +27,7 @@ $(document).ready(function(){
   - jQuery对象转换为DOM对象
     * `$('div')[index]` index是索引号
     * `$('div').get[index]` index是索引号
+ 
 ## 二、jQuery常用API
 ### (1) jQuery选择器
 #### 1. jQuery选择器
@@ -48,6 +49,7 @@ $(document).ready(function(){
 + `:checked` 查找被选中的表单元素
 #### 4. jQuery筛选方法
 + `parent()` 父级（亲爸爸）
++ `parents(selector)` 指定祖先元素
 + `children(selector)` 最近一级（亲儿子）
 + `find(selector)` 后代
 + `siblings(selector)` 兄弟节点，不包括自己本身
@@ -144,5 +146,6 @@ $("button").click(function() {
 #### 3. 表单值
 + `val()`
 + `val("")`
-
+#### 4. 保留小数
++ `toFixed(number)`
 ### (6) 
