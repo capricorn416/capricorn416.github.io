@@ -282,3 +282,7 @@ $("button").click(function() {
   - 判断传入的对象是否是函数
   - jQuery框架本质上是一个函数
   - 返回值是布尔值
+### (6) holdReady()
++ `$.holdReady(true);` 暂停入口函数执行
++ `$.holdReady(false);` 恢复入口函数执行
+
