@@ -53,6 +53,11 @@ $(document).ready(function(){
 + `:odd` 获取到的元素中，选择索引号为奇数的元素
 + `:even` 获取到的元素中，选择索引号为偶数的元素
 + `:checked` 查找被选中的表单元素
+#### 3. jQuery内容选择器
++ `:empty` 查找既没有文本内容也没有子元素的指定元素
++ `:parent` 查找有文本内容或有子元素的指定元素
++ `:contains(text)` 查找包含指定文本内容text的指定元素
++ `:has(selector)` 查找包含指定子元素的指定元素
 #### 4. jQuery筛选方法
 + `parent()` 父级（亲爸爸）
 + `parents(selector)` 指定祖先元素
@@ -81,13 +86,16 @@ $("button").click(function() {
   - `$(this).css('color');`
 + 参数是属性名，属性值，逗号分隔，是设置一组样式
   - 属性必须加引号，值如果是数字可以不用跟单位和引号
-+ 参数可以是对象形式，设置多组样式
++ 链式操作
+  - `$("div").css("width", "100px").css("height", "100px")`
++ 参数可以是对象形式，批量设置多组样式
   - 属性名和属性值用冒号隔开
   - 属性可以不加引号（驼峰命名法），值如果是数字可以不用跟单位和引号
 #### 2. 设置类样式方法
 + `addClass()` 添加类
   - `$("div").addClass("");`
   - 注意操作类里面的参数不要加点
+  - 多个类名之间用空格隔开
 + `removeClass()` 删除类
 + `toggleClass()` 切换类
 + 原生js中className会覆盖元素原先里面的类名
@@ -133,10 +141,19 @@ $("button").click(function() {
 #### 1. 设置或获取元素固有属性值
 + `prop("属性名")` 获取属性
 + `prop("属性", "属性值")` 设置属性
++ prop方法不仅能够操作属性，还能操作属性节点
++ `removeProp(name)`
 #### 2. 设置或获取元素自定义属性值
 + `attr("属性")` 获取属性
+  - 无论找到多少个元素，都只返回第一个元素指定的属性节点的值
 + `attr("属性", "属性值")` 设置属性
+  - 找到多少个元素，就会设置多少个元素
+  - 如果设置的属性节点不存在，那么系统会自动新增
 + 可以获取H5自定义属性：`attr("data-index")`
++ `removeAttr(name)`
+  - 会删除所有找到元素的指定的属性节点
+  - `$("span").removeAttr("class name");`
++ 在操作属性节点时，具有true和false两个属性的属性节点，如checked，selected或者disabled，使用prop()，其他的使用attr()
 #### 3. 数据缓存
 + 在指定的元素上存取数据，并不会修改DOM元素结构。一旦页面刷新，之前存放的数据都将被移除
 + `data("name", "value")` 附加数据
@@ -206,13 +223,14 @@ $("button").click(function() {
 ### (1) jQuery事件注册
 + 单个事件注册
   - `element.事件(function() {})`
-  
+    * 可以添加多个相同或者不同类型的事件，不会覆盖
 ### (2) jQuery事件处理
 #### 1. `on()` 绑定事件
 + 在匹配元素上绑定一个或多个事件
   - `element.on(events, [selector], fn)`
     * events：一个或多个用空格分隔的事件类型
     * selector：元素的子元素选择器
+    * 可以添加多个相同或者不同类型的事件，不会覆盖
     ```
     $("div").on({
       mouseenter: function() {},
@@ -227,24 +245,30 @@ $("button").click(function() {
 + 动态创建的元素，click()没有办法绑定事件，on()可以给后来动态生成的元素绑定事件
 #### 2. `off()` 解绑事件
 + `$("p").off();` 解绑p元素所有事件处理程序
-+ `$("p").off("click");` 解绑p元素上面的点击事件
++ `$("p").off("click");` 解绑p元素上面所有的点击事件
++ `$("button").off("click", test1)` 解绑指定类型的指定事件
 + `$("ul").off("click", "li");` 解绑事件委托
 #### 3. `one()` 绑定只触发一次的事件
 #### 4. `trigger()` 自动触发事件
 + `element.click()`
 + `element.trigger("type")`
+  - 会触发事件冒泡
+  - 会触发元素的默认行为，不会触发<a>的默认跳转
 + `element.triggerHandler("type")`
-  - 不会触发元素的默认行为
+  - 不会触发事件冒泡
+  - 不会触发元素的默认行为，不会触发<a>的默认跳转
   ```
   $("div").on("click", function() {});
   // $("div").click();
   // $("div").trigger("click");
   $("div").triggerHandler("click");
   ```
++ 解决方法：```<a href=""><span>注册</span></a>``` 绑定事件到span上
+
 ### (3) jQuery事件对象
 + `element.on(events, [selector], function(event) {})`
 + `event.preventDefault()`或者`return false` 阻止默认行为
-+ `event.stopPropagation()` 阻止冒泡
++ `event.stopPropagation()`或者`return false` 阻止冒泡
 
 ## 四、jQuery其他方法
 ### (1) jQuery拷贝对象
@@ -254,7 +278,6 @@ $("button").click(function() {
     * 浅拷贝是把被拷贝
   - target：要拷贝的目标对象
   - object1：待拷贝到第一个对象的对象
-
 
 ## 五、jQuery静态方法
 ### (1) each()
