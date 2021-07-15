@@ -118,6 +118,7 @@ $("button").click(function() {
   - `hover([over,] out)`
     * over：鼠标移到元素上要触发的函数
     * out：鼠标移出元素要触发的函数
+  - 子元素移入移出不会触发父元素的事件
   - 如果只写一个函数，那么鼠标经过和离开都会触发这个函数
 #### 4. 动画队列及其停止排队方法
   - 动画或效果队列
@@ -242,6 +243,7 @@ $("button").click(function() {
     ```
 + 可以事件委派：把原来加给子元素身上的事件绑定在父元素身上
   - `$("ul").on("click", "li", function() {});`
+  - `$("ul").delegate("li", "click", function() {})`
 + 动态创建的元素，click()没有办法绑定事件，on()可以给后来动态生成的元素绑定事件
 #### 2. `off()` 解绑事件
 + `$("p").off();` 解绑p元素所有事件处理程序
@@ -269,7 +271,24 @@ $("button").click(function() {
 + `element.on(events, [selector], function(event) {})`
 + `event.preventDefault()`或者`return false` 阻止默认行为
 + `event.stopPropagation()`或者`return false` 阻止冒泡
-
+### (4) 自定义事件
++ 事件必须是通过on绑定的
++ 事件必须通过trigger/triggerHandler来触发
+  ```
+  $("div").on("myClick", function() {});
+  $("div").trigger("myClick");
+  ```
+### (5) 事件命名空间
++ 事件是通过on绑定的
++ 事件通过trigger/triggerHandler来触发
+  ```
+  $("div").on("click.zs", function() {});
+  $("div").on("click.ls", function() {});
+  $("div").trigger("click.ls");
+  ```
++ 利用trigger触发子元素带命名空间的事件，则父元素带命名空间的事件也会被触发，而父元素没有命名空间的事件不会被触发
++ 利用trigger触发子元素不带命名空间的事件，则子元素和父元素所有相同类型的事件都会被触发
+  
 ## 四、jQuery其他方法
 ### (1) jQuery拷贝对象
 + 如果想要把某个对象拷贝（合并）给另外一个对象使用，此时可以使用$.extend()方法
@@ -278,7 +297,9 @@ $("button").click(function() {
     * 浅拷贝是把被拷贝
   - target：要拷贝的目标对象
   - object1：待拷贝到第一个对象的对象
-
+### (2) 移入移出
++ mouseover/mouseout事件，子元素移入移出也会触发父元素的事件
++ mouseenter/mouseleave事件，子元素移入移出不会触发父元素的事件
 ## 五、jQuery静态方法
 ### (1) each()
 + `$.each(object, function(index, element) {})`
