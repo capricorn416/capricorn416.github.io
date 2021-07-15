@@ -330,3 +330,4 @@ $("button").click(function() {
 + `$.holdReady(true);` 暂停入口函数执行
 + `$.holdReady(false);` 恢复入口函数执行
 
+# AJAX
