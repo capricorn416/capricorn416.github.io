@@ -329,6 +329,7 @@ $("button").click(function() {
 ### (6) holdReady()
 + `$.holdReady(true);` 暂停入口函数执行
 + `$.holdReady(false);` 恢复入口函数执行
+  
 # php
 + 基础语法
   ```
@@ -379,5 +380,36 @@ $("button").click(function() {
     }
   ?>
   ```
-
++ get请求
+  - get请求会将提交的数据拼接到URL后面?name1=value1&name2=value2
+  - ```<form action="xxx.php" method="GET">```
+  - php中可以通过`print_r($_GET);`或者`echo($_GET[name]);`获取前端通过get请求提交的数据
+  - GET请求对数据有大小限制，用于提交非敏感数据和小数据
++ post请求
+  - ```<form action="xxx.php" method="POST">```
+  - post请求会将提交的数据放到请求头（开发者工具——Network）中
+  - php中可以通过`print_r($_POST);`或者`echo($_POST[name]);`获取前端通过get请求提交的数据
+  - POST请求对数据没有大小限制，用于提交敏感数据和大数据
+  - 文件上传
+    * `<form action="xxx.php" method="POST" enctype="multipart/form-data">`
+    * php
+      - 上传的文件在PHP中可以通过`$_FILES`获取
+      - PHP中文件默认会上传到一个临时目录，接收完毕之后会自动删除
+      ```
+      <?php
+        // 获取上传文件对应的字典
+        $fileInfo = $_FILES['upFile'];
+        // 获取上传文件的名称
+        $fileName = $fileInfo['name'];
+        // 获取上传文件保存的临时路径
+        $filePath = $fileInfo['tmp_name'];
+        // 移动文件
+        move_uploaded_file($filePath, './source/'.$fileName);
+      ?>
+      ```
 # AJAX
+## 一、基本使用
+
+  
+  
+  
