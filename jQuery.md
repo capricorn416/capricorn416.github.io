@@ -441,4 +441,29 @@ xmlhttp.onreadystatechange = function() {
 + 服务器响应
   - responseText 获得字符串形式的响应数据                                                  
   - responseXML 获得XML形式的响应数据
-## 
+### (2) 兼容IE
++ 现代浏览器均支持XMLHttpRequest对象，IE5和IE6使用ActiveXObject                                                  
++ 在IE浏览器中，如果通过Ajax发生GET请求，那么IE浏览器认为同一个URL只有一个结果，导致没有办法获取服务器最新的数据
+  - 保证每一次发送请求，url地址每次都不一样
+    ```xmlhttp.open("GET", "get.php?t="+(new Date().getTime()), true);```         
+                                                    
+## 二、封装                                                    
+```
+function ajax(url, success, error) {
+  var btn = document.querySelector('button');
+    btn.onclick = function() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", url , true);
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function() {
+        if(xmlhttp.readyState === 4){
+          if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status === 304) {
+            success(xmlhttp);
+          }else{
+            error(xmlhttp);                                       
+          }                                                
+        }
+      }
+    }
+}
+```                                                        
