@@ -410,14 +410,14 @@ $("button").click(function() {
 # AJAX
 ## 一、基本使用
 1. 创建一个异步对象
-```var xmlhttp = new XMLHttpRequest();```
++ ```var xmlhttp = new XMLHttpRequest();```
 2. 设置请求方式和请求地址
-```xmlhttp.open(method, url, async);```
++ ```xmlhttp.open(method, url, async);```
   - method 请求的类型 GET或POST
   - url 文件在服务器上的位置
   - async true（异步）或false（同步）
 3. 发送请求
-```xmlhttp.send();```
++ ```xmlhttp.send();```
 4. 监听状态的变化
 5. 处理返回的结果
 ```
