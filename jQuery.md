@@ -409,21 +409,36 @@ $("button").click(function() {
       ```
 # AJAX
 ## 一、基本使用
-### 1. 创建一个异步对象
+### (1) 步骤
+#### 1. 创建一个异步对象
 ```var xmlhttp = new XMLHttpRequest();```
-### 2. 设置请求方式和请求地址
+#### 2. 设置请求方式和请求地址
 ```xmlhttp.open(method, url, async);```
-  - method 请求的类型 GET或POST
-  - url 文件在服务器上的位置
-  - async true（异步）或false（同步）
-### 3. 发送请求
-+ ```xmlhttp.send();```
-### 4. 监听状态的变化
-### 5. 处理返回的结果
+  - method：请求的类型 GET或POST
+  - url：文件在服务器上的位置
+  - async：true（异步）或false（同步）
+#### 3. 发送请求
+```xmlhttp.send();```
+#### 4. 监听状态的变化
++ readyState
+  - 0：请求未初始化
+  - 1：服务器连接已建立
+  - 2：请求已接收
+  - 3：请求处理中
+  - 4：请求已完成，且响应已就绪
+#### 5. 处理返回的结果
 ```
 xmlhttp.onreadystatechange = function() {
-  console.log("接收到服务器返回的数据");
+  if(xmlhttp.readyState === 4){
+    if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status === 304) {
+      console.log(xmlhttp.responseText);
+    }else{
+      console.log("没有接收到服务器返回的数据");                                              
+    }                                                
+  }
 }
 ```
-  
-  
++ 服务器响应
+  - responseText 获得字符串形式的响应数据                                                  
+  - responseXML 获得XML形式的响应数据
+## 
