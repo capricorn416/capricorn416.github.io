@@ -511,7 +511,7 @@ xmlhttp.send("name1=value1&name2=value2");
     }else {
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");                                              
     }
-    if(type === 'GET') {
+    if(type.toLowerCase() === 'get') {
       xmlhttp.open("GET", url+"?"+str, true);
       xmlhttp.send();
     }else {
@@ -538,3 +538,18 @@ xmlhttp.send("name1=value1&name2=value2");
     }                                                    
   }
   ```                                                      
+## 三、jQuery
+```
+$.ajax({
+  type: 'POST',
+  url: 'get.php',
+  data: 'name=John&location=Boston',
+  success: function(msg) {
+    alert(msg);
+  },
+  error: function(xhr) {
+    alert(xhr.status);
+  }
+})
+```         
+                                                        
