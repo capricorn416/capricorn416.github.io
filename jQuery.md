@@ -486,3 +486,55 @@ function ajax(url, obj, timeout, success, error) {
   }                                                    
 }
 ```                                                        
+## 二、POST
+### (1) 使用
+```
+xmlhttp.open("POST", "xxx.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("name1=value1&name2=value2");
+```                                                      
+### (2) 封装
+  ```
+  function obj2str(obj) {
+    obj.t = new Date().getTime();                                                  
+    var res = [];
+    for(var key in obj) {
+        res.push(encodeURIComponent(key)+'='+encodeURIComponent(obj[key]));
+    }
+    return res.join("&");
+  }
+  function ajax(type, url, obj, timeout, success, error) {
+    var str = obj2str(obj);                                                  
+    var xmlhttp, timer;
+    if(window.XMLHttpRequest){
+      xmlhttp = new XMLHttpRequest();                                              
+    }else {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");                                              
+    }
+    if(type === 'GET') {
+      xmlhttp.open("GET", url+"?"+str, true);
+      xmlhttp.send();
+    }else {
+      xmlhttp.open("POST", url, true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send(str);  
+    }                                                
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState === 4){
+        clearInterval(timer);
+        if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status === 304) {
+          success(xmlhttp);
+        }else{
+          error(xmlhttp);                                       
+        }                                                
+      }
+    }
+    if(timeout) {
+      timer = setInterval(function() {
+        console.log("中断请求");
+        xmlhttp.abort();
+        clearInterval(timer);                                                
+      }, timeout);                                                    
+    }                                                    
+  }
+  ```                                                      
