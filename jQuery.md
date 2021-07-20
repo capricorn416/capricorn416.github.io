@@ -458,9 +458,9 @@ function obj2str(obj) {
 }
 ```                                                    
 ```
-function ajax(url, obj, success, error) {
+function ajax(url, obj, timeout, success, error) {
   var str = obj2str(obj);                                                  
-  var xmlhttp;
+  var xmlhttp, timer;
   if(window.XMLHttpRequest){
     xmlhttp = new XMLHttpRequest();                                              
   }else {
@@ -477,5 +477,12 @@ function ajax(url, obj, success, error) {
       }                                                
     }
   }
+  if(timeout) {
+    timer = setInterval(function() {
+      console.log("中断请求");                                                
+      xmlhttp.abort();
+      clearInterval(timer);                                                
+    }, timeout);                                                    
+  }                                                    
 }
 ```                                                        
