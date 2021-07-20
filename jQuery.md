@@ -539,6 +539,7 @@ xmlhttp.send("name1=value1&name2=value2");
   }
   ```                                                      
 ## 三、jQuery
+### (1) jQuery封装                                                        
 ```
 $.ajax({
   type: 'POST',
@@ -552,4 +553,40 @@ $.ajax({
   }
 })
 ```         
-                                                        
+### (2) XML
++ 可扩展标记语言                                                        
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<dog>
+  <name>张三</name>
+  <age>33</age>
+</dog>
+```  
++ php获取文件内容
+  ```
+  <?php
+    // 注意： 执行结果中有中文，必须在php文件顶部设置
+    // 如果php中需要返回XML数据，也必须在php文件顶部设置
+    header("content-type: text/xml; charset=utf-8");
+    echo file_get_contents("1.xml");
+  ?>
+  ```
++ html处理数据
+  ```
+  var res = xhr.responseXML;
+  console.log(res.querySelector("name").innerHTML);
+  ```
+### (3) JSON
++ JSON是JS对象的字符串表示法
++ JSON和JS对象相互转换
+  - JS对象转换为JSON字符串
+    * `JSON.stringify()`
+  - JSON转换为JS对象
+    * `JSON.parse()`
++ PHP获取文件内容 ```echo file_get_contents('json.txt');```
++ 兼容IE
+  - 在低版本的IE中，不可以使用原生的JSON.parse方法
+  - 可以使用json2.js这个框架来兼容
+  
+  
+  
