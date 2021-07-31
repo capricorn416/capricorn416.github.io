@@ -32,7 +32,7 @@
 + fs 是 file-system 的简写，就是文件系统的意思
 + 在 Node 中如果想要进行文件操作，就必须引入 fs 这个核心模块
 + 在 fs 这个核心模块中，就提供了所有的文件操作相关的 API
-  - `fs.readFile`读取文件
+  - 读取文件 `fs.readFile`
     ```
     // 1. 使用 require 方法加载 fs 核心模块
     var fs = require('fs')
@@ -65,4 +65,26 @@
       }
     })
     ```
-
+  - 写文件 `fs.writeFile`
+    ```
+    // 第一个参数：文件路径
+    // 第二个参数：文件内容
+    // 第三个参数：回调函数
+    //    error
+    //    
+    //    成功：
+    //      文件写入成功
+    //      error 是 null
+    //    失败：
+    //      文件写入失败
+    //      error 就是错误对象
+    fs.writeFile('./data/你好.md', '大家好，给大家介绍一下，我是Node.js', function (error) {
+      // console.log('文件写入成功')
+      // console.log(error)
+      if (error) {
+        console.log('写入失败')
+      } else {
+        console.log('写入成功了')
+      }
+    })
+    ```
