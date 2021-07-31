@@ -6,11 +6,16 @@
 + Node.js是一个JavaScript运行时环境
 + Node.js可以解析和执行JavaScript代码
 #### 2. Node.js中的JavaScript
-+ 没有BOM、DOM
 + ECMAScript基本的JavaScript语言部分
-+ 在Node中为JavaScript提供了一些服务器级别的API
-  - 文件操作的能力
-  - http服务的能力
+  - 没有BOM、DOM
++ 核心模块
+  - Node为JavaScript提供了很多服务器级别的API，这些API绝大多数都被包装到了一个具名的核心模块中了
+    * 例如文件操作的`fs`核心模块，http服务构建的`http`模块，`path`路径操作模块，`os`操作系统信息模块
+  - 要使用核心模块，就必须`var x = require('x')`
++ 用户自己编写的文件模块
+  - 在Node中，没有全局作用域，只有**模块作用域**
+  - 相对路径必须加./
+  - 可以省略后缀名
 #### 3. Node.js的特性
 + event-driven 事件驱动
 + non-blocking I/O model 非阻塞IO模型（异步）
@@ -119,4 +124,28 @@
     })
     ```
   - 发送响应
-  
+    ```
+    // request 请求事件处理函数，需要接收两个参数：
+    //    Request 请求对象
+    //        请求对象可以用来获取客户端的一些请求信息，例如请求路径
+    //    Response 响应对象
+    //        响应对象可以用来给客户端发送响应消息
+    server.on('request', function (request, response) {
+      // http://127.0.0.1:3000/ /
+      // http://127.0.0.1:3000/a /a
+      // http://127.0.0.1:3000/foo/b /foo/b
+      console.log('收到客户端的请求了，请求路径是：' + request.url)
+
+      // response 对象有一个方法：write 可以用来给客户端发送响应数据
+      // write 可以使用多次，但是最后一定要使用 end 来结束响应，否则客户端会一直等待
+      response.write('hello')
+      response.write(' nodejs')
+      // 上面的方式比较麻烦，推荐使用更简单的方式，直接 end 的同时发送响应数据
+      // 响应内容只能是二进制数据或者字符串
+      // res.end('hello nodejs')
+
+      // 告诉客户端，我的话说完了，你可以呈递给用户了
+      response.end()
+    })
+    ```
+    
