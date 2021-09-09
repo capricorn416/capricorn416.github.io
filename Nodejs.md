@@ -5,6 +5,7 @@
 + Node.js不是一门语言，不是库、不是框架
 + Node.js是一个JavaScript运行时环境
 + Node.js可以解析和执行JavaScript代码
+  - 现在的JS可以脱离浏览器来运行，归功于Node.js
 #### 2. Node.js中的JavaScript
 + ECMAScript基本的JavaScript语言部分
   - 没有BOM、DOM
