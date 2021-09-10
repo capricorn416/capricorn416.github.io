@@ -178,3 +178,20 @@
 + 得到wwwDir目录列表中的文件名和目录名
   - `fs.readdir`
 + 将得到的文件名和目录名替换到template.html中
++ 模板引擎
+  - ```npm install art-template```
+  - 该命令在哪执行就会把包下载到哪里，默认会下载到node_modules目录中
+  - 在html中引用
+    ```
+    <script src="node_modules/art-template/lib/template-web.js"></script>
+    <script type="text/template" id="tpl">
+      hello {{ name }}
+    </script>
+    <script>
+      var ret = template('tpl', {
+        name: 'Jack'
+      })
+      console.log(ret);
+    </script>
+    ```
+  - 模板引擎不关心字符串内容，只关心自己能认识的模板标记语法，例如{{}}
