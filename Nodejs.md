@@ -206,6 +206,7 @@
 ### （三）Node中的模块系统
 + CommonJS模块规范
   - 加载`require`
+  
     ```var 自定义变量名 = require('模块')```
     * 执行被加载模块中的代码
     * 得到被加载模块中的exports导出接口对象
@@ -223,3 +224,8 @@
       * 如果一个模块需要直接导出某个成员，而非挂载的方式，必须使用：
       ```module.exports = 'hello'```
       
+      ```
+      module.exports = {
+        add : function() {},
+        str: 'hello'
+      }
