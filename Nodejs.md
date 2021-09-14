@@ -220,6 +220,7 @@
       exports.c = function() {}
       exports.d = {}
       ```
+      也可以：```module.exports = {}```
     * 导出单个成员（拿到的就是函数、字符串）
       * 如果一个模块需要直接导出某个成员，而非挂载的方式，必须使用：
       ```module.exports = 'hello'```
@@ -258,11 +259,31 @@
   - 当一个模块需要导出单个成员的时候，直接给 exports 赋值是不管用的
     - 记住：最后 return 的是 module.exports 而不是 exports，所以你给 exports 重新赋值不管用
     - 给 exports 赋值会断开和 module.exports 之间的引用，同理，给 module.exports 重新赋值也会断开，导致 exports !== module.exports
+  - ```
+    // 这里导致exports !== module.exports
+    module.exports = {
+      foo: 'bar'
+    }
+    
+    // 但是这里又重新建立两者的引用关系
+    exports = module.exports
+    exports.foo = 'hello'  // hello
+    ```
++ require方法加载规则
+  - 优先从缓存加载
+    * 可以拿到里面的接口对象，但是不会重复执行里面的代码
+    * 避免重复加载，提高模块加载效率
+  - 判断模块标识
+    * require('模块标识')
+    * 核心模块
+      * 核心模块的本质也是文件，核心模块文件已经被编译到了二进制文件中了，我们只需要按照名字来加载就可以了
+    * 第三方模块
+      * 凡是第三方模块都必须通过 npm 来下载
+      * 使用的时候就可以通过require('包名')的方式来进行加载才可以使用
+    * 自己写的模块
 
 
 
 
-
-
-  - 
+  
   
