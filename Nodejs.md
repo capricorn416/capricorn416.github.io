@@ -229,3 +229,40 @@
         add : function() {},
         str: 'hello'
       }
++ 模块原理
+  - exports是module.exports的一个引用
+    ```exports.foo = 'bar' ```等价于``module.exports.foo = 'bar'
+    ```console.log(exports === module.exports) //true```
+  - 在 Node 中，每个模块内部都有一个自己的 module 对象
+    - 该 module 对象中，有一个成员叫：exports 也是一个对象
+    ```js
+    // var module = {
+    //   exports: {
+    //     foo: 'bar',
+    //     add: function
+    //   }
+    // }
+
+    module.exports.foo = 'bar'
+    module.exports.add = function (x, y) {
+      return x+y
+    }
+    ```
+    - 谁来 require 我，谁就得到 module.exports
+    - 默认在代码的最后有一句：
+    - return module.exports
+  - 也就是说如果你需要对外导出成员，只需要把导出的成员挂载到 module.exports 中
+    - 我们发现，每次导出接口成员的时候都通过 module.exports.xxx = xxx 的方式很麻烦，点儿的太多了
+    - 所以，Node 为了简化你的操作，专门提供了一个变量：exports 等于 module.exports，也就是说在模块中还有这么一句代码```var exports = module.exports```
+    - 两者一致，那就说明，我可以使用任意一方来导出内部成员
+  - 当一个模块需要导出单个成员的时候，直接给 exports 赋值是不管用的
+    - 记住：最后 return 的是 module.exports 而不是 exports，所以你给 exports 重新赋值不管用
+    - 给 exports 赋值会断开和 module.exports 之间的引用，同理，给 module.exports 重新赋值也会断开，导致 exports !== module.exports
+
+
+
+
+
+
+  - 
+  
