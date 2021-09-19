@@ -280,8 +280,23 @@
     * 第三方模块
       * 凡是第三方模块都必须通过 npm 来下载
       * 使用的时候就可以通过require('包名')的方式来进行加载才可以使用
+        * 先找到当前文件所处目录中的node_modules目录
+        * node_modules/art-template/package.json文件
+        * node_modules/art-template/package.json文件中的main属性
+        * main属性中就记录了art-template的入口模块
+        * 如果package.json文件不存在或者main指定的入口模块也没有
+        * 则node会自动找该目录下的index.js，也就是说index.js会作为一个默认备选项
+        * 如果以上所有任何一个条件都不成立，则会进入上一级目录中的node_modules目录查找
+        * 如果上一级还没有，则继续往上上一级查找
+        * 如果直到当前磁盘根目录还找不到，最后报错
     * 自己写的模块
-
++ npm
+  - node package manager
+  - ![npmjs](https://www.npmjs.com/)
++ package.json
+  - 包描述文件
+  - 这个文件可以通过`npm init`的方式自动初始化出来
+  - `dependencies`选项可以用来帮我们保存第三方包的依赖信息
 
 
 
