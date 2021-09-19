@@ -293,12 +293,23 @@
 + npm
   - node package manager
   - [npmjs](https://www.npmjs.com/)
+  - 命令行工具，只要你安装了node就已经安装了npm
+  - 版本：`npm --version`
+  - 升级npm（自己升级自己）：`npm install --global npm`
+  - 常用命令
+    * npm init 
+      * npm init -y 可以跳过向导，快速生成
+    * npm install 
+      * npm install 包名
+    * npm uninstall 包名
+    * npm help 查看使用帮助
+      * npm 命令 --help 查看指定命令的使用帮助
 + package.json
   - 包描述文件
   - 这个文件可以通过`npm init`的方式自动初始化出来
   - `dependencies`选项可以用来帮我们保存第三方包的依赖信息
 
-
+### （四）Express
 
   
   
