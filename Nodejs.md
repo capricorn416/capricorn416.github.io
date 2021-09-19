@@ -292,7 +292,7 @@
     * 自己写的模块
 + npm
   - node package manager
-  - ![npmjs](https://www.npmjs.com/)
+  - [npmjs](https://www.npmjs.com/)
 + package.json
   - 包描述文件
   - 这个文件可以通过`npm init`的方式自动初始化出来
