@@ -310,6 +310,41 @@
   - `dependencies`选项可以用来帮我们保存第三方包的依赖信息
 
 ### （四）Express
-
+#### 1. Hello World
++ ```
+  const express = require("express")
+  const app = express()
+  app.get("/", function (req, res) {
+    res.send('hello express')  
+  })
+  app.listen(3000, function () {
+    console.log("running...")
+  })
+  ```
+#### 2. 基本路由
++ get
+  ```
+  app.get("/about", function (req, res) {
+    // 在Express中可以直接通过req.query来获取查询字符串参数
+    console.log(req.query)
+    res.send('你好')  
+  })
+  ```
++ post
+  ```
+  app.post("/", function (req, res) {
+    res.send('hello express')  
+  })
+  ```
++ 静态资源
+  ```
+  // 公开指定目录
+  // 当以 /public/ 开头的时候，去 ./public/ 目录中找对应的资源
+  app.use('/public/', express.static('./public/'))
   
+  // 当省略第一个参数的时候，则需要通过省略/public的方式来访问
+  app.use(express.static('./public/'))
   
+  // 必须是/a/...
+  app.use('/a/', express.static('./public/'))
+  ```
