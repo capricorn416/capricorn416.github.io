@@ -348,3 +348,35 @@
   // 必须是/a/...
   app.use('/a/', express.static('./public/'))
   ```
+### 3. 在express中配置使用art-template
++ 安装
+  ```
+  npm install art-template
+  npm install express-art-template
+  ```
++ 配置
+  ```
+  // 配置使用art-template模板引擎
+  // 第一个参数表示当渲染以.art结尾的文件的时候，使用art-template模板引擎
+  // express-art-template是专门用来在express中把art-template整合到express中
+  // 虽然这里不需要加载art-template，但是也必须安装
+  // 原因就在于express-art-template依赖了art-template
+  app.engine('html', require('express-art-template'))
+  ```
++ 使用
+  ```
+  // express为response响应对象提供了一个方法：render
+  // render方法默认是不可以使用，但是如果配置了模板引擎就可以使用了
+  // res.render('html模板名', {模板数据})
+  // 第一个参数不能写路径，默认会去项目中的views目录查找该模板文件
+  // 也就是说express有一个约定：开发人员把所有的视图文件都放到views目录中
+
+  // 如果想要修改默认的views目录，可以
+  // app.set('views', render函数的默认路径)
+
+  app.get('/', (req, res) => {
+    res.render('index.html', {
+      title: '管理系统'
+    })
+  })
+  ```
