@@ -381,3 +381,19 @@
   })
   ```
 #### 3. 路由设计
++ router.js路由模块
+  ```
+  // Express 提供了一种更好的方式专门用来包装路由
+  var express = require('express')
+  // 1. 创建一个路由容器
+  var router = express.Router()
+  // 2. 把路由都挂载到 router 路由容器中
+  router.get()
+  // 3. 把 router 导出
+  module.exports = router
+  ```
++ ```app.js
+  var router = require('./router')
+  // 把路由容器挂载到 app 服务中
+  app.use(router)
+  ```
