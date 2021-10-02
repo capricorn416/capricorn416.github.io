@@ -400,6 +400,7 @@
   app.use(router)
   ```
 + 封装异步API
+  - 回调函数：获取异步操作的结果
   ```js
   function fn(callback) {
    // var callback = function (data) { console.log(data) }
