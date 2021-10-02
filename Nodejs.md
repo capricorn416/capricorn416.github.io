@@ -394,6 +394,24 @@
   ```
 + ```app.js
   var router = require('./router')
+  // 配置模板引擎和 body-parser 一定要在 app.use(router) 挂载路由之前
+  
   // 把路由容器挂载到 app 服务中
   app.use(router)
+  ```
++ 封装异步API
+  ```js
+  function fn(callback) {
+   // var callback = function (data) { console.log(data) }
+
+    setTimeout(() => {
+      var data = 'hello'
+      callback(data)
+    }, 1000)
+  }
+  
+  // 如果需要获取一个函数中异步操作的结果，则必须通过回调函数来获取
+  fn(function(data) {
+    console.log(data)
+  })
   ```
