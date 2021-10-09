@@ -420,3 +420,5 @@
     console.log(data)
   })
   ```
+### （五）Promise
+#### 1. 回调地狱
