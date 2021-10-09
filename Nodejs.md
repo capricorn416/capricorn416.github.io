@@ -422,3 +422,55 @@
   ```
 ### （五）Promise
 #### 1. 回调地狱
++ 通过回调嵌套的方式来保证顺序 -> 回调地狱
+  ```
+  fs.readFile('./data/a.txt', 'utf8', function (err, data) {
+  if (err) {
+    // return console.log('读取失败')
+    // 抛出异常
+    //    1. 阻止程序的执行
+    //    2. 把错误消息打印到控制台
+    throw err
+  }
+  console.log(data)
+  fs.readFile('./data/b.txt', 'utf8', function (err, data) {
+    if (err) {
+      throw err
+    }
+    console.log(data)
+    fs.readFile('./data/c.txt', 'utf8', function (err, data) {
+      if (err) {
+        throw err
+      }
+      console.log(data)
+    })
+  })
+  ```
+#### 2. Promise
++ Promise是一个构造函数
+  ```
+  // 创建 Promise 容器
+  // Promise 容器一旦创建，就开始执行里面的代码
+  var p1 = new Promise(function (resolve, reject) {
+    fs.readFile('./data/a.txt', 'utf8', function (err, data) {
+      if (err) {
+        // 把容器的 Pending 状态变为 Rejected
+        reject(err)
+      } else {
+        // 把容器的 Pending 状态改为成功 Resolved
+        // 也就是说这里调用的 resolve 方法实际上就是 then 方法传递的那个function
+        resolve(data)
+      }
+    })
+  })
+  
+  // 当p1成功了，然后（then）做指定的操作
+  // then方法接收的 function 就是容器中的 resolve 函数
+  p1
+  .then(function (data) {
+    console.log(data)
+  }, function (err) {
+    console.log('读取文件失败了', err)
+  })
+  ```
+  
