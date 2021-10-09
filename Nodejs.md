@@ -448,6 +448,7 @@
   ```
 #### 2. Promise
 + Promise是一个构造函数
++ 基础用法
   ```
   // 创建 Promise 容器
   // Promise 容器一旦创建，就开始执行里面的代码
@@ -455,6 +456,7 @@
     fs.readFile('./data/a.txt', 'utf8', function (err, data) {
       if (err) {
         // 把容器的 Pending 状态变为 Rejected
+        // 调用了 reject 就相当于调用了 then 方法的第二个参数函数
         reject(err)
       } else {
         // 把容器的 Pending 状态改为成功 Resolved
@@ -471,6 +473,28 @@
     console.log(data)
   }, function (err) {
     console.log('读取文件失败了', err)
+  })
+  ```
++ 链式调用
+  ```
+  p1
+  .then(function (data) {
+    console.log(data)
+    // 当 p1 读取成功的时候，当前函数中 return 的结果就可以在后面的 then 中 function 接收到
+    // 当你 return 123 后面就接收到 123，没有 return 后面收到的就是 undefined
+    // 重要的是：我们可以 return 一个 Promise 对象
+    // 当 return 一个 Promise 对象的时候，后续的 then 中的 方法的第一个参数会作为 p2 的 resolve
+    return p2
+  }, function (err) {
+    console.log('读取文件失败了', err)
+  })
+  .then(function (data) {
+    console.log(data)
+    return p3
+  })
+  .then(function (data) {
+    console.log(data)
+    console.log('end')
   })
   ```
   
