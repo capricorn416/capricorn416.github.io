@@ -598,4 +598,3 @@
 // 就是说，文件操作路径中，相对路径设计的就是相对于执行 node 命令所处的路径
 fs.readFile('./a.txt', function(err, data){})
 ```
-```
