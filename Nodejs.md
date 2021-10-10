@@ -542,3 +542,29 @@
       console.log(data)
     })
   ```
++ Promise-ajax封装
+  ```
+    function pGet(url, callback) {
+      return new Promise(function (resolve, reject) {
+        var oReq = new XMLHttpRequest()
+        oReq.onload = function () {
+          callback && callback(JSON.parse(oReq.responseText))
+          resolve(JSON.parse(oReq.responseText))
+        }
+        oReq.onerror = function (err) {
+          reject(err)
+        }
+        oReq.open("get", url, true)
+        oReq.send()
+      })
+    }
+    
+    // pGet(' ', function (data) {
+    //   console.log(data)
+    // })
+
+    pGet(' ')
+      .then(function (data) {
+        console.log(data)
+      })
+  ```
