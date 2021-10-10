@@ -194,6 +194,24 @@
       console.log(ret);
     </script>
     ```
+    ```
+    <script type="text/template" id="tpl">
+      <div>
+        <label for="">用户名</label>
+        <input type="text" value="{{ user.username }}">
+      </div>
+      <div>
+        <label for="">职业</label>
+        <select name="" id="">
+          {{ each jobs }} {{ if user.job === $value.id }}
+          <option value="{{ $value.id }}" selected>{{ $value.name }}</option>
+          {{ else }}
+          <option value="{{ $value.id }}">{{ $value.name }}</option>
+          {{ /if }} {{ /each }}
+        </select>
+      </div>
+    </script>
+    ```
   - 模板引擎不关心字符串内容，只关心自己能认识的模板标记语法，例如{{}}
 + 服务端渲染和客户端渲染
   - 客户端渲染不利于SEO搜索引擎优化
