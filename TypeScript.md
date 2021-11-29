@@ -137,6 +137,7 @@
   + 自动编译整个项目
     - `tsc`：将当前项目下的所有ts文件编译为js文件
       * 需要在根目录下创建ts的配置文件tsconfig.json
+      * `tsc --init`
     - `tsc -w`：监视所有ts文件
   + tsconfig.json配置选项
     - include
