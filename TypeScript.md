@@ -81,6 +81,11 @@
         throw new Error('报错了！');
       }
       ```
+      * never类型是ts中的底部类型，所有类型都是never类型的父类
+      * 所以never类型值可以赋给任意类型的值
+      ```
+      let x: string = fn()
+      ```
     - object
       ```
       // {} 用来指定对象中可以包含哪些属性
