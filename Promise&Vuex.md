@@ -1,7 +1,8 @@
 # Promise
 ## 一、Promise的介绍
-Promise是异步编程的一种解决方案
-```script
++ Promise是异步编程的一种解决方案
+
+```vue
 <script>
   //  参数 -> 函数(resolve, reject)
   //  resolve, reject本身它们又是函数
@@ -46,17 +47,17 @@ Promise是异步编程的一种解决方案
 ## 二、Promise的三种状态
 ![图片10](图片10.jpg)
 
-当我们开发中有异步操作时, 就可以给异步操作包装一个Promise
++ 当我们开发中有异步操作时, 就可以给异步操作包装一个Promise
 
-异步操作之后会有三种状态：
++ 异步操作之后会有三种状态：
 
-①pending：等待状态，比如正在进行网络请求，或者定时器没有到时间
+  ①pending：等待状态，比如正在进行网络请求，或者定时器没有到时间
 
-②fulfill：满足状态，当我们主动回调了resolve时，就处于该状态，并且会回调.then()
+  ②fulfill：满足状态，当我们主动回调了resolve时，就处于该状态，并且会回调.then()
 
-③reject：拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调.catch()
+  ③reject：拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调.catch()
 
-```
+```js
 //另外处理方式
 new Promosie((resolve, reject) => {
   setTimeout(() => {
@@ -71,7 +72,7 @@ new Promosie((resolve, reject) => {
 ```
 
 ## 三、Promise链式调用
-```
+```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve('aaa')
@@ -92,9 +93,9 @@ new Promise((resolve, reject) => {
   console.log(data);
 })
 ```
-### `Promise.resovle()`：将数据包装成Promise对象，并且在内部回调resolve()函数
++ `Promise.resovle()`：将数据包装成Promise对象，并且在内部回调resolve()函数
 
-### `Promise.reject()`：将数据包装成Promise对象，并且在内部回调reject()函数
++ `Promise.reject()`：将数据包装成Promise对象，并且在内部回调reject()函数
 
 ```
 new Promise((resolve, reject) => {
@@ -171,7 +172,9 @@ Promise.all([
 
 # Vuex
 ## 一、认识Vuex
-Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，用于在多个组件间共享状态
++ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，用于在多个组件间共享状态
++ 专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信
+
 ### 单界面的状态管理
 ![图片11](图片11.jpg)
 
@@ -502,7 +505,7 @@ $store.getters.fullname
 
 # 网络模块封装
 ## 一、axios的基本使用
-```
+```js
 import axios from 'axios'
 
 axios({
@@ -528,12 +531,12 @@ axios({
 
 `axios.all([])` 返回的结果是一个数组，使用 `axios.spread` 可将数组 [res1,res2] 展开为 res1, res2
 
-```
+```js
 axios.all([axios(), axios()])
   .then(results => {
   })
 ```
-```
+```js
 axios.all([axios(), axios()])
   .then(axios.spread((res1, res2) => {
     console.log(res1),
@@ -545,7 +548,7 @@ axios.all([axios(), axios()])
 
 这个时候我们可以进行一些抽取, 也可以利用axiox的**全局配置**：
 
-```
+```js
 axios.defaults.baseURL = 'http://123.207.32.32:8000'
 axios.defaults.timeout = 5000
 ```
@@ -555,7 +558,7 @@ axios.defaults.timeout = 5000
 这个时候, 我们就可以创建新的实例, 并且传入属于该实例的配置信息
 
 ### 创建axios实例
-```
+```js
 const instance1 = axios.create({
   baseURL: '',
   timeout: 
@@ -579,7 +582,7 @@ instance1({
 ```
 ### axios封装
 方式一
-```request.js
+```js
 import axios from 'axios'
 
 export function request(config, success, failure) {
@@ -597,7 +600,7 @@ export function request(config, success, failure) {
     })
 }
 ```
-```main.js
+```js
 import {request} from './network/request'
 
 request({
@@ -609,7 +612,7 @@ request({
 })
 ```
 方式二
-```request.js
+```js
 import axios from 'axios'
 
 export function request(config) {
@@ -627,7 +630,7 @@ export function request(config) {
     })
 }
 ```
-```main.js
+```js
 import {request} from './network/request'
 
 request({
@@ -640,7 +643,7 @@ request({
 })
 ```
 **方式三**
-```
+```js
 export function request(config) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
@@ -658,7 +661,7 @@ export function request(config) {
   })
 }
 ```
-```main.js
+```js
 import {request} from './network/request'
 
 request({
@@ -670,7 +673,7 @@ request({
 })
 ```
 **方法四**
-```
+```js
 export function request(config) {
   const instance = axios.create({
     baseURL: '',

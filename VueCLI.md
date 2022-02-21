@@ -523,20 +523,35 @@ const router = [
   ]
   ```
 
-+ *改变路径的方式有两种：URL的hash和HTML5的history*
+#### 路由器的两种工作模式
 
-  + 默认情况下, 路径的改变使用的URL的hash => localhost:8081/#/home
++ 改变路径的方式有两种：URL的hash和HTML5的history
 
-  + *如果希望使用HTML5的history模式，配置:
++ 默认情况下, 路径的改变使用的URL的hash => localhost:8081/#/home
 
-    ```js
-    const router = new VueRouter({
-      routes,
-      mode: 'history'
-    })
-    ```
+  + #及其后面的内容就是hash值
+  + hash值不会包含在http请求中，即：hash值不会带给服务器
+  + hash模式：
+    + 地址中永远带着#号，不美观
+    + 若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法
+    + 兼容性较好
+
++ 如果希望使用HTML5的history模式，配置:
+
+  ```js
+  const router = new VueRouter({
+    routes,
+    mode: 'history'
+  })
+  ```
+
+  + history模式：
+    + 地址干净，美观
+    + 兼容性和hash模式相比略差
+    + 应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题
 
 ### 4. router-link的属性补充
+
 + `tag`：tag可以指定<router-link>之后渲染成什么组件, 而不是默认的<a>标签
 
   ```vue
@@ -812,7 +827,7 @@ this.$router.push({
 
 + `keep-alive` 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染（避免组件被频繁创建、销毁）
 
-  ```
+  ```vue
   <keep-alive><router-view/></keep-alive>
   ```
 
@@ -838,18 +853,8 @@ this.$router.push({
 + `activated`：路由组件被激活时触发
 
 + `deactivated`：路由组件失活时触发
++ activated和deactivated只有该组件被使用了keep-alive时，才是有效的
 
-  + activated和deactivated只有该组件被使用了keep-alive时，才是有效的
-
-  ```js
-  activated(){
-    this.$router.push(this.path);
-  }
-  beforeRouteLeave(to, from, next) {
-    this.path = this.$route.path;
-    next()
-  }
-  ```
 
 ### 11. 导航守卫
 
@@ -909,7 +914,27 @@ this.$router.push({
 #### [其他守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AE%88%E5%8D%AB)
 + 路由独享的守卫
 
+  ```js
+  const routes = [
+    {
+      path: '/home',
+      component: Home,
+      // 路由独享的守卫只有前置守卫，没有后置守卫
+      beforeEnter: (to, from, next) => {}
+    }  
+  ]
+  ```
+
 + 组件内的守卫
+
+  ```js
+  export default {
+    // 通过路由规则，进入该组件时被调用
+    beforeRouteEnter(to, from, next) {},
+    // 通过路由规则，离开该组件时被调用
+    beforeRouteLeave(to, from, next) {}
+  }
+  ```
 
 ### 12. 路径别名
 + **vue-cli2**的`webpack.base.conf.js`中：
@@ -950,4 +975,34 @@ this.$router.push({
   <img src='~assets/img/tabbar/home.svg'>
   ```
 
+
+
+## 四、自主搭建服务器部署
+
++ `npm init` => `npm i express`
++ 创建static文件夹，把脚手架打包生成的文件（/dist下）放入
++ `npm i connect-history-api-fallback`：解决history模式下刷新404问题
+
+```js
+const express = require('express')
+const history = require('connect-history-api-fallback')
+
+const app = express()
+app.use(history())
+app.use(express.static(__dirname+'/static'))
+/*
+app.get('/person', (req, res) => {
+  res.send({
+    name: 'tom',
+    age: 18
+  })
+})
+*/
+
+app.listen(5005, (err) => {
+  if(!err) console.log('服务器启动成功了！')
+})
+```
+
 # [Promise](Promise.md)
+
