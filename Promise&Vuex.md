@@ -170,99 +170,137 @@ Promise.all([
 })
 ```
 
+
+
 # Vuex
+
 ## 一、认识Vuex
 + Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，用于在多个组件间共享状态
 + 专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信
++ 什么时候使用Vuex？
+  + 多个组件依赖于同一状态
+  + 来自不同组件的行为需要变更同一状态
 
-### 单界面的状态管理
+### 1. 单界面的状态管理
 ![图片11](图片11.jpg)
 
-State：状态，姑且可以当做是data中的属性
++ State：状态，姑且可以当做是data中的属性
 
-View：视图层，可以针对State的变化，显示不同的信息
++ View：视图层，可以针对State的变化，显示不同的信息
 
-Actions：这里主要是用户的各种操作：点击、输入等等，会导致状态的改变
++ Actions：这里主要是用户的各种操作：点击、输入等等，会导致状态的改变
 
-### 多界面的状态管理
+### 2. 多界面的状态管理
 ![图片12](图片12.jpg)
 
-## 二、Vuex的基本使用
-1.提取出一个公共的store对象，用于保存在多个组件中共享的状态
++ actions：对象，用于响应组件中的动作
++ mutations：对象，用于操作数据（state）
++ state：对象，用于存储数据
+  + 如果actions中没有网络请求或其他复杂的业务逻辑，VC组件也可以越过actions，直接通过commit联系mutations
 
-2.将store对象放置在new Vue对象中，这样可以保证在所有的组件中都可以使用到
+## 二、搭建Vuex环境
 
-3.在其他组件中使用store对象中保存的状态即可
++ src/store/index.js
 
-·通过`this.$store.state.`属性的方式来访问状态
+  ```js
+  // 该文件用于创建Vuex中最为核心的store
+  import Vue from 'vue'
+  import Vuex from 'vuex'
+  
+  //  1.安装插件
+  Vue.use(Vuex)
+  
+  //  2.创建对象
+  const store = new Vuex.Store({
+    state: {},
+    mutations: {},
+    actions: {},
+    getters: {},
+    modules: {}
+  })
+   
+  //  3.导出store对象
+  export default store
+  ```
 
-·通过`this.$store.commit('mutation中方法')`来修改状态
++ main.js
 
-```src/store/index.js
-import Vue from 'vue'
-import Vuex from 'vuex'
+  ```js
+  import store from './store'
+  new Vue({
+    ...
+    store
+  })
+  ```
 
-//  1.安装插件
-Vue.use(Vuex)
+## 三、Vuex的基本使用
 
-//  2.创建对象
-const store = new Vuex.Store({
-  state: {
-    counter: 0
-  },
-  mutations: {
-    // 方法
-    increment(state) {
-      state.counter++
-    }
-  },
-  actions: {
-  },
-  getters: {
-  },
-  modules: {
+1. 提取出一个公共的store对象，用于保存在多个组件中共享的状态
+2. 将store对象放置在new Vue对象中，这样可以保证在所有的组件中都可以使用到
+3. 在其他组件中使用store对象中保存的状态即可
+   + 通过`$store.state.`属性的方式来访问状态
+   + 通过`$store.dispatch('action中方法', 数据)`或`$store.commit('mutation中方法', 数据)`来修改状态
+
++ store/index.js
+
+  ```js
+  const state = {
+    sum: 0
   }
-})
- 
-//  3.导出store对象
-export default store
+  const actions = {
+    jiaOdd(context, value) {
+      if(context.state.sum%2) context.commit('JIAODD', value)
+    }
+  }
+  const mutations = {
+    JIAODD(state, value) {
+      state.sum += value
+    },
+    JIA(state, value) {
+      state.sum += value
+    }
+  }
+  ```
 
-```
++ 组件
 
-
-```
-<template>
-  <div>
-    <h2>{{ $store.state.counter }}</h2>
-    <button @click='addition'>+</button>
-  </div>
-</template>
-
-<script>
+  ```vue
+  <template>
+    <div>{{$store.state.sum}}</div>
+  </template>
+  
+  <script>
   export default {
     methods: {
-      addition() {
-        this.$store.commit('increment')
+      increment() {
+        // 如果actions中没有复杂的业务逻辑，VC组件也可以直接通过commit联系mutations
+        this.$store.commit('JIA', this.n)  
+      },
+      incrementOdd() {
+        this.$store.dispatch('jiaOdd', this.n)
       }
     }
   }
-</script>
-```
-## 三、Vuex核心概念
-### State
+  </script>
+  ```
+
+  
+
+## 四、Vuex核心概念
+### 1. State
 #### State单一状态树
-如果你的状态信息是保存到多个Store对象中的，那么之后的管理和维护等等都会变得特别困难
++ 如果你的状态信息是保存到多个Store对象中的，那么之后的管理和维护等等都会变得特别困难
 
-所以Vuex也使用了单一状态树来管理应用层级的全部状态
+  所以Vuex也使用了单一状态树来管理应用层级的全部状态
 
-单一状态树能够让我们最直接的方式找到某个状态的片段，而且在之后的维护和调试过程中，也可以非常方便地管理和维护
++ 单一状态树能够让我们最直接的方式找到某个状态的片段，而且在之后的维护和调试过程中，也可以非常方便地管理和维护
 
-### Getters
-类似计算属性
+### 2. Getters
++ 类似计算属性，用于将state中的数据进行加工
 
-getters默认是不能传递参数的, 如果希望传递参数, 那么只能让getters本身返回另一个函数
++ getters默认是不能传递参数的, 如果希望传递参数, 那么只能让getters本身返回另一个函数
 
-```
+```js
 const store = new Vuex.Store({
   state: {
     counter: 1000,
@@ -291,7 +329,7 @@ const store = new Vuex.Store({
   }
 })
 ```
-```
+```vue
 <template>
   <div>
     <h2>{{ $store.getters.powerCounter }}</h2>
@@ -303,7 +341,7 @@ const store = new Vuex.Store({
   </div>
 </template>
 ```
-```
+```vue
 <script>
   export default {
     computed: {
@@ -314,28 +352,25 @@ const store = new Vuex.Store({
   }
 </script>
 ```
-### Mutation
-Vuex的store状态的更新唯一方式：提交Mutation
+### 3. Mutation
++ Vuex的store状态的更新唯一方式：提交Mutation
 
-Mutation主要包括两部分：
++ Mutation主要包括两部分：
+  + 字符串的事件类型（type）
+  + 一个回调函数（handler），该回调函数的第一个参数就是state
 
-&ensp; 字符串的事件类型（type）
-
-&ensp; 一个回调函数（handler），该回调函数的第一个参数就是state
-
-在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数：参数被称为是mutation的载荷(Payload)
-
-当有很多参数需要传递时，通常以对象的形式传递, 也就是payload是一个对象
++ 在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数：参数被称为是mutation的载荷(Payload)
++ 当有很多参数需要传递时，通常以对象的形式传递, 也就是payload是一个对象
 
 
-```
+```js
 mutations: {
   incrementCount(state, count) {
     state.counter += count
   }
 }
 ```
-```
+```js
 methods: {
   addCount(count) {
     this.$store.commit('incrementCount', count)
@@ -343,19 +378,20 @@ methods: {
 }
 ```
 #### Mutation的提交风格
-通过commit进行提交是一种普通的方式
++ 通过commit进行提交是一种普通的方式
 
-Vue还提供了另外一种风格, 它是一个包含type属性的对象
++ Vue还提供了另外一种风格, 它是一个包含type属性的对象
 
-Mutation中的处理方式是将整个commit的对象作为payload使用
-```
++ Mutation中的处理方式是将整个commit的对象作为payload使用
+
+```js
 mutations: {
   incrementCount(state, payload) {
     state.counter += payload.count
   }
 }
 ```
-```
+```js
 methods: {
   addCount(count) {
     this.$store.commit({
@@ -426,7 +462,7 @@ methods: {
 
 但是如果是异步操作, 那么devtools将不能很好地追踪这个操作什么时候会被完成
 
-### Action
+### 4. Action
 Action类似于Mutation, 但是是用来代替Mutation进行**异步操作**的
 ```
 actions: {
@@ -457,13 +493,14 @@ methods: {
   }
 }
 ```
-### Module
-Vue使用单一状态树,那么也意味着很多状态都会交给Vuex来管理;当应用变得非常复杂时,store对象就有可能变得相当臃肿
+### 5. Module
++ Vue使用单一状态树,那么也意味着很多状态都会交给Vuex来管理;当应用变得非常复杂时,store对象就有可能变得相当臃肿
 
-为了解决这个问题, Vuex允许我们将store分割成模块(Module), 而每个模块拥有自己的state、mutations、actions、getters等
++ 为了解决这个问题, Vuex允许我们将store分割成模块(Module), 而每个模块拥有自己的state、mutations、actions、getters等
 
-```
+```js
 const moduleA = {
+  namespaced: true,	// 开启命名空间
   state: {
     name: 'zhangsan'
   },
@@ -491,15 +528,70 @@ const store = new Vuex.Store({
   }
 })
 ```
-```
+```js
 $store.state.a.name
 
-this.$store.commit('updateName', 'lisi')
+...mapState('a', ['name'])
 
-$store.getters.fullname
+this.$store.commit('a/updateName', 'lisi')
+
+$store.getters['a/fullname']
 ```
 
-## 四、Vuex的项目结构
+## 五、 map
+
+### 1. mapState
+
++ 用于帮助我们映射`state`中的数据为计算属性
+
+```js
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    // 借助mapState生成计算属性，从state中读取数据（对象写法）
+    ...mapState({he: 'sum', xuexiao: 'school'})
+    // 借助mapState生成计算属性，从state中读取数据（数组写法）
+    ...mapState(['sum', 'school'])
+  }
+}
+```
+
+### 2. mapGetters
+
++ 用于帮助我们映射`getters`中的数据为计算属性
+
+```js
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    // 借助mapGetters生成计算属性，从getters中读取数据（对象写法）
+    ...mapGetters({bigSum: 'bigSum'})
+    // 借助mapGetters生成计算属性，从getters中读取数据（数组写法）
+    ...mapState(['bigSum'])
+  }
+}
+```
+
+### 3. mapMutations
+
++ 用于帮助我们生成与`mutations`对话的方法，即：包含`$store.commit(xxx)`的函数
+
++ 借助mapMutations生成对应的方法，方法中会调用commit去联系mutations
+  + 对象写法
+  + 数组写法
+
+### 4. mapActions
+
++ 用于帮助我们生成与`actions`对话的方法，即：包含`$store.dispatch(xxx)`的函数
+
++ 借助mapActions生成对应的方法，方法中会调用dispatch去联系actions
+  + 对象写法
+  + 数组写法
+
+
+
+## 六、Vuex的项目结构
+
 ![图片13](图片13.jpg)
 
 
