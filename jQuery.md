@@ -354,7 +354,7 @@ $("button").click(function() {
     }else {
       echo '未成年人';
     }
-
+  
     switch($age) {
       case 0:
         echo '0';
@@ -412,13 +412,16 @@ $("button").click(function() {
 ### (1) 步骤
 #### 1. 创建一个异步对象
 ```var xmlhttp = new XMLHttpRequest();```
+
 #### 2. 设置请求方式和请求地址
 ```xmlhttp.open(method, url, async);```
+
   - method：请求的类型 GET或POST
   - url：文件在服务器上的位置
   - async：true（异步）或false（同步）
 #### 3. 发送请求
 ```xmlhttp.send();```
+
 #### 4. 监听状态的变化
 + readyState
   - 0：请求未初始化
@@ -427,7 +430,7 @@ $("button").click(function() {
   - 3：请求处理中
   - 4：请求已完成，且响应已就绪
 #### 5. 处理返回的结果
-```
+```js
 xmlhttp.onreadystatechange = function() {
   if(xmlhttp.readyState === 4){
     if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status === 304) {
@@ -456,7 +459,7 @@ function obj2str(obj) {
   }
   return res.join("&");
 }
-```                                                    
+```
 ```
 function ajax(url, obj, timeout, success, error) {
   var str = obj2str(obj);                                                  
@@ -485,14 +488,14 @@ function ajax(url, obj, timeout, success, error) {
     }, timeout);                                                    
   }                                                    
 }
-```                                                        
+```
 ## 二、POST
 ### (1) 使用
 ```
 xmlhttp.open("POST", "xxx.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send("name1=value1&name2=value2");
-```                                                      
+```
 ### (2) 封装
   ```
   function obj2str(obj) {
@@ -537,8 +540,88 @@ xmlhttp.send("name1=value1&name2=value2");
       }, timeout);                                                    
     }                                                    
   }
-  ```                                                      
-## 三、jQuery
+  ```
+## 三、ajax封装（简单版axios）
+
++ 要求：
+
+  + 函数的返回值为promise，成功的结果为response，异常的结果为error
+
+  + 能处理多种类型的请求：GET/POST/PUT/DELETE
+
+  + 函数的参数为一个配置对象
+
+    ```js
+    {
+      url: '',	// 请求地址
+      method: '',	// 请求方法
+      params: {},	// GET/DELETE请求的query参数
+      data: {}	// POST/DELETE请求的请求体参数
+    }
+    ```
+
+  + 响应json数据自动解析为js
+
++ 实现：
+
+  ```js
+  function axios({
+    url,
+    method = 'GET',
+    params = {},
+    data = {}
+  }) {
+    // 返回一个promise对象
+    return new Promise((resolve, reject) => {
+      // 处理method
+      method = method.toUpperCase()
+      // 处理query参数（拼接到url上）  
+      let queryString = ''
+      Object.keys(params).forEach(key => {
+        queryString += `${key}=${params[key]}`
+      })
+      if(queryString) {
+          queryString = queryString.substring(0, queryString.length-1)
+          url += '?' + queryString
+      }
+      // 1. 执行异步ajax请求
+      // 创建xhr对象
+      const request = new XMLHttpRequest()
+      // 打开连接（初始化请求，没有请求）
+      request.open(method, url, true)
+      // 发送请求
+      if(method === 'GET' || method === 'DELETE') {
+        request.send()
+      } else if(method === 'POST' || method === 'PUT'){
+        request.setRequestHeader('Content-Type', 'application/json;charset=utr-8')
+        request.send(JSON.stringify(data))	// 发送json格式请求体参数
+      }
+      // 绑定状态改变的监听
+      request.onreadystatechange = function() {
+        if(request.readystate!==4) return
+        const {status, statusText} = request
+        // 2.1. 如果请求成功了，调用resolve()
+        if(status>=200&&status<=299) {
+          const response = {
+            data: JSON.parse(request.response),
+            status,
+            statusText
+          }
+          resolve(response)
+        } else {	// 2.2. 如果请求失败了，调用reject()
+          reject(new Error('request error status is ' + status))
+        }
+      }
+    })
+  }
+  ```
+
+  
+
+
+
+## 四、jQuery
+
 ### (1) jQuery封装                                                        
 ```
 $.ajax({
@@ -552,7 +635,7 @@ $.ajax({
     alert(xhr.status);
   }
 })
-```         
+```
 ### (2) XML
 + 可扩展标记语言                                                        
 ```
@@ -561,7 +644,7 @@ $.ajax({
   <name>张三</name>
   <age>33</age>
 </dog>
-```  
+```
 + php获取文件内容
   ```
   <?php
@@ -587,6 +670,5 @@ $.ajax({
 + 兼容IE
   - 在低版本的IE中，不可以使用原生的JSON.parse方法
   - 可以使用json2.js这个框架来兼容
-  
   
   
